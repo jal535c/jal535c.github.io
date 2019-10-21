@@ -1,2 +1,2 @@
 # jal535c.github.io
-My first JavaScript game
+Juego Breakout implementado en JavaScript
