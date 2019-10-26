@@ -1,8 +1,142 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>titulo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Halloween Party</title>
+    <link rel="icon" href="images/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Butcherman&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: black;
+        }
+
+        #wrapper {
+            position: relative;
+            background-image: url("images/wallpaper.jpg");
+            width: 1100px;
+            height: 620px;
+            margin: auto;
+        }
+        
+        @font-face {
+            font-family: myFont;
+            src: url(fonts/pieces-nfi.ttf);
+        }
+
+        h1 {
+            position: absolute;
+            top: 0px;
+            left: 400px;
+            font-size: 1.7em;
+            font-family: myFont;
+            color: rgb(117, 18, 18);
+            text-shadow: rgb(243, 243, 223) 2px 2px, 
+                        rgb(243, 243, 223) -2px -2px, 
+                        rgb(243, 243, 223) 2px -2px, 
+                        rgb(243, 243, 223) -2px 2px;
+        }
+
+        #demon {
+            position: absolute;
+            top: 280px;
+            left: 0px;
+            visibility: hidden;
+            cursor: crosshair;
+        }
+
+        #p1 {
+            position: relative;
+            top:80px;
+            left:0px;
+            font-size: 1.5em;
+            font-family: 'Butcherman', cursive;
+            color:rgb(180, 177, 177);
+        }
+
+        #p2 {
+            position: absolute;
+            top:140px;
+            left:0px;
+            font-size: 1.5em;
+            font-family: 'Butcherman', cursive;
+            color:rgb(180, 177, 177);
+            /*text-shadow: rgb(212, 231, 104) 2px 2px,
+                        rgb(212, 231, 104) 2px 2px,
+                        rgb(212, 231, 104) 2px 2px,
+                        rgb(212, 231, 104) 2px 2px;*/
+
+        }
+
+        #p3 {
+            position: absolute;
+            top:120px;
+            left:900px;
+            font-size: 1.5em;
+            font-family: 'Butcherman', cursive;
+            color:rgb(180, 177, 177);
+        }
+
+        #ventana {
+            position: absolute;
+            top: 160px;
+            left: 340px;
+            /*border: 2px solid yellow;*/
+            width: 48px;
+            height: 80px;
+            cursor: pointer;
+        }
+
+        #cura {
+            position: absolute;
+            top: 300px;
+            left: 700px;
+            /*border: 2px solid yellow;*/
+            width: 80px;
+            height: 200px;
+            cursor: pointer;
+        }
+
+        #monja {
+            position: absolute;
+            top: 320px;
+            left: 840px;
+            visibility: hidden;
+            cursor: crosshair;
+        }
+    </style>
+    <script>
+        function mostrar(elemento) {
+            document.getElementById(elemento).style.visibility="visible";
+        }
+        function ocultar(elemento) {
+            document.getElementById(elemento).style.visibility="hidden";
+        }
+        function sonar(sonido) {
+            document.getElementById(sonido).play();
+        }
+        function pausar(sonido) {
+            document.getElementById(sonido).pause();
+        }
+    </script>
 </head>
-<body>
-	prueba
+<body onload="sonar('bso')">
+    <audio id="bso" autoplay loop>
+        <source src="sounds/exorcist_theme.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="laugh" loop>
+        <source src="sounds/laugh.mp3" type="audio/mpeg">
+    </audio>
+    <div id="wrapper">
+        <h1>Scary Halloween Party</h1>
+        <p id="p1">Are you ready to meet evil?</p>
+        <div id="ventana" onclick="mostrar('demon'); sonar('laugh') "></div>
+        <p id="p2">Knock at the window!!!</p>
+        <p id="p3">Don't touch the priest!!!</p>
+        <div id="cura" onclick="mostrar('monja')"></div>
+        <img id="demon" src="images/horror.gif" width="280" onclick="ocultar('demon'); pausar('laugh')">
+        <img id="monja" src="images/monja.gif" width="300" onclick="ocultar('monja')">
+    </div>    
 </body>
 </html>
