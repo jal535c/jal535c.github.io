@@ -1,0 +1,108 @@
+/* archivo de estilo de la pagina de halloween */
+
+body {
+    background-color: black;
+}
+
+#wrapper {
+    position: relative;
+    background-image: url("../images/wallpaper.jpg");
+    width: 1100px;
+    height: 620px;
+    margin: auto;
+}
+
+@font-face {
+    font-family: myFont;
+    src: url(../fonts/pieces-nfi.ttf);
+}
+
+@font-face {
+    font-family: myFont2;
+    src: url(../fonts/myscars.ttf);
+}
+
+@font-face {
+    font-family: myFont3;
+    src: url(../fonts/Sugar_Death2.ttf);
+}
+
+h1 {
+    position: absolute;
+    top: 0px;
+    left: 400px;
+    font-size: 1.7em;
+    font-family: myFont;
+    color: rgb(117, 18, 18);
+    text-shadow: rgb(243, 243, 223) 2px 2px, 
+                rgb(243, 243, 223) -2px -2px, 
+                rgb(243, 243, 223) 2px -2px, 
+                rgb(243, 243, 223) -2px 2px;
+}
+
+#demon {
+    position: absolute;
+    top: 280px;
+    left: 0px;
+    visibility: hidden;
+    cursor: crosshair;
+}
+
+#p1 {
+    position: relative;
+    top:80px;
+    left:0px;
+    font-size: 2em;
+    font-family: myFont2;
+    color:rgb(180, 177, 177);
+}
+
+#p2 {
+    position: absolute;
+    top:140px;
+    left:0px;
+    font-size: 1.5em;
+    font-family: 'Butcherman', cursive;
+    color:rgb(180, 177, 177);
+    /*text-shadow: rgb(212, 231, 104) 2px 2px,
+                rgb(212, 231, 104) 2px 2px,
+                rgb(212, 231, 104) 2px 2px,
+                rgb(212, 231, 104) 2px 2px;*/
+}
+
+#p3 {
+    position: absolute;
+    top:120px;
+    left:900px;
+    font-size: 1.5em;
+    font-family: 'Butcherman', cursive;
+    color:rgb(180, 177, 177);
+}
+
+#ventana {
+    position: absolute;
+    top: 160px;
+    left: 340px;
+    /*border: 2px solid yellow;*/
+    width: 48px;
+    height: 80px;
+    cursor: pointer;
+}
+
+#cura {
+    position: absolute;
+    top: 300px;
+    left: 700px;
+    /*border: 2px solid yellow;*/
+    width: 80px;
+    height: 200px;
+    cursor: pointer;
+}
+
+#monja {
+    position: absolute;
+    top: 320px;
+    left: 840px;
+    visibility: hidden;
+    cursor: crosshair;
+}
