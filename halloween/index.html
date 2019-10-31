@@ -7,57 +7,36 @@
     <title>Halloween Party</title>
     <link rel="icon" href="images/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Butcherman&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background-color: black;
-        }
+    <link rel="stylesheet" href="styles/halloween.css">        
+    <script type="text/javascript" src="javascripts/halloween.js"></script>
 
-        #wrapper {
-            position: relative;
-            background-image: url("images/wallpaper.jpg");
-            width: 1100px;
-            height: 620px;
-            margin: auto;
-        }
-        
-        @font-face {
-            font-family: myFont;
-            src: url(fonts/pieces-nfi.ttf);
-        }
+    <!-- this document is not responsive only can see in pc monitor -->
 
-        h1 {
-            position: absolute;
-            top: 0px;
-            left: 400px;
-            font-size: 1.7em;
-            font-family: myFont;
-            color: rgb(117, 18, 18);
-            text-shadow: rgb(243, 243, 223) 2px 2px, 
-                        rgb(243, 243, 223) -2px -2px, 
-                        rgb(243, 243, 223) 2px -2px, 
-                        rgb(243, 243, 223) -2px 2px;
-        }
+</head>
 
-        #demon {
-            position: absolute;
-            top: 280px;
-            left: 0px;
-            visibility: hidden;
-            cursor: crosshair;
-        }
+<body onload="sonar('bso')">
+    <audio id="bso" autoplay loop>
+        <source src="sounds/exorcist_theme.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="laugh" loop>
+        <source src="sounds/laugh.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="scream" loop>
+        <source src="sounds/female_scream.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="vocals" loop>
+            <source src="sounds/vocals.mp3" type="audio/mpeg">
+        </audio>
 
-        #p1 {
-            position: relative;
-            top:80px;
-            left:0px;
-            font-size: 1.5em;
-            font-family: 'Butcherman', cursive;
-            color:rgb(180, 177, 177);
-        }
-
-        #p2 {
-            position: absolute;
-            top:140px;
-            left:0px;
-            font-size: 1.5em;
-    
+    <div id="wrapper">
+        <h1>Scary Halloween Party</h1>
+        <p id="p1">Are you ready to meet evil?</p>
+        <div id="ventana" onclick="mostrar('demon'); sonar('laugh')"></div>
+        <p id="p2">Knock at the window!!!</p>
+        <p id="p3">Don't touch the priest!!!</p>
+        <div id="cura" onclick="mostrar('monja'); sonar('scream')"></div>
+        <img id="demon" src="images/horror.gif" width="280" onclick="ocultar('demon'); pausar('laugh')" onmouseover="sonar('vocals')" onmouseout="pausar('vocals')">
+        <img id="monja" src="images/monja.gif" width="300" ondblclick="ocultar('monja'); pausar('scream')">
+    </div>    
+</body>
+</html>
