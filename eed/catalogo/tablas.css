@@ -52,8 +52,8 @@ caption {
 
 a:link, a:visited {
     display: inline-block;
-    /*width: 250px;*/
-    width: 18%;
+    width: 225px;
+    /*width: 18%;*/
     /*margin: auto;*/
     background-color: yellowgreen;
     color: white;
