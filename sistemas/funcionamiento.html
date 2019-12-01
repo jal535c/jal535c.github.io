@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Arduino</title>
+    <link rel="stylesheet" href="estilo.css" >
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <img id="para-pc" src="imagenes/headeruno.jpg" alt="Diseño web responsive multiplataforma">
+            <!--
+            <div id="title">
+                <p>Arduino</p>
+            </div>
+            -->
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="tipos.html">Tipos</a> </li>
+                <li><a href="funcionamiento.html">Funcionamiento</a> </li>
+                <li><a href="instalacion.html">Instalación</a> </li>
+                <li><a href="marcas.html">Marcas</a> </li>
+                <li><a href="donde.html">Dónde Comprarlo</a> </li>
+                <li><a href="bibliografia.html">Bibliografía</a> </li>
+                
+            </ul>
+        </nav>
+
+        <main>
+            <h2>Funcionamiento</h2>                      
+            
+            <h3>Caracteristicas generales: </h3>
+            <img src="imagenes/CARACTERISTICAS.jpg" alt="">
+
+            <h3>ATmega328P:</h3>
+            <img src="imagenes/avr.png" alt="">
+
+            <p>
+                Es un microcontrolador de la firma Atmel y esta basado en la arquitectura AVR.
+                AVR es una arquitectura basada en RISC (Computadora con conjunto de instrucciones reducidas), 
+                la arquitectura de un microprocesador o microcontrolador, 
+                detalla la estructura interna del mismo y como se conforma la distribución, 
+                acceso y control de los diversos bloques que componen al microcontrolador.
+            </p>
+
+            <p>
+                Tendremos 3 puertos (B, C y D), donde estos poseen múltiples configuraciones, 
+                como por ejemplo el PC4 donde hacemos referencia al puerto C pin numero 4 que aparte 
+                de funcionar como una entrada o salida, puede funcionar como un canal multiplexado del 
+                ADC (en este caso el canal 4) también funciona como uno de los pines de la interfaz 
+                I2C (en este caso el SDA) y también como interrupción (en este caso como PCINT12).
+                Esto nos demuestra que el microcontrolador puede ser configurado de múltiples maneras y puede 
+                configurar sus pines de diferentes maneras según su hardware se lo permita, claro que 
+                también podremos realizar algunos protocolos por software y asignarlo a pines que no 
+                están dedicados, por ejemplo podríamos tener un pin SDA en un pin PB5, que no posee esta 
+                propiedad por hardware pero podríamos hacer la trama por software y utilizarlo, lo que 
+                no podremos hacer es usar este PB5 como un canal ADC ya que es una propiedad intrínseca 
+                del microcontrolador.
+            </p>
+
+            <h3>Especificaciones técnicas:</h3>
+            <img src="imagenes/spec.png" alt="">
+
+            <h3>Disposicion de pines:</h3>
+            <img src="imagenes/encapsulado.png" alt="">
+            <img src="imagenes/atmega328p-pu.png" alt="">
+            
+            <h3>Video de introducción a la placa: </h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/OSHJUkG8zW4" 
+            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen></iframe>
+
+            
+
+        </main>
+
+        <footer>
+            <p>Autor: Juan Luis Almahano <br> Sistemas Informáticos - Curso 2019-20</p>
+            <p><a href="#" target="_blank"><i class="fa fa-facebook-official"></i></a>
+                <i class="fa fa-github"></i></p>
+        </footer>
+    </div>
+</body>
+</html>

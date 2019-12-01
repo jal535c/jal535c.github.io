@@ -1,0 +1,138 @@
+body {
+    background-color: black;        /* lo quito para ver bien las polaro    id*/
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+#wrapper {
+    width: 90%;
+    background-color: white;
+    margin: auto; 
+}
+
+header {
+    position: relative;
+}
+
+header img {
+    width: 100%;
+    height: 500px;
+    display: block;
+}
+
+#title {
+    position: absolute;
+    background-color: rgba(102, 83, 83, 0.5);
+    color: white;
+    font-size: 3vw;
+    text-align: center;
+    
+    right: 0;       /*estas 4 lineas son para el pos absoluto*/
+    left: 0;
+    margin-left: auto;
+    margin-right: auto;
+
+    top: 8vw;     /* con position relative puedo controlar el top*/
+    
+    width: 20%;
+    padding: 3vw;  /* pixeles pequeños no tiene por que ser un problema */
+    border: 4px solid white;
+    outline: 4px solid rgba(102, 83, 83);
+    /*border-radius: 50%;*/
+    
+}
+
+nav {
+    font-size: 2vw;
+    position: sticky;       /*le tengo k decir a donde se pega, al top*/
+    top: 0;
+}
+nav ul {                /*la lista completa, es todo, inline*/
+    margin: 0;      /* se pega al header */
+    padding: 0;
+    list-style-type: none;      /*quita los .*/
+    background-color: rgb(97, 189, 85);
+}
+nav ul li {
+    display: inline-block;
+    padding: 15px;           /*los elementos de la lista tienen padding*/
+}
+a {
+    text-decoration: none;  /*quita el subrayado de los links*/
+    color: white;       /*color del enlace, la letra*/
+}
+a:hover {
+    color:black;          /*color de la letra cuando paso raton*/
+}
+
+
+
+
+main {
+    background-color: white;
+}
+
+main h2 {
+    text-align: center;
+    font-size: 5vw;     /* puedo ponerlo tambien con un media query */
+}
+
+main img {
+    margin: auto;
+    width: 50%;
+    padding: 20px;
+    display: block;
+}
+
+#intro img {
+    width: 30%;
+}
+
+#marcas img {
+    width: 25%;
+    display: inline-block;
+}
+
+#donde img {
+    width: 30%;
+}
+
+#asm {
+    width: 70%;
+}
+
+main p {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    font-size: 1.5vw;
+}
+
+main h3 {
+    margin: 0 auto;
+    width: 80%;
+    padding: 20px;
+}
+
+main a {
+    color: black;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    font-size: 1.5vw;
+    display: block;
+}
+
+iframe {
+    margin-left: auto;
+    padding: 20px;
+}
+
+footer {
+    background-color: rgb(128, 127, 127);
+    color: white;
+    font-size: 0.8em;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px;
+}
