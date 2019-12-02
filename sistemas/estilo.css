@@ -93,6 +93,10 @@ main img {
     display: inline-block;
 }
 
+#cuadro {
+  margin-left: 10%;
+}
+
 #donde img {
     width: 30%;
 }
