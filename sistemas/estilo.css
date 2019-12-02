@@ -124,8 +124,9 @@ main a {
 }
 
 iframe {
-    margin-left: auto;
+    margin: auto;
     padding: 20px;
+    display: block;
 }
 
 footer {
