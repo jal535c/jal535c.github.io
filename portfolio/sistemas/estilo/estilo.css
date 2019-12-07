@@ -1,0 +1,312 @@
+body {
+    background-color: black;        
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+#wrapper {
+    width: 90%;
+    background-color: white;
+    margin: auto; 
+}
+
+/**************************************************************/
+/* estilo del header*/
+
+header {
+    position: relative;
+}
+
+header img {
+    width: 100%;
+    height: 500px;
+    display: block;
+}
+
+#para-pc {
+    display: block;
+}
+
+#para-movil {
+    display: none;
+}
+
+#title {
+    position: absolute;
+    background-color: rgba(102, 83, 83, 0.5);
+    color: white;
+    font-size: 3vw;
+    text-align: center;
+    
+    right: 0;       /*estas 4 lineas son para el posicionamiento absoluto*/
+    left: 0;
+    margin-left: auto;
+    margin-right: auto;
+
+    top: 8vw;     /* con position relative puedo controlar el top*/
+    
+    width: 20%;
+    padding: 3vw;  /* pixeles pequeños no tiene por que ser un problema */
+    border: 4px solid white;
+    outline: 4px solid rgba(102, 83, 83);
+    /*border-radius: 50%;*/
+    
+}
+
+/*************************************************************/
+/* Estilo de la barra de navegacion */
+
+
+nav {
+    /* font-size: 2vw; */
+    position: sticky;       /*le tengo k decir a donde se pega, al top*/
+    top: 0;
+}
+
+nav ul {                /*la lista completa, es todo, inline*/
+    margin: 0;      /* se pega al header */
+    padding: 0;
+    list-style-type: none;      /*quita los .*/
+    background-color: rgb(97, 189, 85);
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 15px;           /*los elementos de la lista tienen padding*/
+}
+
+a {
+    text-decoration: none;  /*quita el subrayado de los links*/
+    color: white;       /*color del enlace, la letra*/
+}
+
+a:hover {
+    color:black;          /*color de la letra cuando paso raton*/
+}
+
+
+
+
+.topnav {
+    overflow: hidden;       /* inicialmente esta oculto*/
+    background-color: #333;
+}
+  
+.topnav a {
+    float: left;        /*inicialmente todos los botones en linea*/
+    display: block;
+    color: #f2f2f2;
+    text-align: center;     /* en cada boton*/
+    padding: 14px 16px;     /* en cada boton*/
+    text-decoration: none;  /*no esta subrayado*/
+    /* font-size: 17px; */
+    font-size: 2vw;
+}
+  
+.topnav a:hover {
+    background-color: #ddd;     /*cuando pongo el boton encima canbia color*/
+    color: black;
+}
+  
+.topnav a.active {      /*el primer boton, de momento lo dejamos*/
+    background-color: #4CAF50;
+    color: white;
+}
+  
+.topnav .icon {
+    display: none;      /*la primera vez esta oculto*/
+}
+  
+@media screen and (max-width: 600px) {
+    .topnav a:not(:first-child) {
+        display: none;
+        
+    }
+    .topnav a.icon {
+        float: right;
+        display: block;     /* ahora veo el boton*/
+        
+    }
+}
+  
+@media screen and (max-width: 600px) {      /*separa en 2 para k sea mas didactico*/
+    .topnav a {
+        font-size: 1em;
+        
+    }
+    
+    .topnav.responsive {
+        position: relative;
+        
+    }
+    .topnav.responsive .icon {
+        position: absolute;     /*cambio la position al contenedor*/
+        right: 0;
+        top: 0;
+        
+    }
+    .topnav.responsive a {
+        float: none;            /*ahora al ser block llegan de punta a punta, texto ya no esta centrado en el boton*/
+        display: block;
+        text-align: left;
+        
+    }
+}
+
+
+
+/*******************************************************************/
+/* estilo del main */
+
+main {
+    background-color: white;
+}
+
+main h2 {
+    text-align: center;
+    font-size: 5vw;     /* puedo ponerlo tambien con un media query */
+}
+
+main img {
+    margin: auto;
+    width: 50%;
+    padding: 20px;
+    display: block;
+}
+
+#intro img {
+    width: 30%;
+}
+
+#marcas img {
+    width: 25%;
+    display: inline-block;
+     
+}
+
+#cuadro {
+    margin-left: 10%;
+}
+
+#donde img {
+    width: 30%;
+}
+
+#asm {
+    width: 70%;
+}
+
+main p {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    /* font-size: 1.5vw; */
+    font-size: 1.3em
+}
+
+main h3 {
+    margin: 0 auto;
+    width: 80%;
+    padding: 20px;
+}
+
+main a {
+    color: black;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    /* font-size: 1.5vw; */
+    font-size: 1.3em;
+    display: block;
+    text-decoration: underline;
+}
+
+#biblio {
+    /* display: block; */
+    margin: auto;
+    text-align: center;
+}
+
+#biblio a:hover {
+    color: rgb(76, 175, 80);
+}
+
+iframe {
+    margin: auto;
+    padding: 20px;
+    display: block;
+
+    width: 56vw;
+    height: 31vw;
+}
+
+/*************************************************************************/
+/* estilo del footer */
+
+footer {
+    background-color: rgb(128, 127, 127);
+    color: white;
+    font-size: 0.8em;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px;
+}
+
+footer .fa {        /* los class fa que estan en el footer*/
+    font-size: 3em; /*triple del tamaño normal*/
+    margin-right: 10px;
+}
+
+footer a {
+    color: white;   /* mismo color que el texto normal*/
+}
+
+/************************************************************************/
+/* media query */
+
+@media only screen and (max-width: 600px) {     
+    #wrapper {
+        width: 95%;
+    }
+    
+    main h2 {
+        font-size: 8vw;
+    }
+
+    main p {
+        font-size: 3vw;
+    }
+
+    main a {
+        font-size: 3vw;
+    }
+
+    main img, #intro img, #marcas img, #donde img {
+        width: 80%;
+        display: block;
+        margin: 20px auto;
+    }
+
+    #cuadro {
+        margin-left: 0;
+    }
+
+    #asm {
+        width: 90%;
+    }
+
+    iframe {
+        width: 75vw;
+        height: 45vw;
+    }
+
+    #para-pc {
+        display: none;
+    }
+
+    #para-movil {
+        display: block;
+        height: 100vh;      /*para que la imagen de fondo ocupe todo el alto del movil*/
+    }
+}
+

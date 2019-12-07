@@ -5,21 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Arduino</title>
-    <link rel="stylesheet" href="estilo.css" >
+    <link rel="icon" href="imagenes/favicon.ico">
+    <link rel="stylesheet" href="estilo/estilo.css" >
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="scripts/scripts.js">
+        var header = document.getElementById("myTopnav");
+        var btns = header.getElementsByClassName("btn");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function() {
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+            }
+            );
+        }
+    </script>
 </head>
 <body>
     <div id="wrapper">
         <header>
             <img id="para-pc" src="imagenes/headeruno.jpg" alt="Diseño web responsive multiplataforma">
+            <img id="para-movil" src="imagenes/headcrop.jpg" alt="Diseño web responsive multiplataforma">
             <!--
             <div id="title">
                 <p>Arduino</p>
             </div>
             -->
         </header>
-
+        <!--
         <nav>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
@@ -32,6 +46,23 @@
                 
             </ul>
         </nav>
+    -->
+        <nav>
+                <div class="topnav" id="myTopnav">
+                    <a href="index.html" class="btn">Inicio</a>
+                    <a href="tipos.html" class="btn">Tipos</a> 
+                    <a href="funcionamiento.html" class="btn">Funcionamiento</a> 
+                    <a href="instalacion.html" class="btn active">Instalación</a> 
+                    <a href="marcas.html" class="btn">Marcas</a> 
+                    <a href="donde.html" class="btn">Dónde Comprarlo</a> 
+                    <a href="bibliografia.html" class="btn">Bibliografía</a> 
+                    
+                    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                            <i class="fa fa-bars"></i>    <!-- icono de hamburguesa, el js se frena, no va ningun sitio onclick va a mi funcion-->
+                    </a>
+                </div>
+            </nav>
+
 
         <main>
             <h2>Instalación</h2>                      
@@ -68,8 +99,11 @@
 
         <footer>
             <p>Autor: Juan Luis Almahano <br> Sistemas Informáticos - Curso 2019-20</p>
-            <p><a href="#" target="_blank"><i class="fa fa-facebook-official"></i></a>
-                <i class="fa fa-github"></i></p>
+            <p>
+                <a href="https://es-es.facebook.com/" target="_blank"><i class="fa fa-facebook-official"></i></a>
+                <a href="https://github.com/jal535c" target="_blank"><i class="fa fa-github"></i></a>
+                <a href="https://www.youtube.com/channel/UCJtxY4_SNtlocDsdgOqMH0Q" target="_blank"><i class="fa fa-youtube-play"></i></a>
+            </p>
         </footer>
     </div>
 </body>
