@@ -1,0 +1,171 @@
+/* Hoja de estilos para mi pagina web responsive */
+
+body {
+    background-color: rgb(233, 192, 178);
+    font-family: electrolize;
+}
+
+#wrapper {
+    width: 90%;     
+    margin: auto;   
+}
+
+
+/***************************************************************************/
+/* estilo del header */
+
+header {
+    position: relative;  
+    background-image: url("imagenes/header.jpg");
+    background-repeat: no-repeat;
+    height: 300px;  
+    background-size: cover;
+    background-position: right;
+}
+
+@font-face {        
+    font-family: electrolize;
+    src: url(fuentes/Electrolize.ttf);
+}
+
+header #title {
+    position: absolute;
+    top: 120px;
+    left: 80px;   
+    color: white;
+    font-size: 2.4em; 
+}
+
+header span {
+    color: white;
+}
+
+
+/*************************************************************************************/
+/* estilo de la SideNav */
+  
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(108, 178, 180);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+ }
+  
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+}
+  
+.sidenav a:hover {
+    color: rgb(167, 76, 88);
+}
+  
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+  
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+  
+/****************************************************************************/
+/* estilo del main */
+
+main {
+    background-color: #a3a3a3;
+    color: black;
+    font-size: 1.1em;     
+    padding: 2%;      
+}
+
+main h2 {
+    color: rgb(167, 76, 88);
+    text-align: center;
+}
+
+main p {
+    text-indent: 2em;
+}
+
+main img {     
+    width: 20%;
+    margin-left: 4%;
+    border-radius: 10%;
+}
+
+img:hover {
+    opacity: 0.4;
+}
+
+
+/******************************************************************************/
+/* estilo del footer */
+
+footer {
+    background-color: rgb(108, 178, 180);
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+    font-family: sans-serif;
+}
+
+
+/**********************************************************************/
+/* media query */
+
+@media only screen and (max-width: 900px) {     /* para tablets */
+    main img {
+        width: 40%;
+        margin-left: 5%;      
+        margin-bottom: 20px;    
+    }
+
+    header #title {
+        font-size: 2em;
+    }
+}
+
+@media only screen and (max-width: 600px) {     /* para moviles */
+    #wrapper {
+        width: 100%;     
+    }
+
+    main img {
+        width: 70%;         
+        display: block;    
+        margin: 20px auto; 
+    }
+
+    header {
+        background-image: url(imagenes/header2.png);
+        height: 500px;
+    }
+
+    header #title {
+        position: relative;
+        top: 350px;
+        font-size: 1.8em;
+    }
+}
