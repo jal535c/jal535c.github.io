@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="author" content="Juan Luis Almahano">
+  <title>Apple</title>
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div id="wrapper" class="container-fluid">
+
+
+    <!-- BARRA DE NAVEGACION -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark position-sticky">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="https://www.apple.com/es" target="_blank"><img src="img/logo7.png" width="48"></a>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="#inicio">Inicio <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#portfolio">Galería</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#historia">Historia</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#timeline">Timeline</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#team">Quienes somos</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#multimedia">Multimedia</a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contacto">Contacto</a>
+          </li>          
+        </ul>        
+      </div>
+    </nav>
+
+
+    <!-- HEADER O HERO SECTION -->
+
+    <header id="inicio" class="container-fluid">
+      <div class="jumbotron text-center row">
+        <div id="contraste" class="mx-auto rounded-large col-12 col-md-10 col-lg-8">
+          <h1 class="display-4 font-weight-bolder">Think different.</h1>
+          <p class="lead font-weight-bold">Apple Inc.</p>
+          <hr class="my-4">
+          <p class="font-weight-bold">
+          "La innovación distingue a los lideres de los seguidores" - Steve Jobs.
+          </p>
+          <!--
+          <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+          -->
+        </div>
+      </div>
+    </header>
+
+
+    <!-- SECCION PORTFOLIO -->
+
+		<section id="portfolio">
+      <div class="titulo">
+        <p class="display-4 text-center text-secondary font-weight-bold w-50 mx-auto ">Galería</p>
+        <hr>  
+      </div>     
+      <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
+        </ol> 
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="img/tam/macbook.jpg" class="d-block w-100" alt="hombre con taza de cafe">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Primera diapositiva</h5>
+              <p>Esta es una imagen mu bonita.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="img/tam/cube.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Second slide label</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="img/tam/nano.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Third slide label</h5>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="img/tam/iphone.jpg" class="d-block w-100" alt="Bosque">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Fourth slide label</h5>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+              <img src="img/tam/store.jpg" class="d-block w-100" alt="Bosque">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Fourth slide label</h5>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+              </div>
+            </div>
+        </div> 
+        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>  
+    </section>
+
+
+    <!-- SECCIÓN HISTORIA - HECHO CON GRID -->
+    
+    <section id="historia">
+      <div class="titulo my-4">
+        <p class="display-4 text-center text-secondary font-weight-bold w-50 mx-auto ">Historia</p>
+        <hr>
+      </div>
+      <!-- componente COLLAPSE -->
+      <p class="text-center">
+        <button class="btn btn-primary" type="button"  data-toggle="collapse" data-target="#multiCollapseExample1"  aria-expanded="false" aria-controls="multiCollapseExample1">Notas...</button>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">One more thing...</button>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Cerrar</button>
+      </p>
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div class="collapse multi-collapse" id="multiCollapseExample1">
+            <div class="card card-body">              
+              <p>Mis cosas favoritas de la vida no valen nada. Es claro que el recurso más precioso que todos tenemos es el tiempo.</p>
+              <p>Estoy tan orgulloso por las cosas que no hemos hecho como por aquellas que hemos hecho. La innovación implica decirle que no a miles de cosas.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="collapse multi-collapse" id="multiCollapseExample2">
+            <div class="card card-body">              
+              <p>Tienes que actuar y estar dispuesto a fracasar. Si tienes miedo a fracasar, no vas a llegar muy lejos.</p>
+              <p>Todo el mundo debería aprender a programar, porque te enseña a pensar.</p>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- GRID DE 4 COLUMNAS DE TEXTO -->
+      <div class="container-fluid bg-light">
+        <div class="row ">
+          <div class="col-lg-3 col-md-6 col-12 px-2">
+            <h2>Los años 70</h2>
+            Apple fue fundada por Steve Jobs, Steve Wozniak y Ronald Wayne. La fecha fue el 1 de abril de 1976. ¿El lugar? 
+            El garage de la casa donde Jobs creció en Los Altos, California. Dos semanas después, Wayne decidió 
+            retirarse de la historia vendiendo a sus compañeros su parte accionaria. Recibió a cambio 800 dólares 
+            de esa época. El primer producto creado por la compañía fue la Apple I, una computadora hecha a mano 
+            por Wozniak (quien era el cerebro programador del equipo) que no era más que una tarjeta madre con 
+            CPU, RAM y unos chips muy básicos. Su precio era de 666.66 dólares (casi tres mil dólares a valor actual).
+            Apple siguió desarrollando computadoras más avanzadas. El 22 de diciembre de 1980 comenzaría a cotizar en 
+            el mercado bursátil estadounidense generando más capital que cualquier otra empresa saliendo a Bolsa desde 
+            Ford en 1956.
+          </div>
+          <div class="col-lg-3 col-md-6 col-12 px-2">
+            <h2>Los años 80</h2>
+            ¿Qué significa el Macintosh en la historia moderna? Se trata de la primera computadora personal que 
+            contaba con una interfaz gráfica y un mouse. Steve Jobs la presentó a lo grande, con un comercial que 
+            aludía al concepto de 1984, dirigido por Ridley Scott y apuntando los cañones contra IBM.
+            En 1985 se agudizaron las fricciones entre Steve Jobs y John Sculley, el CEO de Apple que había sido 
+            contratado precisamente por el primero al convencerlo de “dejar de vender agua azucarada y mejor cambiar 
+            el mundo”. Sculley y el consejo directivo de la compañía querían ponerle frenos a Jobs para evitar que 
+            lanzara productos que supusieran fracasos financieros. 
+            Steve Jobs terminaría renunciando para después fundar otra compañía llamada NeXT. Wozniak también se 
+            iría en ese mismo 1985.
+          </div>
+          <div class="col-lg-3 col-md-6 col-12 px-2">
+            <h2>Decada de los 90</h2>
+            Apple empezó a notar que quedaba atrás en la evolución de los sistemas, donde sus arquitecturas no 
+            soportaban multitarea, por lo tanto, Apple se unió a Motorola e IBM, en la denominada alianza AIM, 
+            de la que nació la plataforma PowerPC . Dicha alianza daba por hecho que la unión de la potente 
+            plataforma de hardware unido al software de Apple, sería toda una revolución que desbancaría a la 
+            potente Microsoft. Pero no fue así del todo y Microsoft siguió su ascensión meteórica de la mano de 
+            los PCs.
+            Fue entonces, en 1996, cuando Gil Amelio entró en la compañía e intentó varios proyectos de mejoras de 
+            Mac OS, ninguna de ellas fructíferas, hasta que decidió apostar por adquirir NeXT Incorporated, 
+            la empresa de Steve Jobs, que había creado unos potentes frameworks y componentes que podían aportar 
+            mucho al estancamiento de Mac OS. De esta forma Jobs volvió a entrar en Apple como consultor 
+            especializado.
+            A partir de 1998 fue cuando las cosas en Apple empezaron a definirse en lo que es hoy día. Jonathan Ive 
+            como jefe del equipo de diseño, presentó el iMac.
+          </div>
+          <div class="col-lg-3 col-md-6 col-12 px-2">
+            <h2>Decada del 2000</h2>
+            En mayo de 2001, Steve Jobs inauguró las primeras Apple Store que conocemos hoy en día.
+            Meses más tarde, en octubre, lanzó el primer iPod, un dispositivo que permitía almacenar mil 
+            canciones, algo nunca antes visto en una era donde lo común eran los Walkman o los Discman.
+            En 2007, cuando BlackBerry y Nokia reinaban en el mercado de teléfonos celulares, Apple lo cambió 
+            todo de nuevo. Steve Jobs presentó lo que él definió como un dispositivo 3 en 1: un iPod, un teléfono 
+            y un dispositivo de internet móvil. Todo en una pantalla completamente táctil.
+            Al año siguiente se lanzó la App Store y el resto es historia.
+            Paralelo al iPhone, Apple también había comenzado a lanzar nuevas computadoras portátiles llamadas 
+            MacBook (como la Air y la Pro).
+            Y en 2010, Steve Jobs presentaría otro dispositivo listo para marcar tendencia en la industria: el iPad.
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- section timeline -->
+
+    <section id="timeline">
+      <div class="titulo">
+        <p class="display-4 text-center text-secondary font-weight-bold w-50 mx-auto ">Timeline</p>
+        <hr>
+      </div>
+      <div class="container mt-5 mb-5">
+        <div class="row">
+          <div class="col-md-6 offset-md-3">            
+            <ul class="timeline">
+              <li>
+                <a href="#">Fundación</a>
+                <a href="#" class="float-right">1976</a>
+                <img src="img/timeline/logo.jpg" class="img-thumbnail" alt="">
+              </li>
+              <li>
+                <a href="#">Apple II</a>
+                <a href="#" class="float-right">1977</a>
+                <img src="img/timeline/apple2.jpg" class="img-thumbnail" alt="">
+              </li>
+              <li>
+                <a href="#">Macintosh</a>
+                <a href="#" class="float-right">1984</a>
+                <img src="img/timeline/mac.jpg" class="img-thumbnail" alt="">
+              </li>
+              <li>
+                <a href="#">iMac</a>
+                <a href="#" class="float-right">1998</a>
+                <img src="img/timeline/imac.jpg" class="img-thumbnail" alt="">
+              </li>
+              <li>
+                <a href="#">iPod</a>
+                <a href="#" class="float-right">2001</a>
+                <img src="img/timeline/ipod1.jpg" class="img-thumbnail" alt="">
+              </li>
+              <li>
+                <a href="#">iPhone</a>
+                <a href="#" class="float-right">2007</a>
+                <img src="img/timeline/iphone.jpg" class="img-thumbnail" alt="">
+              </li>
+              <li>
+                <a href="#">iPad</a>
+                <a href="#" class="float-right">2010</a>
+                <img src="img/timeline/ipad.jpeg" class="img-thumbnail" alt="">
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- QUIENES SOMOS CON CARDS -->
+    
+    <section id="team">
+      <div class="titulo">
+        <p class="display-4 text-center text-secondary font-weight-bold w-50 mx-auto ">Quienes somos</p>
+        <hr>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <!-- primera card -->
+          <div class="col-12 col-md-6 col-lg-3 py-4">
+            <div class="card my-4 border-0" >
+              <img src="img/caras/woz2.jpg" class="card-img-top rounded-circle" alt="..." >
+              <div class="card-body">
+                <h5 class="card-title">Steve Wozniak</h5>
+                <p class="card-text">Ingeniero y cofundador de la compañia.</p><br>                
+                <!-- Button trigger modal PRIMER CARD -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Leer más</button>                 
+                <!-- MODAL DEL PRIMER CARD -->
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Woz</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        Stephen (o Stephan) Gary "Steve" Wozniak (Sunnyvale, Estados Unidos, 11 de agosto de 1950), 
+                        también conocido como "Woz", es un ingeniero, filántropo, empresario e inventor 
+                        estadounidense, cofundador de la compañía Apple. Se le considera uno de los padres de la revolución de las 
+                        computadoras, habiendo contribuido significativamente a la invención de una computadora personal (PC, personal 
+                        computer) en los años 1970. Wozniak fundó Apple Computer (ahora Apple Inc.) junto con Steve Jobs en 1976. 
+                        A mediados de la década de 1970, creó la computadora Apple I y Apple II. Apple II ganó gran popularidad y con 
+                        el tiempo, se convirtió en la computadora más vendida en los años 1970 y principios de 1980.
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>                                
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- segunda card -->
+          <div class="col-12 col-md-6 col-lg-3 py-4">
+            <div class="card my-4 border-0" >
+              <img src="img/caras/jobs2.jpg" class="card-img-top rounded-circle" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Steve Jobs</h5>
+                <p class="card-text">Confundador y presidente ejecutivo de Apple.</p><br>
+                <!-- button trigger modal del segundo card -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter2">Leer más</button>                 
+                <!-- MODAL DEL PRIMER CARD -->
+                <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Steve</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        Steven Paul Jobs (San Francisco, California, 24 de febrero de 1955-Palo Alto, California, 5 de octubre 
+                        de 2011), más conocido como Steve Jobs, fue un empresario y magnate de los negocios en el sector 
+                        informático y de la industria del entretenimiento estadounidense. Fue cofundador y presidente ejecutivo 
+                        de Apple12? y máximo accionista individual de The Walt Disney Company.
+                        Fundó Apple en 1976 junto con un amigo de la adolescencia, Steve Wozniak, con ayuda del excompañero 
+                        de Jobs en Atari, Ronald Wayne, en el garaje de su casa. Aupado por el éxito del Apple II, Jobs 
+                        obtuvo una gran relevancia pública, siendo portada de Time en 1982.Contaba 26 años y ya era millonario 
+                        gracias a la exitosa salida a bolsa de la compañía a finales del año anterior. La década de los 80 
+                        supuso la entrada de potentes competidores en el mercado de los ordenadores personales, lo que originó 
+                        las primeras dificultades empresariales. Su reacción fue innovar, o mejor dicho, implementar: a 
+                        principios de 1984 su compañía lanzaba el Macintosh 128K, que fue el primer ordenador personal que 
+                        se comercializó exitosamente que usaba una interfaz gráfica de usuario (GUI) y un ratón en vez de la 
+                        línea de comandos. Después de tener problemas con la cúpula directiva de la empresa que el mismo 
+                        fundó, renunció.Jobs vendió entonces todas sus acciones, salvo una. Ese mismo año recibía la 
+                        Medalla Nacional de Tecnología del presidente Ronald Reagan, cerrando con este reconocimiento 
+                        esta primera etapa como emprendedor. Regresó en 1997 a la compañía, que se encontraba en graves 
+                        dificultades financieras, y fue su director ejecutivo hasta el 24 de agosto de 2011. En ese verano 
+                        Apple sobrepasó a Exxon como la empresa con mayor capitalización del mundo.
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>                                
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- tercera card -->
+          <div class="col-12 col-md-6 col-lg-3 py-4">
+            <div class="card my-4 border-0" >
+              <img src="img/caras/andy2.jpg" class="card-img-top rounded-circle" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Andy Hertzfeld</h5>
+                <p class="card-text">Miembro del equipo de desarrollo del Macintosh original.</p><br>
+                <!-- Button trigger modal tercer CARD -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter3">Leer más</button>                 
+                <!-- MODAL DEL TERCER CARD -->
+                <div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Andy</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        Andrew "Andy" Hertzfeld (6 de abril de 1953) es un informático e ingeniero estadounidense. Fue miembro 
+                        del equipo de desarrollo original de Apple Macintosh durante la década de 1980.
+                        Después de comprarse un Apple II en enero de 1978, entró a trabajar para Apple Computer desde 
+                        agosto de 1979 hasta marzo de 1984, donde fue diseñador de software del sistema Macintosh.
+                        Desde que dejó Apple, ha sido cofundador de tres compañías: Radius en 1986, General Magic en 1990 y 
+                        Eazel en 1999. En 2002, colaboró con Mitch Kapor para promover el software de código abierto con la 
+                        fundación Open Source Applications Foundation. Hertzfeld se unió a Google en 2005 y fue uno de los 
+                        principales diseñadores de Google+, presentado en 2011.
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>                                
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- cuarta card -->
+          <div class="col-12 col-md-6 col-lg-3 py-4">
+            <div class="card my-4 border-0" >
+              <img src="img/caras/ive2.png" class="card-img-top rounded-circle" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Jonathan Ive</h5>
+                <p class="card-text">Vicepresidente senior de diseño de Apple.</p><br>
+                <!-- Button trigger modal cuarto CARD -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter4">Leer más</button>                 
+                <!-- MODAL DEL CUARTO CARD -->
+                <div class="modal fade" id="exampleModalCenter4" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Jony</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        Jonathan Ive, nacido en Chingford, Londres. Jonathan Paul "Jony" Ive es un diseñador inglés 
+                        que se integró en Apple en 1992. Es vicepresidente Senior de Diseño de Apple, nombrado el 25 de 
+                        mayo de 2015 Oficial Jefe de Diseño de Apple, un cargo de nueva creación que desempeñó 
+                        oficialmente a partir del 1 de julio del mismo año.
+                        Está a cargo del Grupo de Diseño Industrial de Apple y también lidera la dirección de equipos 
+                        de software de la Interfaz Humana de toda la compañía. Ive es el diseñador de muchos de los 
+                        productos de Apple incluyendo el MacBook Pro, iMac, MacBook Air, Mac mini, iPod, iPod Touch, 
+                        iPhone, iPad, iPad Mini, Apple Watch e iOS.
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>                                
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECCION MULTIMEDIA -->
+    
+    <section id="multimedia">
+      <div class="titulo">
+        <p class="display-4 text-center text-secondary font-weight-bold w-50 mx-auto ">Multimedia</p>
+        <hr>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12 col-md-6 mx-auto ">
+            <h4>Presentación del iPhone original</h4> 
+            <div class="embed-responsive embed-responsive-16by9 m-auto p-2">
+              <iframe class="embeb-response-item" src="https://www.youtube.com/embed/VKpaK670U7s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>                        
+          </div>
+          <div class="col-12 col-md-6 mx-auto ">
+            <h4>Documental Welcome to Macintosh</h4>
+            <div class="embed-responsive embed-responsive-16by9 m-auto p-2">
+              <iframe class="embeb-response-item" src="https://www.youtube.com/embed/Q8BgoYRpGqA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>                        
+    </section>
+
+
+    <!-- SECCIÓN CONTACTO, CON GRID, EMBED Y FORM-->
+    
+    <section id="contacto">
+      <div class="titulo">
+        <p class="display-4 text-center text-secondary font-weight-bold w-50 mx-auto ">Contacto</p>
+        <hr>
+      </div>           
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <h4>Ubicación:</h4>
+            <div class="embed-responsive embed-responsive-16by9 m-auto p-2">                                        
+              <iframe class="embeb-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3172.438229929238!2d-122.03246703520419!3d37.332132545276124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x878fd64acbb4e7c8!2sApple%20Infinite%20Loop!5e0!3m2!1ses!2ses!4v1582372399363!5m2!1ses!2ses" allowfullscreen=""></iframe>                                        
+            </div>                                  
+          </div>
+          <!--formulario bootstrap -->
+          <div class="col-12 col-md-6 col-lg-4 mx-auto p-5">    
+            <h4>Formulario:</h4>
+            <form action="mailto:direccion@correo.com" method="POST">
+              <div class="form-group">
+                <label for="exampleInputEmailText1">Nombre:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend"><i class="fa fa-user input-group-text"></i></div>
+                  <input type="text" class="form-control" id="exampleInputEmailText1" aria-describedby="emailHelp" placeholder="Introduzca Nombre" required>
+                </div>                
+                <small id="nameHelp" class="form-text text-muted">Campo obligatorio.</small>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Dirección de correo:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend"><i class="fa fa-at input-group-text"></i></div>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email" required>
+                </div>                
+                <small id="emailHelp" class="form-text text-muted">Completa el email, campo obligatorio.</small>
+              </div>
+              <div class="form-group" data-toggle="tooltip" title="Escribir clave de usuario">
+                <label for="exampleInputPassword1">Password:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend"><i class="fa fa-lock input-group-text"></i></div>
+                  <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>                
+              </div>
+              <div class="form-group" data-toggle="tooltip" title="Confirmar clave de usuario">
+                <label for="exampleInputPassword1">Confirma Password:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend"><i class="fa fa-lock input-group-text"></i></div>
+                  <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>                
+              </div>
+              <div class="form-group" data-toggle="tooltip" title="Seleccionar una provincia">
+                <label for="exampleFormControlSelect2">Provincia:</label>
+                <select class="custom-select" id="exampleFormControlSelect2">   <!-- faltan multiple, y los placeholder -->
+                  <option selected>-->Elija una opción</option>   <!-- value 0 o selected-->                                            
+                  <option value="1">Almería</option>
+                  <option value="2">Cádiz</option>
+                  <option value="3">Córdoba</option>
+                  <option value="4">Granada</option>
+                  <option value="5">Huelva</option>
+                  <option value="6">Jaén</option>
+                  <option value="7">Málaga</option>
+                  <option value="8">Sevilla</option>                                            
+                </select>
+              </div>
+              <div class="form-group" data-toggle="tooltip" title="Leer las condiciones de uso">
+                <label for="exampleFormControlTextarea1">Politica de privacidad y condiciones de uso:</label>                
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="8">                  
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, autem. Ipsa debitis sapiente, sit impedit modi molestiae deserunt, nostrum ut, sunt asperiores exercitationem animi id quos placeat ea tempore odio.
+                  Ipsa magni, at pariatur ex sit odit eveniet enim eius tenetur nulla inventore voluptates quo mollitia. Nam vitae, dolores, aperiam deleniti nihil maiores sed similique explicabo pariatur fugit in sit!
+                  Perspiciatis pariatur nobis quisquam consequatur voluptates animi. Cumque nostrum consequuntur excepturi dolor aperiam sint harum nulla deserunt, aliquid adipisci eos ad tempore, laborum minus autem facilis quo dignissimos in eum?
+                  Dolor, inventore possimus! Delectus, doloremque ullam quia ipsum, nobis officia expedita hic corporis, laudantium accusantium adipisci enim atque omnis aut vel exercitationem saepe in sed! Non earum perspiciatis vitae ad.
+                  Exercitationem delectus architecto odit minus voluptatem recusandae praesentium inventore voluptatibus id nam cum, qui adipisci eligendi officia magnam quis quia sunt quo explicabo ullam? Quisquam perferendis laudantium saepe quasi ratione.
+                </textarea>                
+              </div>
+              <div class="form-group form-check">   <!-- el form-group puede no ser necesario -->
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                <label class="form-check-label" for="exampleCheck1">Acepto las condiciones</label>
+              </div>                  
+              <button type="submit" class="btn btn-primary">Enviar</button>              
+            </form>  
+          </div>  
+        </div>
+      </div>
+    </section>
+
+
+    <!-- FOOTER -->
+        
+    <footer class="text-light bg-dark container-fluid">
+      <div class="row p-4">
+        <div class="col-12 col-md-6 col-lg-3 p-4">
+          <img class="d-block mx-auto" src="img/logo7.png" alt="Apple" width="160">
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 p-4">
+          <p class="border-bottom border-white">DATOS DE CONTACTO</p>
+          <ul>
+            <li>C/ Marie Curie 10<br>29590 - Campanillas</li>
+            <li>Tfn: 952 22 22 22</li>
+            <li>Móvil: 666 555 444</li>
+            <li>instituto@iescampanillas.com</li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 p-4">
+          <p class="border-bottom border-white">SITE MAP</p>
+          <ul>
+            <li><a class="text-white" href="#inicio">Inicio</a></li>
+            <li><a class="text-white" href="#portfolio">Galería</a></li>
+            <li><a class="text-white" href="#historia">Historia</a></li>
+            <li><a class="text-white" href="#timeline">Timeline</a></li>
+            <li><a class="text-white" href="#team">Quienes somos</a></li>            
+            <li><a class="text-white" href="#multimedia">Multimedia</a></li>
+            <li><a class="text-white" href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 p-4">
+          <p class="border-bottom border-white">REDES SOCIALES</p>
+          <p>
+            <a class="text-white" href="https://twitter.com" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a> &nbsp;
+            <a class="text-white" href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a> &nbsp;
+            <a class="text-white" href="https://www.instagram.com" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a> &nbsp;
+            <a class="text-white" href="https://www.youtube.com" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+
+  <!-- enlaces a las librerias javascript necesarias: jquery, popper y bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="js/scripts.js"></script>
+</body>
+</html>
