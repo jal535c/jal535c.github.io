@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="author" content="Juan Luis Almahano">
+  <title>Plantilla</title>
+  <!--link rel="icon" href="favicon.ico"-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div id="wrapper" class="container p-0">
+
+
+    <!-- NAV CON DESPLEGABLES -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#" target="_blank"><img src="img/logo.jpg" width="35"></a>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="#inicio">Inicio <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">JavaScript</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="#js1">Uno</a>
+              <a class="dropdown-item" href="#js2">Dos</a>
+              <a class="dropdown-item" href="#js3">Tres</a>
+            </div>  
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Jquery</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="#jq1">Uno</a>
+              <a class="dropdown-item" href="#jq2">Dos</a>
+              <a class="dropdown-item" href="#">Tres</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">JSON</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="#json1">Uno</a>
+              <a class="dropdown-item" href="#json2">Dos</a>
+              <a class="dropdown-item" href="#">Tres</a>
+            </div>    
+          </li>          
+        </ul>        
+      </div>
+    </nav>
+
+
+    <!-- HEADER O HERO SECTION -->
+
+    <section id="inicio">
+      <div class="jumbotron my-0">
+        <div id="contraste" class="p-5 rounded">
+          <h1 class="display-4">Bienvenidos al mundo JavaScript</h1>
+          <p class="lead font-weight-bold">Esta web contiene el portfolio de ejercicios de Javascript, Jquery y JSON del módulo Lenguajes de Marcas de 1ºDAW.</p>
+          <hr class="my-4">
+          <p class="font-weight-bold">Autor: Juan Luis Almahano - IES Campanillas - Curso 2019-2020</p>        
+          <a class="btn btn-success btn-lg" href="#javascript" role="button">Comenzar!</a>            
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION CON CARDS -->
+    
+    <section id="javascript" class="p-5">    
+      <div class="titulo">
+        <p class="display-4 font-weight-bold w-50">JavaScript</p>
+      </div>
+      <div class="card my-4" id="js1">
+        <div class="card-header">Ejercicio 1</div>
+        <div class="card-body">
+          Content
+        </div>              
+      </div>      
+      <div class="card my-4" id="js2">
+        <div class="card-header">Ejercicio 2</div>
+        <div class="card-body">
+          Content
+        </div> 
+      </div>
+      <div class="card my-4" id="js3">
+        <div class="card-header">Ejercicio 3</div>
+        <div class="card-body">
+          <div id="wrapper" class="w-50 mx-auto mt-5">  <!-- width 25,50,75,100, centrado, margin top 5 -->
+
+            <!-- formulario de entrada de datos -->
+        
+            <form class="border border-primary rounded p-3" onsubmit="return areaTriangulo()">  <!-- border-primary es color, p-3 es padding -->
+              <h1>Calculo de areas de triangulo</h1>
+              <div class="form-group">
+                <label for="base">Introduce la base:</label>
+                <input type="text" onfocus="quitarError('base')" class="form-control" id="base" aria-describedby="baseHelp">
+                <small id="baseHelp" class="form-text text-danger"></small>   <!-- text-danger color rojo-->
+              </div>
+              <div class="form-group">
+                <label for="altura">Introduce la altura:</label>
+                <input type="text" onfocus="quitarError('altura')" class="form-control" id="altura" aria-describedby="alturaHelp">
+                <small id="alturaHelp" class="form-text text-danger"></small>
+              </div>
+              <button type="submit" class="btn btn-primary">Calcular</button>
+            </form>
+        
+            <h2 id="resultado" class="my-3"></h2>   <!-- margin eje y, en vez de usar br -->
+        
+          </div>
+        </div> 
+      </div>    
+    </section>
+
+    <br><br>
+
+    <section id="jquery" class="p-5">    
+      <div class="titulo">
+        <p class="display-4 font-weight-bold w-50">Jquery</p>
+      </div>
+      <div class="card" id="jq1">
+        <div class="card-header">Ejercicio 1</div>
+        <div class="card-body">
+          Content
+        </div>              
+      </div>
+      <br><br>
+      <div class="card" id="jq2">
+        <div class="card-header">Ejercicio 2</div>
+        <div class="card-body">
+          Content
+        </div>              
+      </div>
+    </section>
+
+    <br><br>
+    
+    <section id="json" class="p-5">    
+      <div class="titulo">
+        <p class="display-4 font-weight-bold w-50">JSON</p>
+      </div>
+      <div class="card" id="json1">
+        <div class="card-header">Ejercicio 1</div>
+        <div class="card-body">
+          Content
+        </div>              
+      </div>
+      <br><br>
+      <div class="card" id="json2">
+        <div class="card-header">Ejercicio 2</div>
+        <div class="card-body">
+          Content
+        </div>              
+      </div>      
+    </section>
+
+    <br><br>
+
+
+    <!-- FOOTER -->
+        
+    <footer class="text-light bg-dark container-fluid">
+      <div class="row p-4">
+        <div class="col-12 col-md-6 col-lg-3 p-4">
+          <img class="d-block mx-auto" src="img/logoies.jpg" alt="Logo de la empresa" width="160">
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 p-4">
+          <p class="border-bottom border-white">DATOS DE CONTACTO</p>
+          <ul>
+            <li>PTA, Marie Courie 10<br>CP 29015 - Málaga</li>
+            <li>Tfn: 952 22 22 22</li>            
+            <li>support@iescampanillas.com</li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 p-4">
+          <p class="border-bottom border-white">SITE MAP</p>
+          <ul>
+            <li><a class="text-white" href="#inicio">Inicio</a></li>
+            <li><a class="text-white" href="#javascript">JavaScript</a></li>
+            <li><a class="text-white" href="#jquery">Jquery</a></li>
+            <li><a class="text-white" href="#json">JSON</a></li>              
+          </ul>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 p-4">
+          <p class="border-bottom border-white">REDES SOCIALES</p>
+          <p>
+            <a class="text-white" href="https://twitter.com" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a> &nbsp;
+            <a class="text-white" href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a> &nbsp;
+            <a class="text-white" href="https://www.instagram.com" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a> &nbsp;
+            <a class="text-white" href="https://www.youtube.com" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+
+  </div>
+
+  <!-- enlaces a las librerias javascript necesarias: jquery, popper y bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="js/scripts.js"></script>
+
+</body>
+</html>

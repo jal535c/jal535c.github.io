@@ -1,0 +1,45 @@
+.alert-danger {
+  background-color: orange;
+}
+
+body {
+  background-color: rgb(69, 135, 189);    
+}
+
+#wrapper {
+  background-color: white;
+}
+
+.navbar {	    
+  top: 0;			/*le digo donde es sticky*/
+  z-index: 500;	/*se suele poner un numero positivo grande, para que siempre quede por encima*/
+  
+}
+
+.jumbotron {
+  background-image: url("../img/fondo.jpg");
+  height: 80vh;
+  background-size: cover;
+}
+
+#contraste {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.card-header {
+  background-color: rgb(218, 218, 106);
+}
+
+.p-6 {
+  padding: 20vh;
+}
+
+.rounded-large {  
+  border-radius: 50px;
+}
+
+footer ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
