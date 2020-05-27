@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="author" content="Juan Luis Almahano">
-  <title>Plantilla</title>
-  <!--link rel="icon" href="favicon.ico"-->
+  <title>Plantilla Ejercicios</title>
+  <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css">
@@ -34,6 +34,8 @@
               <a class="dropdown-item" href="#js1">Uno</a>
               <a class="dropdown-item" href="#js2">Dos</a>
               <a class="dropdown-item" href="#js3">Tres</a>
+              <a class="dropdown-item" href="#js4">Cuatro</a>
+              <a class="dropdown-item" href="#js5">Cinco</a>
             </div>  
           </li>
           <li class="nav-item dropdown">
@@ -41,15 +43,14 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <a class="dropdown-item" href="#jq1">Uno</a>
               <a class="dropdown-item" href="#jq2">Dos</a>
-              <a class="dropdown-item" href="#">Tres</a>
+              <a class="dropdown-item" href="#jq3">Tres</a>
             </div>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">JSON</a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <a class="dropdown-item" href="#json1">Uno</a>
-              <a class="dropdown-item" href="#json2">Dos</a>
-              <a class="dropdown-item" href="#">Tres</a>
+              <a class="dropdown-item" href="#json2">Dos</a>              
             </div>    
           </li>          
         </ul>        
@@ -81,24 +82,10 @@
       <div class="card my-4" id="js1">
         <div class="card-header">Ejercicio 1</div>
         <div class="card-body">
-          Content
-        </div>              
-      </div>      
-      <div class="card my-4" id="js2">
-        <div class="card-header">Ejercicio 2</div>
-        <div class="card-body">
-          Content
-        </div> 
-      </div>
-      <div class="card my-4" id="js3">
-        <div class="card-header">Ejercicio 3</div>
-        <div class="card-body">
-          <div id="wrapper" class="w-50 mx-auto mt-5">  <!-- width 25,50,75,100, centrado, margin top 5 -->
-
-            <!-- formulario de entrada de datos -->
-        
-            <form class="border border-primary rounded p-3" onsubmit="return areaTriangulo()">  <!-- border-primary es color, p-3 es padding -->
-              <h1>Calculo de areas de triangulo</h1>
+          <div id="wrapper" class="w-50 mx-auto mt-5"> 
+                    
+            <form class="border border-primary rounded p-3" onsubmit="return areaTriangulo()">
+              <h1>Cálculo de areas de triangulo</h1>
               <div class="form-group">
                 <label for="base">Introduce la base:</label>
                 <input type="text" onfocus="quitarError('base')" class="form-control" id="base" aria-describedby="baseHelp">
@@ -112,7 +99,101 @@
               <button type="submit" class="btn btn-primary">Calcular</button>
             </form>
         
-            <h2 id="resultado" class="my-3"></h2>   <!-- margin eje y, en vez de usar br -->
+            <h2 id="resultado1" class="my-3"></h2>
+        
+          </div>
+        </div>              
+      </div>      
+      <div class="card my-4" id="js2">
+        <div class="card-header">Ejercicio 2</div>
+        <div class="card-body">
+          <div id="wrapper" class="col-sm-10 col-md-8 col-lg-6 my-3 mx-auto">
+
+            <!-- FORMULARIO DE ENTRADA DE DATOS -->
+            <form onsubmit="return calculoLetraDni()" class="border border-primary rounded p-3">
+              <h1>Cálculo de letra del DNI</h1>     
+              <div class="form-group">
+                <label for="numeroDni">Número de DNI:</label>
+                <input type="text" onfocus="quitarError('numeroDni')" class="form-control" id="numeroDni" aria-describedby="numeroDniHelp">
+                <small id="numeroDniHelp" class="form-text text-danger"></small>
+              </div>
+              <input type="submit" value="Calcular" class="btn btn-primary">
+            </form>    
+            
+            <!-- SALIDA -->
+            <h2 id="resultado2" class="my-3"></h2>
+
+          </div>
+        </div> 
+      </div>
+      <div class="card my-4" id="js3">
+        <div class="card-header">Ejercicio 3</div>
+        <div class="card-body">
+          <div id="wrapper" class="col-sm-10 col-md-8 col-lg-6 my-3 mx-auto">
+
+            <!-- FORMULARIO DE ENTRADA DE DATOS -->
+            <form onsubmit="return calculoMayus()" class="border border-primary rounded p-3">
+              <h1>Mayúsculas y minúsculas</h1>     
+              <div class="form-group">
+                <label for="txtPalabra">Introduzca palabra:</label>
+                <input type="text" onfocus="quitarError('txtPalabra')" class="form-control" id="txtPalabra" aria-describedby="txtPalabraHelp">
+                <small id="txtPalabraHelp" class="form-text text-danger"></small>
+              </div>
+              <input type="submit" value="Calcular" class="btn btn-primary">
+            </form>    
+            
+            <!-- SALIDA -->
+            <h2 id="resultado3" class="my-3"></h2>
+        
+          </div>
+        </div> 
+      </div>
+      <div class="card my-4" id="js4">
+        <div class="card-header">Ejercicio 4</div>
+        <div class="card-body">
+          <div id="wrapper" class="col-sm-10  col-md-8 col-lg-6 my-3 mx-auto">
+   
+            <form onsubmit="return diviEuclides()" class=" border border-primary rounded p-3">
+              <h1>Cálculo de división por algoritmo de Euclides</h1>    
+              <div class="form-group">
+                <label for="num1">Dividendo:</label>
+                <input type="text"  class="form-control" id="divi" aria-describedby="diviHelp" placeholder="Introduce numero entero de 7 u 8 cifras">
+                <small id="diviHelp" class="form-text text-danger"></small>
+              </div>     
+              <div class="form-group">
+                <label for="disor">Divisor:</label>
+                <input type="text"  class="form-control" id="disor" aria-describedby="disorHelp" required min="1">
+                <small id="disorHelp" class="form-text text-danger"></small>
+              </div>
+              <input type="submit" value="Calcula!!!!" class="btn btn-primary">
+            </form>
+           
+            <h2 id="resultado4" class="my-3"></h2>
+        
+          </div>
+        </div> 
+      </div>
+      <div class="card my-4" id="js5">
+        <div class="card-header">Ejercicio 5</div>
+        <div class="card-body">
+          <div id="wrapper" class="col-sm-10  col-md-8 col-lg-6 my-3 mx-auto">
+   
+            <form onsubmit="return mcdEuclides()" class=" border border-primary rounded p-3">
+              <h1>MCD de dos números por algoritmo de Euclides</h1>    
+              <div class="form-group">
+                <label for="nuno">Primer número:</label>
+                <input type="text"  class="form-control" id="nuno" aria-describedby="nunoHelp"  placeholder="Introduce numero entero de 7 u 8 cifras">
+                <small id="nunoHelp" class="form-text text-danger"></small>
+              </div>     
+              <div class="form-group">
+                <label for="ndos">Segundo número:</label>
+                <input type="text"  class="form-control" id="ndos" aria-describedby="ndosHelp" required min="1">
+                <small id="ndosHelp" class="form-text text-danger"></small>
+              </div>
+              <input type="submit" value="Calcula!!!!" class="btn btn-primary">
+            </form>
+           
+            <h2 id="resultado5" class="my-3"></h2>
         
           </div>
         </div> 
@@ -128,14 +209,85 @@
       <div class="card" id="jq1">
         <div class="card-header">Ejercicio 1</div>
         <div class="card-body">
-          Content
+          
+          <div id="hideshow" class="col-md-5 mx-auto my-3 p-3 border border-primary rounded-lg">
+            <h2>Muestro y oculto texto</h2>
+            <button id="hide1" class="btn btn-primary m-3">Ocultar</button>
+            <button id="hide2" class="btn btn-warning m-3">Mostrar</button>
+            <button id="hide3" class="btn btn-secondary m-3">Toggle</button>
+            <p id="p1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum voluptatum ea repellendus 
+            non cum sint impedit asperiores praesentium quod ipsam? Omnis, maiores consequatur! Fugit quam sequi animi,
+            Libero, distinctio asperiores itaque earum beatae perferendis eum nisi numquam provident incidunt. 
+            Cum, rem nesciunt. Porro et nam illo eos. Pariatur quibusdam neque alias molestiae rem impedit voluptate    
+            Quibusdam, aspernatur, labore quam itaque distinctio necessitatibus omnis, pariatur voluptatum nostrum 
+            eaque incidunt praesentium iure quisquam! Repellat deserunt explicabo molestias itaque, sunt aspernatur 
+            accusantium architecto deleniti, sequi autem odit magnam!</p>
+          </div>
+        
+          <div id="fadeInOut" class="col-md-5 mx-auto my-3 p-3 border border-primary rounded-lg">
+            <h2>FadeIn y FadeOut texto</h2>
+            <button id="f1" class="btn btn-success m-3">FadeIn</button>
+            <button id="f2" class="btn btn-danger m-3">FadeOut</button>
+            <button id="f3" class="btn btn-info m-3">FadeToggle</button>
+            <p id="p2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum voluptatum ea repellendus 
+            non cum sint impedit asperiores praesentium quod ipsam? Omnis, maiores consequatur! Fugit quam sequi animi,
+            Libero, distinctio asperiores itaque earum beatae perferendis eum nisi numquam provident incidunt. 
+            Cum, rem nesciunt. Porro et nam illo eos. Pariatur quibusdam neque alias molestiae rem impedit voluptate    
+            Quibusdam, aspernatur, labore quam itaque distinctio necessitatibus omnis, pariatur voluptatum nostrum 
+            eaque incidunt praesentium iure quisquam! Repellat deserunt explicabo molestias itaque, sunt aspernatur 
+            accusantium architecto deleniti, sequi autem odit magnam!</p>
+          </div>
+        
+          <div id="slide" class="col-md-5 mx-auto my-3 p-3 border border-primary rounded-lg">
+            <h2>Slide Down y Up texto</h2>
+            <button id="s1" class="btn btn-primary m-3">SlideDown</button>
+            <button id="s2" class="btn btn-warning m-3">SlideUp</button>
+            <button id="s3" class="btn btn-secondary m-3">SToggle</button>
+            <p id="p3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum voluptatum ea repellendus 
+            non cum sint impedit asperiores praesentium quod ipsam? Omnis, maiores consequatur! Fugit quam sequi animi,
+            Libero, distinctio asperiores itaque earum beatae perferendis eum nisi numquam provident incidunt. 
+            Cum, rem nesciunt. Porro et nam illo eos. Pariatur quibusdam neque alias molestiae rem impedit voluptate    
+            Quibusdam, aspernatur, labore quam itaque distinctio necessitatibus omnis, pariatur voluptatum nostrum 
+            eaque incidunt praesentium iure quisquam! Repellat deserunt explicabo molestias itaque, sunt aspernatur 
+            accusantium architecto deleniti, sequi autem odit magnam!</p>
+          </div>
+
         </div>              
       </div>
       <br><br>
       <div class="card" id="jq2">
         <div class="card-header">Ejercicio 2</div>
         <div class="card-body">
-          Content
+          
+          <div id="animacion" class="col-md-6 col-lg-8 mx-auto my-3 p-3 border border-primary rounded-lg">
+            <div id="fig1"></div>
+            <div id="fig2"></div>
+            <div id="fig3"></div>
+            <div id="fig4"></div>
+            <div class="col-lg-4 mx-auto">
+              <button id="start" class="btn btn-secondary">Start</button>
+              <button id="stop" class="btn btn-secondary">Stop</button>
+              <button id="end" class="btn btn-secondary">End</button>
+            </div>
+            <p id="bienvenida" class="display-4">Animación figuras</p>
+          </div>
+
+        </div>
+      </div>
+      <br><br>
+      <div class="card" id="jq3">
+        <div class="card-header">Ejercicio 3</div>
+        <div class="card-body">
+          
+          <div id="wrapper" class="col-md-5 mx-auto my-3 p-3 border border-primary rounded-lg">
+            <button id="btn1" class="btn btn-primary m-3">Callback</button>
+            <p id="parraf1">La ventana emergente no aparece hasta que se escode el texto.</p>
+          </div>
+          <div id="wrapper" class="col-md-5 mx-auto my-3 p-3 border border-primary rounded-lg">
+            <button id="btn2" class="btn btn-secondary m-3">Chaining</button>
+            <p id="parraf2">Cambia color de texto y desliza, usando Chaining</p>
+          </div>
+
         </div>              
       </div>
     </section>
