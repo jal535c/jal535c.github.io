@@ -1,0 +1,21 @@
+<!--
+ Copyright (c) 2014, 2021, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+<div class="oj-hybrid-padding">
+  <h1>Data Provider with Combo Box</h1>
+  <div id="containerDiv">
+    <oj-combobox-one label-hint="Combobox One with Data Mapping" label-edge="inside"
+                     options="{{dataProvider}}" 
+                     value="{{selectVal}}"
+                     class="oj-form-control-max-width-md">
+    </oj-combobox-one>
+    <div class="oj-sm-margin-4x-top">
+      <div>Current selected value</div>
+      <span>
+        <oj-bind-text value="[[selectVal]]"></oj-bind-text>
+      </span>
+    </div>
+  </div>
+</div>

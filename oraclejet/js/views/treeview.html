@@ -1,0 +1,32 @@
+<div class="oj-hybrid-padding">
+  <h1>TreeView CRUD</h1>
+  <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
+                  
+    <oj-toolbar id='demoToolBar' aria-label='Editing Toolbar' aria-controls='controlled' chroming="outlined">
+      <oj-button id='buttonSibling' on-oj-action='[[addSiblingNode]]' disabled="true">
+        <span>
+          <oj-bind-text value="[[buttonText()]]"></oj-bind-text>
+        </span>
+      </oj-button>
+      <oj-button id='buttonChild' on-oj-action='[[addChildNode]]' disabled="true">Add Child</oj-button>
+      <oj-button id='buttonRemove' on-oj-action='[[removeNode]]' disabled="true">Remove</oj-button>
+      <oj-button id='buttonUpdate' on-oj-action='[[updateNode]]' disabled="true">Update</oj-button>
+      <oj-label for="inputItem"></oj-label>
+    </oj-toolbar>
+    <oj-input-text id="inputItem" value="{{selectedNodeTitle}}" label-hint="Node Text"></oj-input-text>
+    <oj-tree-view id="treeview" 
+                  selected="{{selected}}"
+                  data="[[data]]" 
+                  selection-mode="single"
+                  on-selected-changed="[[selectedChanged]]"
+                  aria-label="Tree View Mutation Demo">
+      <template slot="itemTemplate" data-oj-as="row">
+        <span class="oj-treeview-item-icon"></span>
+        <span class="oj-treeview-item-text">
+          <oj-bind-text value="[[row.data.title]]"></oj-bind-text>
+        </span>
+      </template>
+    </oj-tree-view>
+        
+  </div>
+</div>

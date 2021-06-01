@@ -1,0 +1,55 @@
+<!--
+ Copyright (c) 2014, 2021, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+<div class="oj-hybrid-padding">
+  <h1>Table with row expander</h1>
+  <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
+                  
+    <div id='tableWrapper'>
+    
+      <oj-table id="table" 
+                aria-label="Tasks Table" 
+                data="[[dataProvider]]"
+                selection-mode='{"row": "multiple"}'
+                layout="fixed"
+                columns='[
+                  {"headerText": "Task Name", "sortProperty": "name", "weight": "2", "minWidth": "13rem"},
+                  {"headerText": "Resource", "sortProperty": "resource", "minWidth": "8rem"},
+                  {"headerText": "Start Date", "sortProperty": "start", "minWidth": "8rem"},
+                  {"headerText": "End Date", "sortProperty": "end", "minWidth": "8rem"}
+                ]'
+                class="oj-sm-width-full oj-bg-body">
+    
+      <template slot='rowTemplate' data-oj-as='row'>
+        <tr>
+          <td>
+            <oj-row-expander data-oj-clickthrough="disabled" context="[[row]]"></oj-row-expander>
+            <span>
+              <oj-bind-text value="[[row.item.data.name]]"></oj-bind-text>
+            </span>
+          </td>
+          <td>
+            <span>
+              <oj-bind-text value="[[row.item.data.resource]]"></oj-bind-text>
+            </span>
+          </td>
+          <td>
+            <span>
+              <oj-bind-text value="[[row.item.data.start]]"></oj-bind-text>
+            </span>
+          </td>
+          <td>
+            <span>
+              <oj-bind-text value="[[row.item.data.end]]"></oj-bind-text>
+            </span>
+          </td>
+        </tr>
+      </template>
+      </oj-table>
+    </div>
+    
+    
+  </div>
+</div>
