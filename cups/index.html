@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CUPS</title>
+  <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">  
+  <style>
+    .card-header{
+      background-color: white;
+      height: 180px;
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">CUPS Checksum</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto mt-4">
+        <div class="card">
+          <div class="card-header">
+            <img src="https://static.asociacion3e.org/media/images/asociados/Be2MY2Sc5ZWgT1NWCjAlQ9HQH.jpg" alt="logo" width="250px">
+          </div>
+          <div class="card-body">
+            <form id="formu">
+              <div class="form-group">
+                <input type="text" id="name" placeholder="Introducir número de CUPS" class="form-control">
+              </div>
+              <div class="form-group">
+                <input type="text" id="salida" class="form-control" placeholder="Checksum" readonly>
+              </div>              
+              <button type="submit" class="btn btn-success btn-block text-center">Calcular</button>
+            </form>
+          </div>
+        </div>
+      </div>    
+    </div>
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script>
+
+    $(document).ready(function() {
+
+      $('#formu').submit((e) => {
+        e.preventDefault();
+        let num = $('#name').val();
+        let salida = calculoCS(num);
+        
+        console.log(salida);
+        $('#salida').val(salida);
+      });
+
+      function calculoCS(numero) {
+        let num = numero % 529;
+
+        //let cociente = Math.floor(num/23);
+        let resto = num % 23;
+        let cociente = (num-resto)/23;
+
+        console.log(cociente);
+        console.log(resto);
+
+        let arr = [
+          'T', 'R', 'W', 'A', 'G',
+          'M', 'Y', 'F', 'P', 'D', 
+          'X', 'B', 'N', 'J', 'Z',  
+          'S', 'Q', 'V', 'H', 'L',  
+          'C', 'K', 'E'
+        ];
+
+        let salida = arr[cociente]+arr[resto];
+        return salida;
+      }
+
+    });
+
+  </script>
+</body>
+</html>
