@@ -1,0 +1,85 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  margin: 10px 0;
+
+  font-size: 30px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+hr {
+  width: 500px;
+  /* arriba y abajo deja 0, izq y der centra*/
+  margin: auto;
+}
+
+#board {
+  width: 300px;
+  /* el alto se ajusta segun el numero de elementos, al ser flexbox */
+  height: auto;
+
+  /* para centrar el contenedor y separarlo del hr*/
+  margin: 20px auto;
+  
+  display: flex;
+  flex-wrap: wrap;
+  
+  justify-content: center;
+}
+
+.tile {
+  /* 58 x 5 = 290, si pongo 300 o 340 sobresale un poco, 350 caben 6 */
+  width: 50px;
+  height: 50px;
+  border: 2px solid lightgray; /*#D3D6DA*/
+  margin: 2px;
+
+  font-size: 24px;
+  font-weight: bold;
+  color: #171923;
+  display: flex;
+  /* centra las letras dentro de cada tile */
+  justify-content: center;
+  align-items: center;
+}
+
+.correct {
+  background-color: #6AAA64;
+  color: #FFFFFF;
+  border-color: #6AAA64;
+}
+
+.present {
+  background-color: #C9B458;
+  color: white;
+  border-color: #C9B458;
+}
+
+.absent {
+  background-color: #787C7E;
+  color: white;
+  border-color: #787C7E;
+}
+
+.animated {
+  animation: flip 0.5s ease;
+}
+
+@keyframes flip {
+  0% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
