@@ -62,6 +62,20 @@ function initialize() {
 	});
 }
 
+function leerTeclado(but) {
+	let num = but.getAttribute('data-key');
+	console.log(num);
+
+	if (num == 'enter') {
+		processInput({code:'Enter'});
+	} else if (num == 'del') {
+		processInput({code:'Backspace'});
+	} else {
+		processInput({code:'Digit'+num});	
+	}
+
+}
+
 function processInput(e) {
 	if (gameOver) return;
 
@@ -82,15 +96,25 @@ function processInput(e) {
 		let currTile = document.getElementById(row.toString() + '-' + col.toString());
 		currTile.innerText = "";		//borra
 	} else if (e.code == "Enter") {
-		update();
-		row += 1;
-		col = 0;
+		if (col==width) {
+			update();
+			row += 1;
+			col = 0;
+		} else {
+			//alert('No hay suficientes numeros');
+			swal("No hay suficientes numeros.");
+		}
+		
 	}
 
 	//si llega a ultima fila, muestra solucion
 	if (!gameOver && row==height) {	
 		gameOver = true;
-		document.getElementById("answer").innerText = word;
+		//document.getElementById("answer").innerText = word;
+		setTimeout(()=>{
+			swal(word, "Game Over");
+		}, 1500);
+		
 	}
 }
 
@@ -130,5 +154,6 @@ function update() {
 function haGanado() {
 	if (correct === width) {		//si acierto todas las letras de una fila
 		gameOver = true;
+		swal("Great.");
 	}
 }
