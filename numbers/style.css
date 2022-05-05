@@ -21,7 +21,7 @@ hr {
 }
 
 #board {
-  width: 300px;
+  width: 360px;
   /* el alto se ajusta segun el numero de elementos, al ser flexbox */
   height: auto;
 
@@ -87,6 +87,7 @@ hr {
 .teclado{
   width: 350px;
   margin: auto;
+  margin-bottom: 30px;
 
   display: flex;
   flex-wrap: wrap;
@@ -98,4 +99,10 @@ hr {
   height: 40px;
   margin: 2px;
   border-radius: 5px;
+  
+  background-color: #D3D6DA;
+  font-size: 14px;
+  font-family: inherit;
+  border-style: none;
+  cursor: pointer;
 }

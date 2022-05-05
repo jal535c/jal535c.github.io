@@ -1,5 +1,6 @@
 var height = 8; //number of guesses
-var width = 5; //length of the word
+var width = 6; //length of the word
+var maxNumber = 1000000;
 
 var row = 0; //current guess (attempt #)
 var col = 0; //current letter for that attempt
@@ -8,7 +9,7 @@ var gameOver = false;
 let correct =0;
 
 function number() {
-	let n = Math.floor( Math.random() * 100000 );
+	let n = Math.floor( Math.random() * maxNumber );
 	let word = n.toString();
 	
   if (word.length < width) {
@@ -102,7 +103,14 @@ function processInput(e) {
 			col = 0;
 		} else {
 			//alert('No hay suficientes numeros');
-			swal("No hay suficientes numeros.");
+			//swal("No hay suficientes numeros.");
+			new Noty({
+				type: 'alert',
+				layout:'topCenter',
+				theme:'nest',
+				text: 'No hay suficientes números',
+				timeout: 1200
+			}).show();
 		}
 		
 	}
@@ -112,7 +120,14 @@ function processInput(e) {
 		gameOver = true;
 		//document.getElementById("answer").innerText = word;
 		setTimeout(()=>{
-			swal(word, "Game Over");
+			//swal(word, "Game Over");
+			new Noty({
+				type: 'alert',
+				layout:'topCenter',
+				theme:'nest',
+				text: word,
+				timeout: 4000
+			}).show();
 		}, 1500);
 		
 	}
@@ -154,6 +169,13 @@ function update() {
 function haGanado() {
 	if (correct === width) {		//si acierto todas las letras de una fila
 		gameOver = true;
-		swal("Great.");
+		//swal("Great.");
+		new Noty({
+			type: 'alert',
+			layout:'topCenter',
+			theme:'nest',
+			text: 'Has acertado !!!',
+			timeout: 2000
+		}).show();
 	}
 }
