@@ -106,3 +106,11 @@ hr {
   border-style: none;
   cursor: pointer;
 }
+
+button:nth-child(7) {
+  background-color: rgb(114, 180, 224);
+}
+
+button:nth-child(12) {
+  background-color: rgb(192, 88, 88);
+}
