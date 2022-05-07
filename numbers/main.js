@@ -125,7 +125,7 @@ function processInput(e) {
 				type: 'alert',
 				layout:'topCenter',
 				theme:'nest',
-				text: word,
+				text: 'Solución: '+word,
 				timeout: 4000
 			}).show();
 		}, 1500);
@@ -174,8 +174,8 @@ function haGanado() {
 			type: 'alert',
 			layout:'topCenter',
 			theme:'nest',
-			text: 'Has acertado !!!',
-			timeout: 2000
+			text: 'Has acertado Maria !!!',
+			timeout: 4000
 		}).show();
 	}
 }
