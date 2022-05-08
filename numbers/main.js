@@ -174,7 +174,7 @@ function haGanado() {
 			type: 'alert',
 			layout:'topCenter',
 			theme:'nest',
-			text: 'Has acertado Maria !!!',
+			text: 'Has acertado !!!',
 			timeout: 4000
 		}).show();
 	}
