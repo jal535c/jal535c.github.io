@@ -1,9 +1,9 @@
-var height = 8; //number of guesses
-var width = 6; //length of the word
+var height = 8; //intentos
+var width = 6; //digitos del numero
 var maxNumber = 1000000;
 
-var row = 0; //current guess (attempt #)
-var col = 0; //current letter for that attempt
+var row = 0; //intento actual
+var col = 0; //digito actual
 
 var gameOver = false;
 let correct =0;
@@ -74,7 +74,6 @@ function leerTeclado(but) {
 	} else {
 		processInput({code:'Digit'+num});	
 	}
-
 }
 
 function processInput(e) {
