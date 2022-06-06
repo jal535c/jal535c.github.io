@@ -15,7 +15,7 @@ h1 {
 }
 
 hr {
-  width: 500px;
+  max-width: 500px;
   /* arriba y abajo deja 0, izq y der centra*/
   margin: auto;
 }
