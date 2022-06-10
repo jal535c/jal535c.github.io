@@ -86,6 +86,10 @@ function processInput(e) {
 			let currTile = document.getElementById(row.toString() + '-' + col.toString());
 			if (currTile.innerText == "") {
 				currTile.innerText = e.code[5];	//poner la letra en el tile
+				currTile.classList.add("animate__animated");
+				currTile.classList.add("animate__bounceIn");
+				currTile.classList.add("siborde");
+				currTile.classList.remove("noborde");
 				col += 1;				//avanza una columna
 			}
 		}
@@ -95,6 +99,10 @@ function processInput(e) {
 		}
 		let currTile = document.getElementById(row.toString() + '-' + col.toString());
 		currTile.innerText = "";		//borra
+		currTile.classList.remove("animate__animated");
+		currTile.classList.remove("animate__bounceIn");
+		currTile.classList.remove("siborde");
+		currTile.classList.add("noborde");
 	} else if (e.code == "Enter") {
 		if (col==width) {
 			update();
@@ -140,6 +148,7 @@ function update() {
 	correct = 0;
 	for (let c=0; c<width; c++) {
 		let currTile = document.getElementById(row.toString() + '-' + c.toString());
+		currTile.classList.remove("siborde");
 		let letter = currTile.innerText;
 
 		setTimeout(() => {

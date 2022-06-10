@@ -41,7 +41,7 @@ hr {
   border: 2px solid lightgray; /*#D3D6DA*/
   margin: 2px;
 
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
   color: #171923;
   display: flex;
@@ -119,4 +119,12 @@ button:nth-child(7) {
 
 button:nth-child(12) {
   background-color: rgb(192, 88, 88);
+}
+
+.siborde {
+  border-color: #171923;
+}
+
+.noborde {
+  border-color: lightgray;
 }
