@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guessdle</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="lib/noty.css">
+  <link rel="stylesheet" href="lib/theme/nest.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 id="title"></h1>
+  <hr>
+  <div id="board">
+    <div class="tablero"></div>
+  </div>
+  <h1 id="answer"></h1>
+  <div class="teclado">
+    <button data-key="Q" onclick="leerTeclado(this)">Q</button>
+    <button data-key="W" onclick="leerTeclado(this)">W</button>
+    <button data-key="E" onclick="leerTeclado(this)">E</button>
+    <button data-key="R" onclick="leerTeclado(this)">R</button>
+    <button data-key="T" onclick="leerTeclado(this)">T</button>
+    <button data-key="Y" onclick="leerTeclado(this)">Y</button>
+    <button data-key="U" onclick="leerTeclado(this)">U</button>
+    <button data-key="I" onclick="leerTeclado(this)">I</button>
+    <button data-key="O" onclick="leerTeclado(this)">O</button>
+    <button data-key="P" onclick="leerTeclado(this)">P</button>
+
+    <button data-key="A" onclick="leerTeclado(this)">A</button>
+    <button data-key="S" onclick="leerTeclado(this)">S</button>
+    <button data-key="D" onclick="leerTeclado(this)">D</button>
+    <button data-key="F" onclick="leerTeclado(this)">F</button>
+    <button data-key="G" onclick="leerTeclado(this)">G</button>
+    <button data-key="H" onclick="leerTeclado(this)">H</button>
+    <button data-key="J" onclick="leerTeclado(this)">J</button>
+    <button data-key="K" onclick="leerTeclado(this)">K</button>
+    <button data-key="L" onclick="leerTeclado(this)">L</button>
+    <button data-key="Ñ" onclick="leerTeclado(this)">Ñ</button>
+
+    <button data-key="enter" onclick="leerTeclado(this)">Int</button>
+    <button data-key="Z" onclick="leerTeclado(this)">Z</button>
+    <button data-key="X" onclick="leerTeclado(this)">X</button>
+    <button data-key="C" onclick="leerTeclado(this)">C</button>
+    <button data-key="V" onclick="leerTeclado(this)">V</button>
+    <button data-key="B" onclick="leerTeclado(this)">B</button>
+    <button data-key="N" onclick="leerTeclado(this)">N</button>
+    <button data-key="M" onclick="leerTeclado(this)">M</button>    
+    <button data-key="del" onclick="leerTeclado(this)">Del</button>
+  </div>
+
+  <script src="lib/noty.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
