@@ -27,7 +27,8 @@ var wordList = [
 	"tapon", "japon", "lugar", "lunar", "funda", "grano", "grado", "grava",
 	"traza", "tibio", "broma", "tenis", "cromo", "combo", "monto", "curva",
 	"oveja", "oblea", "acero", "furor", "rumor", "sobra", "solar", "genio",
-	"helio", "julio", "astro", "alamo", "abaco", "melon", "moler"
+	"helio", "julio", "astro", "alamo", "abaco", "melon", "moler",
+	"barro", "barco"
 ];
 
 //var guessList = [];
