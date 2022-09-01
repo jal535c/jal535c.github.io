@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
+</head>
+<body>
+  <div id="html">
+    <div id="counttill"><span id="countis"></span></div>
+    <div id="menu">
+      <button id="mainmenu" class="menu">&#10096; Main Menu</button>
+      <button id="start" class="menu left">Start &#9654;</button>
+      <button id="pause" class="menu left">Pause &#9995;</button>
+    </div>
+    <div id="countdown">
+      <span class="count">3</span>
+    </div>
+    <div id="game">
+      <span id="need"></span><br>
+      <span id="first"></span><span id="second"></span><br /><span id="answer"></span>
+      <input id="useranswer" type="text" maxlength="3" onclick="value=''">
+    </div>
+  </div>
+  <div id="endresult">
+    <span class="endresult"></span>
+  
+  </div>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="./main.js"></script>
+</body>
+</html>
