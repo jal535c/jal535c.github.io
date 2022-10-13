@@ -1,0 +1,210 @@
+/* aquí va el estilo de alagaesia */
+*{
+  /* margin: 0; */
+  /* padding: 0; */
+  /* box-sizing: border-box; */
+}
+body {
+  background-image: url("imagenes/tile-sky2.jpg");
+  font-family: "Youthome";
+}
+
+#wrapper {
+  width: 80%;
+  margin: auto;
+}
+
+/*************** Aquí empieza el header ************************************/
+
+header {
+  position: relative;  /* para ke el hijo sea absoluto y mover el titulo */
+  
+  background-image: url("imagenes/header.jpg"); /*como la image es mas chica, se rellena/repite en el contenedor*/
+  background-repeat: no-repeat;   /*evita ese relleno*/
+  background-size: cover; /*hace zoom, la imagen ocupa el contenedor*/
+
+  height: 300px; /* revisar despues */
+}
+
+@font-face {
+  font-family: "Youthome";
+  src: url("fuentes/Youthome.ttf");
+}
+
+header #titulo { 
+  position: absolute;   /* lo posiciono con respecto al primer padre relative */
+  top: 200px;
+  right: 150px;   /* posiciono el titulo por la derecha */
+  
+  color: white;
+  /* font-family: "Youthome"; */
+  font-size: 3em;
+}
+
+/****************************** Aquí empieza nav *************************/
+
+.topnav {
+    overflow: hidden;   
+    /* para ver la navbar, lo de dentro se flota */
+    background-color: #95487C;
+  }
+  
+  .topnav a {
+    float: left;
+    display: block;   
+    /* no hace nada */
+    
+    color: #f2f2f2;     /* color del texto */
+    text-align: center;    
+    text-decoration: none;    /* quita el subrayado del enlace */
+    font-size: 17px;
+
+    padding: 14px 16px;
+  }
+  
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  /* DESACTIVADO
+  .topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+  */
+  .topnav .icon {
+    display: none;    /* en pantalla grande oculta boton hamburguesa */
+  }
+  
+  @media screen and (max-width: 800px) {
+    .topnav a:not(:first-child) {
+      display: none;    /* oculta todos menos el primero */
+    }
+    .topnav a.icon {
+      float: right;
+      display: block;   /* muestra hamburguesa en la derecha */
+    }
+  }
+  
+  @media screen and (max-width: 800px) {
+    .topnav.responsive {
+      position: relative;
+    }
+    .topnav.responsive .icon {
+      position: absolute;
+      top: 0px;
+      right: 0;
+      
+    }
+    .topnav.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+  }
+
+/*********************** Aquí empieza main ***************************/
+
+main { 
+  background-image: url("imagenes/tile.jpg");
+
+  color: white;
+  font-size: 1.5em;
+  
+  padding: 2%;
+}
+
+main h2 {
+  color: rgb(177,200,216);
+}
+
+main p, main h2 {
+  text-indent: 3em;
+}
+
+main div.container {
+  width: 20%;
+  margin: 2.1%;   /* para separar entre ellos */
+  display: inline-block;    /* para que se vean en linea */
+}
+
+/***** estilo snippet ******/          
+.container {
+  position: relative;  /*para posicionar el hijo de forma absoluta*/
+  width: 50%;   /*no lo tiene en cuenta*/
+}
+
+.image {
+  display: block;   /* para rellenar todo al hacer hover */
+  width: 100%;
+  /* height: auto; */
+}
+
+.overlay {
+  position: absolute;   /* superpone una capa transparente */
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  height: 100%;
+  width: 100%;
+  opacity: 0;   /* de primeras no se ve esta capa */
+  transition: .5s ease; /*un cambio (opacidad) en 0.5seg (rapido,lento,rapido) */
+  background-color: rgba(149, 72, 125, 0.678);
+}
+
+.container:hover .overlay {
+  opacity: 1; /*al pasar sobre el contenedor, pone opacidad en overlay*/
+}
+
+.overlay .text {
+  color: white;
+  font-size: 20px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); /*mueve el texto y lo centra*/
+
+  text-align: center; /*no hace nada*/
+}
+
+/****** aquí empieza footer *******/
+
+footer {
+  background-color: #95487C;
+  
+  /* margin: 0; */
+  padding: 10px;
+
+  color: #fff;
+  text-align: center;
+  font-family: sans-serif;    /* cambia a arial */    
+}
+
+/**************** media query *******************/
+
+@media only screen and (max-width:900px){
+  main div.container {
+    width: 40%;
+    margin-left: 5%;
+    margin-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width:500px){
+  #wrapper {
+    width: 95%;
+  }
+    
+  main div.container {
+    width: 70%;
+    display: block;   
+    /* asi salta cada imagen, como debe ser, pero antes se cambio a inline-block linea 124 */
+    margin: 20px auto;  /* 20px separacion vertical, y centrado */
+  }
+}       
