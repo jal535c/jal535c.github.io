@@ -21,12 +21,12 @@ hr {
 }
 
 #board {
-  width: 360px;
+  width: 347px;   /*con 348 ya caben 6 tiles*/
   /* el alto se ajusta segun el numero de elementos, al ser flexbox */
   height: auto;
 
   /* para centrar el contenedor y separarlo del hr*/
-  margin: 20px auto 40px;
+  margin: 10px auto;
   
   display: flex;
   flex-wrap: wrap;
@@ -96,7 +96,7 @@ hr {
 
 .teclado button {
   width: 52px;
-  height: 40px;
+  height: 46px;
   margin: 2px;
   border-radius: 5px;
   
