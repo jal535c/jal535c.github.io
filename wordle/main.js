@@ -146,11 +146,16 @@ function processInput(e) {
 
 	// alert(e.code);
 
-	if (e.code >= "KeyA" && e.code <= "KeyZ") {
+	if (e.code >= "KeyA" && e.code <= "KeyZ" || e.code == "Semicolon" || e.code == "KeyÑ") {
 		if (col < width) {	//si no ha llegado al final
 			let currTile = document.getElementById(row.toString() + '-' + col.toString());
 			if (currTile.innerText == "") {
 				currTile.innerText = e.code[3];	//pone la letra en el tile
+
+				if (e.code == "Semicolon") {
+					currTile.innerHTML = "Ñ";
+				}
+
 				currTile.classList.add("animate__animated");
 				currTile.classList.add("animate__bounceIn");
 				currTile.classList.add("siborde");
