@@ -1,0 +1,176 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /* height: 100vh; */
+}
+
+h1 {
+  text-align: center;
+  /* h1 tiene un margen top bottom por defecto de 20.1px */
+  margin: 0px;
+
+  font-size: 22px;
+  /* font-weight: bold; */
+  /* h1 ya esta en negrita*/
+  letter-spacing: 2px;
+}
+
+hr {
+  max-width: 500px;
+  /* width: 70vw;; */
+  /* arriba y abajo deja 0, izq y der centra*/
+  margin: auto;
+}
+
+#board {
+  width: 300px;   /*para 9 letras, 550px*/
+
+  /* no necesario, el alto se ajusta segun el numero de elementos al ser flexbox */
+  height: auto;
+
+  /* para centrar el contenedor y separarlo del hr*/
+  margin: 5px auto;
+  
+  display: flex;
+  flex-wrap: wrap;
+  
+  justify-content: center;
+}
+
+.tile {
+  /* 58 x 5 = 290, si pongo 300 o 340 sobresale un poco, 350 caben 6 */
+  width: 50px;
+  height: 50px;
+  border: 2px solid lightgray; /*#D3D6DA*/
+
+  margin: 2px;
+
+  font-size: 30px;
+  font-weight: bold;
+  color: #171923;
+  /* para el contenido, centra las letras dentro de cada tile */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*******************************************/
+
+.correct {
+  background-color: #6AAA64;
+  color: #FFFFFF;
+  border-color: #6AAA64;
+}
+
+.present {
+  background-color: #C9B458;
+  color: white;
+  border-color: #C9B458;
+}
+
+.absent {
+  background-color: #787C7E;
+  color: white;
+  border-color: #787C7E;
+}
+
+/* animacion para descubrir palabra, el eje Y se achica y se agranda */
+
+.animated {
+  animation: flip 0.5s ease;
+}
+
+@keyframes flip {
+  0% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+.siborde {
+  border-color: #171923;
+}
+
+.noborde {
+  border-color: lightgray;
+}
+
+/**************************************************/
+
+#teclado{
+  max-width: 460px;
+  margin: auto;
+  /* margin-bottom: 0px; */
+  /* margin-top: 80px; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#teclado button {
+  width: 40px;
+  height: 60px;
+
+  margin: 2px;
+  border-radius: 5px;
+  
+  background-color: #D3D6DA;
+  font-size: 16px;
+  /* font-family: inherit; */
+  font-weight: bold;
+  border-style: none;   /*quita relieve al boton*/
+  cursor: pointer;
+}
+
+
+@media only screen and (max-width: 576px) {
+  #board {
+    margin: 20px auto;
+  }
+
+  #teclado {
+    width: 400px;
+  }
+
+  #teclado button {
+    width: 34px;
+  }
+}
+
+
+/* al crear con js, se hace despues, si no le digo k esta dentro de teclado necesita el important */
+#teclado button:nth-child(21) {
+  background-color: rgb(114, 180, 224);
+}
+
+#teclado button:nth-child(29) {
+  background-color: rgb(192, 88, 88);
+}
+
+#teclado button:hover {
+  /* background-color: gray; */
+  opacity: 0.5;
+}
+
+/********************************************/
+
+#teclado .correctteclado {
+  background-color: #6AAA64;
+}
+
+#teclado .presentteclado {
+  background-color: #C9B458;
+}
+
+#teclado .absentteclado {
+  background-color: #787C7E;
+}
