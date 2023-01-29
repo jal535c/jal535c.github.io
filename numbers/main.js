@@ -1,6 +1,6 @@
 var height = 7; //intentos
-var width = 5; //digitos del numero
-var maxNumber = 100000;	//ceros igual a digitos del numero
+var width = 4; //digitos del numero
+var maxNumber = 10000;	//ceros igual a digitos del numero
 
 var row = 0; //intento actual
 var col = 0; //digito actual
@@ -44,7 +44,9 @@ en funcion anonima
 metodo addeventlistener, keypress solo detecta letras, usar keydown mejor
 */
 window.onload = function () {
-	initialize();
+	//document.getElementById("board").style.width = "250px";
+	
+	initialize();	
 }
 
 function initialize() {

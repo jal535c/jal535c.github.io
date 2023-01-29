@@ -20,8 +20,11 @@ hr {
   margin: auto;
 }
 
+/******************************************************************/
+
 #board {
-  width: 347px;   /*con 348 ya caben 6 tiles*/
+  /*con 348 ya caben 6 tiles, 290 para 5, 232 para 4*/
+  width: 250px;   
   /* el alto se ajusta segun el numero de elementos, al ser flexbox */
   height: auto;
 
@@ -30,7 +33,6 @@ hr {
   
   display: flex;
   flex-wrap: wrap;
-  
   justify-content: center;
 }
 
@@ -39,16 +41,20 @@ hr {
   width: 50px;
   height: 50px;
   border: 2px solid lightgray; /*#D3D6DA*/
+
   margin: 2px;
 
   font-size: 30px;
   font-weight: bold;
   color: #171923;
+
   display: flex;
   /* centra las letras dentro de cada tile */
   justify-content: center;
   align-items: center;
 }
+
+/*********************************************************************/
 
 .correct {
   background-color: #6AAA64;
@@ -84,6 +90,16 @@ hr {
   }
 }
 
+.siborde {
+  border-color: #171923;
+}
+
+.noborde {
+  border-color: lightgray;
+}
+
+/******************************************************************/
+
 .teclado{
   width: 350px;
   margin: auto;
@@ -97,6 +113,7 @@ hr {
 .teclado button {
   width: 52px;
   height: 46px;
+
   margin: 2px;
   border-radius: 5px;
   
@@ -113,18 +130,18 @@ hr {
   opacity: 0.5;
 }
 
-button:nth-child(7) {
+.teclado button:nth-child(7) {
   background-color: rgb(114, 180, 224);
 }
 
-button:nth-child(12) {
+.teclado button:nth-child(12) {
   background-color: rgb(192, 88, 88);
 }
 
-.siborde {
-  border-color: #171923;
-}
+/*****************************************************/
 
-.noborde {
-  border-color: lightgray;
+@media only screen and (max-width:576px) {
+  #board {
+    margin: 25px auto;
+  }
 }
