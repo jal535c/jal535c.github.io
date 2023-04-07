@@ -1,32 +1,37 @@
 document.addEventListener('DOMContentLoaded', () =>  {
-  const gridDisplay = document.querySelector('.grid')
-  const scoreDisplay = document.getElementById('score')
-  const resultDisplay = document.getElementById('result')
-  let squares = []
-  const width = 4
-  let score = 0
+  const gridDisplay = document.querySelector('.grid');
+  const scoreDisplay = document.getElementById('score');
+  const resultDisplay = document.getElementById('result');
+  let squares = [];
+  const width = 4;
+  let score = 0;
+
 
   //create the playing board
   function createBoard() {
-    for (let i=0; i < width*width; i++) {
-      square = document.createElement('div')
-      square.innerHTML = 0
-      gridDisplay.appendChild(square)
-      squares.push(square)
+    for (let i=0; i<width*width; i++) {
+      let square = document.createElement('div');
+      square.innerHTML = 0;
+      gridDisplay.appendChild(square);
+      squares.push(square);
     }
-    generate()
-    generate()
+    generate();
+    generate();
   }
-  createBoard()
+  createBoard();
 
-  //generate a new number
+
+  //generate a new number (in random position, write 2)
   function generate() {
-    randomNumber = Math.floor(Math.random() * squares.length)
+    let randomNumber = Math.floor(Math.random() * squares.length);
     if (squares[randomNumber].innerHTML == 0) {
-      squares[randomNumber].innerHTML = 2
-      checkForGameOver()
-    } else generate()
+      squares[randomNumber].innerHTML = 2;
+      checkForGameOver();
+    } else {
+      generate();
+    }
   }
+
 
   function moveRight() {
     for (let i=0; i < 16; i++) {
@@ -139,47 +144,49 @@ document.addEventListener('DOMContentLoaded', () =>  {
     checkForWin()
   }
 
+
   //assign functions to keyCodes
   function control(e) {
-    if(e.keyCode === 37) {
-      keyLeft()
+    if (e.keyCode === 37) {
+      keyLeft();
     } else if (e.keyCode === 38) {
-      keyUp()
+      keyUp();
     } else if (e.keyCode === 39) {
-      keyRight()
+      keyRight();
     } else if (e.keyCode === 40) {
-      keyDown()
+      keyDown();
     }
   }
-  document.addEventListener('keyup', control)
+  document.addEventListener('keyup', control);
 
   function keyRight() {
-    moveRight()
-    combineRow()
-    moveRight()
-    generate()
+    moveRight();
+    combineRow();
+    moveRight();
+    generate();
   }
 
   function keyLeft() {
-    moveLeft()
-    combineRow()
-    moveLeft()
-    generate()
+    moveLeft();
+    combineRow();
+    moveLeft();
+    generate();
   }
 
   function keyUp() {
-    moveUp()
-    combineColumn()
-    moveUp()
-    generate()
+    moveUp();
+    combineColumn();
+    moveUp();
+    generate();
   }
 
   function keyDown() {
-    moveDown()
-    combineColumn()
-    moveDown()
-    generate()
+    moveDown();
+    combineColumn();
+    moveDown();
+    generate();
   }
+
 
   //check for the number 2048 in the squares to win
   function checkForWin() {
@@ -209,29 +216,29 @@ document.addEventListener('DOMContentLoaded', () =>  {
 
   //clear timer
   function clear() {
-    clearInterval(myTimer)
+    clearInterval(myTimer);
   }
 
 
   //add colours
   function addColours() {
-    for (let i=0; i < squares.length; i++) {
-      if (squares[i].innerHTML == 0) squares[i].style.backgroundColor = '#afa192'
-      else if (squares[i].innerHTML == 2) squares[i].style.backgroundColor = '#eee4da'
-      else if (squares[i].innerHTML  == 4) squares[i].style.backgroundColor = '#ede0c8' 
-      else if (squares[i].innerHTML  == 8) squares[i].style.backgroundColor = '#f2b179' 
-      else if (squares[i].innerHTML  == 16) squares[i].style.backgroundColor = '#ffcea4' 
-      else if (squares[i].innerHTML  == 32) squares[i].style.backgroundColor = '#e8c064' 
-      else if (squares[i].innerHTML == 64) squares[i].style.backgroundColor = '#ffab6e' 
-      else if (squares[i].innerHTML == 128) squares[i].style.backgroundColor = '#fd9982' 
-      else if (squares[i].innerHTML == 256) squares[i].style.backgroundColor = '#ead79c' 
-      else if (squares[i].innerHTML == 512) squares[i].style.backgroundColor = '#76daff' 
-      else if (squares[i].innerHTML == 1024) squares[i].style.backgroundColor = '#beeaa5' 
-      else if (squares[i].innerHTML == 2048) squares[i].style.backgroundColor = '#d7d4f0' 
+    for (let i=0; i<squares.length; i++) {
+      if (squares[i].innerHTML == 0) squares[i].style.backgroundColor = '#afa192';
+      else if (squares[i].innerHTML == 2) squares[i].style.backgroundColor = '#eee4da';
+      else if (squares[i].innerHTML  == 4) squares[i].style.backgroundColor = '#ede0c8'; 
+      else if (squares[i].innerHTML  == 8) squares[i].style.backgroundColor = '#f2b179';
+      else if (squares[i].innerHTML  == 16) squares[i].style.backgroundColor = '#ffcea4'; 
+      else if (squares[i].innerHTML  == 32) squares[i].style.backgroundColor = '#e8c064';
+      else if (squares[i].innerHTML == 64) squares[i].style.backgroundColor = '#ffab6e';
+      else if (squares[i].innerHTML == 128) squares[i].style.backgroundColor = '#fd9982'; 
+      else if (squares[i].innerHTML == 256) squares[i].style.backgroundColor = '#ead79c';
+      else if (squares[i].innerHTML == 512) squares[i].style.backgroundColor = '#76daff';
+      else if (squares[i].innerHTML == 1024) squares[i].style.backgroundColor = '#beeaa5'; 
+      else if (squares[i].innerHTML == 2048) squares[i].style.backgroundColor = '#d7d4f0';
     }
-}
-addColours()
+  }
+  addColours();
 
-var myTimer = setInterval(addColours, 50)
+  var myTimer = setInterval(addColours, 50);
 
-})
+});
