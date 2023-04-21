@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () =>  {
+//document.addEventListener('DOMContentLoaded', () =>  {
   const gridDisplay = document.querySelector('.grid');
   const scoreDisplay = document.getElementById('score');
   const resultDisplay = document.getElementById('result');
@@ -159,6 +159,8 @@ document.addEventListener('DOMContentLoaded', () =>  {
     
   }
 
+  
+
   //assign functions to keyCodes
   function control(e) {
     eliminar_ani();
@@ -262,4 +264,19 @@ document.addEventListener('DOMContentLoaded', () =>  {
 
   var myTimer = setInterval(addColours, 50);
 
-});
+//});
+
+function leerTeclado(but) {
+  let tecla = but.getAttribute('id');
+  console.log(tecla);
+
+  if (tecla == 'U') {
+    keyUp();
+  } else if (tecla == 'L') {
+    keyLeft();
+  } else if (tecla == 'D') {
+    keyDown();
+  } else if (tecla == 'R') {
+    keyRight();
+  }
+}

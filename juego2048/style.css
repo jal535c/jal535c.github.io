@@ -6,7 +6,7 @@ body {
 }
 
 .container {
-  width: 468px;
+  /* width: 468px; */
   /* margin-top: 10px; */
 }
 
@@ -64,4 +64,52 @@ h1 {
   text-align: center;
   font-size: 60px;
   line-height: 1.6;
+}
+
+#teclado{
+  width: 250px;
+  margin: auto;
+  /* margin-bottom: 0px; */
+  margin-top: 80px;
+  display: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#teclado button {
+  width: 60px;
+  height: 60px;
+
+  margin: 2px;
+  border-radius: 5px;
+  
+  background-color: #D3D6DA;
+  font-size: 30px;
+  /* font-family: inherit; */
+  font-weight: bold;
+  border-style: none;   /*quita relieve al boton*/
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 576px) {
+  h1 {
+    font-size: 60px;
+  }
+
+  .grid {
+    width: 300px;
+    height: 300px;
+  }
+
+  .grid div {
+    width: 60px;
+    height: 60px;
+    font-size: 40px;
+  }
+
+  #teclado {
+    display: flex;
+  }
 }
