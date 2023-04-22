@@ -2,6 +2,8 @@
   const gridDisplay = document.querySelector('.grid');
   const scoreDisplay = document.getElementById('score');
   const resultDisplay = document.getElementById('result');
+  const keyboard = document.getElementById('teclado');
+
   let squares = [];
   const width = 4;
   let score = 0;
@@ -123,12 +125,19 @@
     }
   }
 
-  function combineRow() {
-    for (let i=0; i<15; i++) {
+  function combineRow(right) {
+    for (let i=0; i<16; i++) {
       if (squares[i].innerHTML === squares[i +1].innerHTML) {
         let combinedTotal = parseInt(squares[i].innerHTML) + parseInt(squares[i +1].innerHTML);
-        squares[i].innerHTML = combinedTotal;
-        squares[i +1].innerHTML = 0;
+        
+        if (right) {
+          squares[i].innerHTML = 0;
+          squares[i+1].innerHTML = combinedTotal;
+        } else {
+          squares[i].innerHTML = combinedTotal;
+          squares[i+1].innerHTML = 0;
+        }
+        
         
         score += combinedTotal;
         scoreDisplay.innerHTML = score;
@@ -137,13 +146,19 @@
     checkForWin();
   }
 
-  function combineColumn() {
-    for (let i=0; i<12; i++) {
+  function combineColumn(down) {
+    for (let i=0; i<16; i++) {
       if (squares[i].innerHTML === squares[i +width].innerHTML) {
         let combinedTotal = parseInt(squares[i].innerHTML) + parseInt(squares[i +width].innerHTML);
-        squares[i].innerHTML = combinedTotal;
-        squares[i +width].innerHTML = 0;
-      
+        
+        if (down) {
+          squares[i].innerHTML = 0;
+          squares[i+width].innerHTML = combinedTotal;
+        } else {
+          squares[i].innerHTML = combinedTotal;
+          squares[i+width].innerHTML = 0;
+        }
+
         score += combinedTotal;
         scoreDisplay.innerHTML = score;
       }
@@ -156,7 +171,6 @@
       squares[i].classList.remove("animate__bounceIn");
       squares[i].classList.remove("animate__animated");
     }
-    
   }
 
   
@@ -178,9 +192,9 @@
 
   function keyRight() {
     moveRight();
-    combineRow();
+    combineRow(true);   //include checkForWin
     moveRight();
-    generate();
+    generate();     //include checkForGameOver
   }
 
   function keyLeft() {
@@ -199,7 +213,7 @@
 
   function keyDown() {
     moveDown();
-    combineColumn();
+    combineColumn(true);
     moveDown();
     generate();
   }
@@ -211,6 +225,7 @@
       if (squares[i].innerHTML == 2048) {
         resultDisplay.innerHTML = 'You WIN';
         document.removeEventListener('keyup', control);
+        keyboard.style.display = 'none';
         setTimeout(() => clear(), 3000);
       }
     }
@@ -227,6 +242,7 @@
     if (zeros === 0) {
       resultDisplay.innerHTML = 'You LOSE';
       document.removeEventListener('keyup', control);
+      keyboard.style.display = 'none';
       setTimeout(() => clear(), 3000);
     }
   }
@@ -267,6 +283,7 @@
 //});
 
 function leerTeclado(but) {
+  eliminar_ani();
   let tecla = but.getAttribute('id');
   console.log(tecla);
 
