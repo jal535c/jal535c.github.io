@@ -32,6 +32,10 @@ h1 {
   color: #FFFFFF;
 }
 
+.orange {
+  background-color: #EDE0C8;
+}
+
 .score-title {
   font-size: 16px;
   margin-bottom: 10px;
@@ -41,6 +45,8 @@ h1 {
 #best {
   font-size: 20px;
 }
+
+/***********************************************************************************/
 
 .grid{
   width: 456px;
@@ -68,6 +74,8 @@ h1 {
   line-height: 1.6;
 }
 
+/*************************************************************/
+
 #teclado{
   width: 250px;
   margin: auto;
@@ -94,6 +102,8 @@ h1 {
   border-style: none;   /*quita relieve al boton*/
   cursor: pointer;
 }
+
+/********************************************************************/
 
 @media only screen and (max-width: 576px) {
   h1 {

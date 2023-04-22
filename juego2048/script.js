@@ -141,8 +141,9 @@
     }
   }
 
+  //before last compare with last
   function combineRow() {
-    for (let i=0; i<15; i++) {
+    for (let i=0; i<(16-1); i++) {
       if (squares[i].innerHTML === squares[i+1].innerHTML) {
         let combinedTotal = parseInt(squares[i].innerHTML) + parseInt(squares[i+1].innerHTML);
                 
@@ -151,7 +152,6 @@
                 
         score += combinedTotal;
         scoreDisplay.innerHTML = score;
-
         updateBest();
       }
     }
@@ -159,7 +159,7 @@
   }
 
   function combineRowRight() {
-    for (let i=15; i>0; i++) {
+    for (let i=15; i>0; i--) {
       if (squares[i].innerHTML === squares[i-1].innerHTML) {
         let combinedTotal = parseInt(squares[i].innerHTML) + parseInt(squares[i-1].innerHTML);
                 
@@ -168,15 +168,15 @@
                 
         score += combinedTotal;
         scoreDisplay.innerHTML = score;
-
         updateBest();
       }
     }
     checkForWin();
   }
 
+  //actual compare with 4 ahead
   function combineColumn() {
-    for (let i=0; i<12; i++) {
+    for (let i=0; i<(16-width); i++) {
       if (squares[i].innerHTML === squares[i+width].innerHTML) {
         let combinedTotal = parseInt(squares[i].innerHTML) + parseInt(squares[i+width].innerHTML);
                 
@@ -185,12 +185,28 @@
         
         score += combinedTotal;
         scoreDisplay.innerHTML = score;
-
         updateBest();
       }
     }
     checkForWin();
   }
+
+  function combineColumnDown() {
+    for (let i=15; i>3; i--) {
+      if (squares[i].innerHTML === squares[i-width].innerHTML) {
+        let combinedTotal = parseInt(squares[i].innerHTML) + parseInt(squares[i-width].innerHTML);
+                
+        squares[i].innerHTML = combinedTotal;
+        squares[i-width].innerHTML = 0;
+        
+        score += combinedTotal;
+        scoreDisplay.innerHTML = score;
+        updateBest();
+      }
+    }
+    checkForWin();
+  }
+
 
   function eliminar_ani() {
     for (let i=0; i<16; i++) {
@@ -199,7 +215,6 @@
     }
   }
 
-  
 
   //assign functions to keyCodes
   function control(e) {
@@ -218,7 +233,7 @@
 
   function keyRight() {
     moveRight();
-    combineRow();   //include checkForWin
+    combineRowRight();   //include checkForWin
     moveRight();
     generate();     //include checkForGameOver
   }
@@ -239,7 +254,7 @@
 
   function keyDown() {
     moveDown();
-    combineColumn();
+    combineColumnDown();
     moveDown();
     generate();
   }
@@ -266,7 +281,7 @@
       }
     }
     if (zeros === 0) {
-      resultDisplay.innerHTML = 'You LOSE';
+      resultDisplay.innerHTML = 'GAME OVER';
       document.removeEventListener('keyup', control);
       keyboard.style.display = 'none';
       setTimeout(() => clear(), 3000);
