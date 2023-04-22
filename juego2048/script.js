@@ -3,11 +3,19 @@
   const scoreDisplay = document.getElementById('score');
   const resultDisplay = document.getElementById('result');
   const keyboard = document.getElementById('teclado');
+  const bestDisplay = document.getElementById('best');
 
   let squares = [];
   const width = 4;
   let score = 0;
 
+  let best = window.localStorage.getItem('best');
+  //console.log(best);
+  if (best===null) {
+    window.localStorage.setItem('best', 0);
+    best = 0;
+  }
+  bestDisplay.innerHTML = best;
 
   //create the playing board
   function createBoard() {
@@ -125,42 +133,60 @@
     }
   }
 
-  function combineRow(right) {
-    for (let i=0; i<16; i++) {
+  function updateBest() {
+    if (score >= best) {
+      best = score;
+      window.localStorage.setItem('best', best);
+      bestDisplay.innerHTML = best;
+    }
+  }
+
+  function combineRow() {
+    for (let i=0; i<15; i++) {
       if (squares[i].innerHTML === squares[i +1].innerHTML) {
         let combinedTotal = parseInt(squares[i].innerHTML) + parseInt(squares[i +1].innerHTML);
-        
-        if (right) {
-          squares[i].innerHTML = 0;
-          squares[i+1].innerHTML = combinedTotal;
-        } else {
-          squares[i].innerHTML = combinedTotal;
-          squares[i+1].innerHTML = 0;
-        }
-        
-        
+                
+        squares[i].innerHTML = combinedTotal;
+        squares[i+1].innerHTML = 0;
+                
         score += combinedTotal;
         scoreDisplay.innerHTML = score;
+
+        updateBest();
       }
     }
     checkForWin();
   }
 
-  function combineColumn(down) {
-    for (let i=0; i<16; i++) {
-      if (squares[i].innerHTML === squares[i +width].innerHTML) {
-        let combinedTotal = parseInt(squares[i].innerHTML) + parseInt(squares[i +width].innerHTML);
-        
-        if (down) {
-          squares[i].innerHTML = 0;
-          squares[i+width].innerHTML = combinedTotal;
-        } else {
-          squares[i].innerHTML = combinedTotal;
-          squares[i+width].innerHTML = 0;
-        }
-
+  function combineRowRight() {
+    for (let i=15; i>0; i++) {
+      if (squares[i].innerHTML === squares[i-1].innerHTML) {
+        let combinedTotal = parseInt(squares[i].innerHTML) + parseInt(squares[i-1].innerHTML);
+                
+        squares[i].innerHTML = combinedTotal;
+        squares[i-1].innerHTML = 0;
+                
         score += combinedTotal;
         scoreDisplay.innerHTML = score;
+
+        updateBest();
+      }
+    }
+    checkForWin();
+  }
+
+  function combineColumn() {
+    for (let i=0; i<12; i++) {
+      if (squares[i].innerHTML === squares[i +width].innerHTML) {
+        let combinedTotal = parseInt(squares[i].innerHTML) + parseInt(squares[i +width].innerHTML);
+                
+        squares[i].innerHTML = combinedTotal;
+        squares[i+width].innerHTML = 0;
+        
+        score += combinedTotal;
+        scoreDisplay.innerHTML = score;
+
+        updateBest();
       }
     }
     checkForWin();
@@ -192,7 +218,7 @@
 
   function keyRight() {
     moveRight();
-    combineRow(true);   //include checkForWin
+    combineRow();   //include checkForWin
     moveRight();
     generate();     //include checkForGameOver
   }
@@ -213,7 +239,7 @@
 
   function keyDown() {
     moveDown();
-    combineColumn(true);
+    combineColumn();
     moveDown();
     generate();
   }
