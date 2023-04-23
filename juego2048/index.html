@@ -1,45 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2048</title>
-    <link rel="stylesheet" href="style.css">    
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2048</title>
+  <link rel="stylesheet" href="style.css">    
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
 
-    <div class="container">
-      <div class="info">
-        <div>
-          <h1>2048</h1>
-          <p id="result"></p>
-        </div>
-        <div class="score-container">
-          <div class="score-title">mejor</div>
-          <span id="best">0</span>
-        </div>
-        <div class="score-container">
-          <div class="score-title">puntos</div>
-          <span id="score">0</span>
-        </div>
+  <div class="container">
+    <div class="info">
+      <div>
+        <h1>2048</h1>
+        <p id="result"></p>
       </div>
-      <!--
-      <span id="result">Join the numbers and get to the <b>2048</b> tile!</span>
-      -->
-      <div class="grid"></div>
-      
-      <div id="teclado">
-        <button id="x"></button>
-        <button id="U" onclick="leerTeclado(this)">&uarr;</button>
-        <button id="x"></button>
-        <button id="L" onclick="leerTeclado(this)">&larr;</button>
-        <button id="D" onclick="leerTeclado(this)">&darr;</button>
-        <button id="R" onclick="leerTeclado(this)">&rarr;</button>
+      <div class="score-container">
+        <div class="score-title">mejor</div>
+        <span id="best">0</span>
+      </div>
+      <div class="score-container">
+        <div class="score-title">puntos</div>
+        <span id="score">0</span>
       </div>
     </div>
+    <!--
+    <span id="result">Join the numbers and get to the <b>2048</b> tile!</span>
+    -->
+    <div class="grid"></div>
+      
+    <div id="teclado">
+      <button id="x"></button>
+      <button id="U" onclick="leerTeclado(this)">&uarr;</button>
+      <button id="x"></button>
+      <button id="L" onclick="leerTeclado(this)">&larr;</button>
+      <button id="D" onclick="leerTeclado(this)">&darr;</button>
+      <button id="R" onclick="leerTeclado(this)">&rarr;</button>
+    </div>
+  </div>
 
-    <script src="script.js"></script>
-  </body>
+  <script src="script.js"></script>
+</body>
 </html>

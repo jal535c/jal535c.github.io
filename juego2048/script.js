@@ -49,6 +49,7 @@
   }
 
 
+  //four times, one for each row, simulating shifting 
   function moveRight() {
     for (let i=0; i<16; i++) {
       if (i % 4 === 0) {
@@ -58,10 +59,10 @@
         let totalFour = squares[i+3].innerHTML;
         let row = [parseInt(totalOne), parseInt(totalTwo), parseInt(totalThree), parseInt(totalFour)];
 
-        let filteredRow = row.filter(num => num);
-        let missing = 4 - filteredRow.length;
-        let zeros = Array(missing).fill(0);
-        let newRow = zeros.concat(filteredRow);
+        let filteredRow = row.filter(num => num);   //remove 0's
+        let missing = 4 - filteredRow.length;     //count 0's removed
+        let zeros = Array(missing).fill(0);       //fill new array with 0's
+        let newRow = zeros.concat(filteredRow);   //concat both arrays
 
         squares[i].innerHTML = newRow[0];
         squares[i +1].innerHTML = newRow[1];
@@ -145,32 +146,37 @@
   //before last compare with last
   function combineRow() {
     for (let i=0; i<(16-1); i++) {
-      if (squares[i].innerHTML === squares[i+1].innerHTML) {
-        let combinedTotal = parseInt(squares[i].innerHTML) + parseInt(squares[i+1].innerHTML);
-                
-        squares[i].innerHTML = combinedTotal;
-        squares[i+1].innerHTML = 0;
-                
-        score += combinedTotal;
-        scoreDisplay.innerHTML = score;
-        updateBest();
+      if (i!=3 && i!=7 && i!=11) {
+        if (squares[i].innerHTML === squares[i+1].innerHTML) {
+          let combinedTotal = parseInt(squares[i].innerHTML) + parseInt(squares[i+1].innerHTML);
+                  
+          squares[i].innerHTML = combinedTotal;
+          squares[i+1].innerHTML = 0;
+                  
+          score += combinedTotal;
+          scoreDisplay.innerHTML = score;
+          updateBest();
+        }
       }
+      
     }
     checkForWin();
   }
 
   function combineRowRight() {
     for (let i=15; i>0; i--) {
-      if (squares[i].innerHTML === squares[i-1].innerHTML) {
-        let combinedTotal = parseInt(squares[i].innerHTML) + parseInt(squares[i-1].innerHTML);
-                
-        squares[i].innerHTML = combinedTotal;
-        squares[i-1].innerHTML = 0;
-                
-        score += combinedTotal;
-        scoreDisplay.innerHTML = score;
-        updateBest();
-      }
+      if (i!=12 && i!=8 && i!=4) {
+        if (squares[i].innerHTML === squares[i-1].innerHTML) {
+          let combinedTotal = parseInt(squares[i].innerHTML) + parseInt(squares[i-1].innerHTML);
+                  
+          squares[i].innerHTML = combinedTotal;
+          squares[i-1].innerHTML = 0;
+                  
+          score += combinedTotal;
+          scoreDisplay.innerHTML = score;
+          updateBest();
+        }
+      }      
     }
     checkForWin();
   }
@@ -285,9 +291,12 @@
     }
 
     for (let i=0; i<15; i++) {
-      if (squares[i].innerHTML === squares[i+1].innerHTML) {
-        canMoveFullBoard = true;
+      if (i!=3 && i!=7 && i!=11) {
+        if (squares[i].innerHTML === squares[i+1].innerHTML) {
+          canMoveFullBoard = true;
+        }
       }
+      
     }
     for (let i=0; i<12; i++) {
       if (squares[i].innerHTML === squares[i+width].innerHTML) {
