@@ -9,6 +9,7 @@
   const width = 4;
   let score = 0;
 
+  //logic for the high score
   let best = window.localStorage.getItem('best');
   //console.log(best);
   if (best===null) {
@@ -32,7 +33,7 @@
   createBoard();
 
 
-  //generate a new number (in random position, write 2)
+  //generate a new number (write 2 in random position)
   function generate() {
     let randomNumber = Math.floor(Math.random() * squares.length);
     if (squares[randomNumber].innerHTML == 0) {
@@ -272,15 +273,29 @@
     }
   }
 
-  //check if there are no zeros on the board to lose
+  //check if there are no zeros on the board and if can i move the full board
   function checkForGameOver() {
     let zeros = 0;
+    let canMoveFullBoard = false;
+
     for (let i=0; i<squares.length; i++) {
       if (squares[i].innerHTML == 0) {
         zeros++;
       }
     }
-    if (zeros === 0) {
+
+    for (let i=0; i<15; i++) {
+      if (squares[i].innerHTML === squares[i+1].innerHTML) {
+        canMoveFullBoard = true;
+      }
+    }
+    for (let i=0; i<12; i++) {
+      if (squares[i].innerHTML === squares[i+width].innerHTML) {
+        canMoveFullBoard = true;
+      }
+    }
+
+    if (zeros === 0 && !canMoveFullBoard) {
       resultDisplay.innerHTML = 'GAME OVER';
       document.removeEventListener('keyup', control);
       keyboard.style.display = 'none';
@@ -294,16 +309,14 @@
   }
 
 
-  //add colours
+  //add colours and sizes
   function addColours() {
     for (let i=0; i<squares.length; i++) {
       if (squares[i].innerHTML == 0) {
-        squares[i].style.backgroundColor = '#afa192';
-        
+        squares[i].style.backgroundColor = '#afa192';        
       }      
       else if (squares[i].innerHTML == 2) {
-        squares[i].style.backgroundColor = '#eee4da';
-        
+        squares[i].style.backgroundColor = '#eee4da';        
       }
       else if (squares[i].innerHTML  == 4) squares[i].style.backgroundColor = '#ede0c8'; 
       else if (squares[i].innerHTML  == 8) squares[i].style.backgroundColor = '#f2b179';
@@ -313,8 +326,15 @@
       else if (squares[i].innerHTML == 128) squares[i].style.backgroundColor = '#fd9982'; 
       else if (squares[i].innerHTML == 256) squares[i].style.backgroundColor = '#ead79c';
       else if (squares[i].innerHTML == 512) squares[i].style.backgroundColor = '#76daff';
-      else if (squares[i].innerHTML == 1024) squares[i].style.backgroundColor = '#beeaa5'; 
-      else if (squares[i].innerHTML == 2048) squares[i].style.backgroundColor = '#d7d4f0';
+      else if (squares[i].innerHTML == 1024) {
+        squares[i].style.backgroundColor = '#beeaa5'; 
+        squares[i].style.fontSize = '26px';
+        //squares[i].style.lineHeight = 2.0;
+      }
+      else if (squares[i].innerHTML == 2048) {
+        squares[i].style.backgroundColor = '#d7d4f0';
+        squares[i].style.fontSize = '26px';
+      }
     }
   }
   addColours();

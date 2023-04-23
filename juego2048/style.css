@@ -5,10 +5,12 @@ body {
   justify-content: center;
 }
 
+/*
 .container {
-  /* width: 468px; */
-  /* margin-top: 10px; */
+  width: 468px;
+  margin-top: 10px;
 }
+*/
 
 .info {
   display: flex;
@@ -99,7 +101,9 @@ h1 {
   font-size: 30px;
   /* font-family: inherit; */
   font-weight: bold;
-  border-style: none;   /*quita relieve al boton*/
+
+  /*quita relieve al boton*/
+  border-style: none;   
   cursor: pointer;
 }
 
