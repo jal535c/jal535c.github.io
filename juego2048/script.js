@@ -53,11 +53,16 @@
   createOld();
 
 
-  //generate a new number (write 2 in random position)
+  //generate a new number (write 2 or 4 in random position)
   function generate() {
     let randomNumber = Math.floor(Math.random() * squares.length);
+    
+    let initialNumber = 4;
+    if (Math.random() < 0.75) {
+      initialNumber = 2;
+    }
     if (squares[randomNumber].innerHTML == 0) {
-      squares[randomNumber].innerHTML = 2;
+      squares[randomNumber].innerHTML = initialNumber;
 
       squares[randomNumber].classList.add("animate__animated");
       squares[randomNumber].classList.add("animate__bounceIn");
