@@ -6,6 +6,7 @@
   const bestDisplay = document.getElementById('best');
 
   let squares = [];
+  let squaresOld = [];
   const width = 4;
   let score = 0;
 
@@ -18,6 +19,22 @@
   }
   bestDisplay.innerHTML = best;
 
+  function createOld() {
+    for (let i=0; i<width*width; i++) {
+      let square = document.createElement('div');
+      square.innerHTML = 0;
+      //gridDisplay.appendChild(square);
+      //squares.push(square);
+      squaresOld.push(square);
+    }
+  }
+
+  function saveSquaresOld() {
+    for (let i=0; i<16; i++) {
+      squaresOld[i].innerHTML = squares[i].innerHTML;
+    }
+  }
+
   //create the playing board
   function createBoard() {
     for (let i=0; i<width*width; i++) {
@@ -25,12 +42,15 @@
       square.innerHTML = 0;
       gridDisplay.appendChild(square);
       squares.push(square);
+      //squaresOld.push(square);    //link reference to same
     }
     generate();
     generate();
+    //saveSquaresOld();
   }
   //first action at load document
   createBoard();
+  createOld();
 
 
   //generate a new number (write 2 in random position)
@@ -222,10 +242,10 @@
     }
   }
 
-
   //assign functions to keyCodes
   function control(e) {
-    eliminar_ani();
+    saveSquaresOld();
+    eliminar_ani();       
     if (e.keyCode === 37) {
       keyLeft();
     } else if (e.keyCode === 38) {
@@ -353,6 +373,7 @@
 //});
 
 function leerTeclado(but) {
+  saveSquaresOld();
   eliminar_ani();
   let tecla = but.getAttribute('id');
   console.log(tecla);
@@ -366,4 +387,13 @@ function leerTeclado(but) {
   } else if (tecla == 'R') {
     keyRight();
   }
+}
+
+function loadSquaresOld() {
+  for (let i=0; i<16; i++) {
+    squares[i].innerHTML = squaresOld[i].innerHTML;
+  }
+
+  score -= 50;
+  scoreDisplay.innerHTML = score;
 }
