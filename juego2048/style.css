@@ -72,12 +72,14 @@ h1 {
   color: #afa192;
   font-weight: bold;
   text-align: center;
-  font-size: 60px;
-  line-height: 1.6;
+  font-size: 45px;
+  line-height: 2.2;
+  /* al llegar a 1024 cambia de 60 a 45px y de 1.6 a 2.2 */
+  /* el juego original 53 y 43, movil 35 y 25 */
 }
 
 /*************************************************************/
-
+/*antes margintop 80, 60x60 y 2 de margen*/
 #teclado{
   width: 250px;
   margin: auto;
@@ -123,8 +125,11 @@ h1 {
     width: 60px;
     height: 60px;
     /* font-size: 40px; */
-    font-size: 30px;
-    line-height: 2.0;
+    
+    /* font-size: 30px; */
+    /* line-height: 2.0; */
+
+    font-size: 27px;
   }
 
   #teclado {

@@ -35,6 +35,10 @@
     }
   }
 
+  function savegame() {
+    
+  }
+
   //create the playing board
   function createBoard() {
     for (let i=0; i<width*width; i++) {
@@ -51,6 +55,7 @@
   //first action at load document
   createBoard();
   createOld();
+  savegame();
 
 
   //generate a new number (write 2 or 4 in random position)
@@ -76,6 +81,7 @@
 
   //four times, one for each row, simulating shifting 
   function moveRight() {
+    let haMovido = false;
     for (let i=0; i<16; i++) {
       if (i % 4 === 0) {
         let totalOne = squares[i].innerHTML;
@@ -89,15 +95,21 @@
         let zeros = Array(missing).fill(0);       //fill new array with 0's
         let newRow = zeros.concat(filteredRow);   //concat both arrays
 
+        if (row[0]!==newRow[0] || row[1]!==newRow[1] || row[2]!==newRow[2] || row[3]!==newRow[3]) {
+          haMovido = true;
+        }
+
         squares[i].innerHTML = newRow[0];
         squares[i +1].innerHTML = newRow[1];
         squares[i +2].innerHTML = newRow[2];
         squares[i +3].innerHTML = newRow[3];
       }
     }
+    return haMovido;
   }
 
   function moveLeft() {
+    let haMovido = false;
     for (let i=0; i<16; i++) {
       if (i % 4 === 0) {
         let totalOne = squares[i].innerHTML;
@@ -111,16 +123,22 @@
         let zeros = Array(missing).fill(0);
         let newRow = filteredRow.concat(zeros);
 
+        if (row[0]!==newRow[0] || row[1]!==newRow[1] || row[2]!==newRow[2] || row[3]!==newRow[3]) {
+          haMovido = true;
+        }
+
         squares[i].innerHTML = newRow[0];
         squares[i +1].innerHTML = newRow[1];
         squares[i +2].innerHTML = newRow[2];
         squares[i +3].innerHTML = newRow[3];
       }
     }
+    return haMovido;
   }
 
 
   function moveUp() {
+    let haMovido=false;
     for (let i=0; i<4; i++) {
       let totalOne = squares[i].innerHTML;
       let totalTwo = squares[i+width].innerHTML;
@@ -133,14 +151,20 @@
       let zeros = Array(missing).fill(0);
       let newColumn = filteredColumn.concat(zeros);
 
+      if (column[0]!==newColumn[0] || column[1]!==newColumn[1] || column[2]!==newColumn[2] || column[3]!==newColumn[3]) {
+        haMovido = true;
+      }
+
       squares[i].innerHTML = newColumn[0];
       squares[i +width].innerHTML = newColumn[1];
       squares[i+(width*2)].innerHTML = newColumn[2];
       squares[i+(width*3)].innerHTML = newColumn[3];
     }
+    return haMovido;
   }
 
   function moveDown() {
+    let haMovido=false;
     for (let i=0; i<4; i++) {
       let totalOne = squares[i].innerHTML;
       let totalTwo = squares[i+width].innerHTML;
@@ -153,11 +177,16 @@
       let zeros = Array(missing).fill(0);
       let newColumn = zeros.concat(filteredColumn);
 
+      if (column[0]!==newColumn[0] || column[1]!==newColumn[1] || column[2]!==newColumn[2] || column[3]!==newColumn[3]) {
+        haMovido = true;
+      }
+
       squares[i].innerHTML = newColumn[0];
       squares[i +width].innerHTML = newColumn[1];
       squares[i+(width*2)].innerHTML = newColumn[2];
       squares[i+(width*3)].innerHTML = newColumn[3];     
     }
+    return haMovido;
   }
 
   function updateBest() {
@@ -170,6 +199,7 @@
 
   //before last compare with last
   function combineRow() {
+    let haCombinado=false;
     for (let i=0; i<(16-1); i++) {
       if (i!=3 && i!=7 && i!=11) {
         if (squares[i].innerHTML === squares[i+1].innerHTML) {
@@ -181,14 +211,20 @@
           score += combinedTotal;
           scoreDisplay.innerHTML = score;
           updateBest();
+
+          if (combinedTotal>0) {
+            haCombinado=true;
+          }
         }
       }
       
     }
     checkForWin();
+    return haCombinado;
   }
 
   function combineRowRight() {
+    let haCombinado = false;
     for (let i=15; i>0; i--) {
       if (i!=12 && i!=8 && i!=4) {
         if (squares[i].innerHTML === squares[i-1].innerHTML) {
@@ -200,14 +236,20 @@
           score += combinedTotal;
           scoreDisplay.innerHTML = score;
           updateBest();
+
+          if (combinedTotal>0) {
+            haCombinado=true;
+          }
         }
       }      
     }
     checkForWin();
+    return haCombinado;
   }
 
   //actual compare with 4 ahead
   function combineColumn() {
+    let haCombinado=false;
     for (let i=0; i<(16-width); i++) {
       if (squares[i].innerHTML === squares[i+width].innerHTML) {
         let combinedTotal = parseInt(squares[i].innerHTML) + parseInt(squares[i+width].innerHTML);
@@ -218,12 +260,18 @@
         score += combinedTotal;
         scoreDisplay.innerHTML = score;
         updateBest();
+
+        if (combinedTotal>0) {
+          haCombinado=true;
+        }
       }
     }
     checkForWin();
+    return haCombinado;
   }
 
   function combineColumnDown() {
+    let haCombinado=false;
     for (let i=15; i>3; i--) {
       if (squares[i].innerHTML === squares[i-width].innerHTML) {
         let combinedTotal = parseInt(squares[i].innerHTML) + parseInt(squares[i-width].innerHTML);
@@ -234,9 +282,14 @@
         score += combinedTotal;
         scoreDisplay.innerHTML = score;
         updateBest();
+
+        if (combinedTotal>0) {
+          haCombinado=true;
+        }
       }
     }
     checkForWin();
+    return haCombinado;
   }
 
 
@@ -260,35 +313,48 @@
     } else if (e.keyCode === 40) {
       keyDown();
     }
+    addColours();
   }
   document.addEventListener('keyup', control);
 
   function keyRight() {
-    moveRight();
-    combineRowRight();   //include checkForWin
-    moveRight();
-    generate();     //include checkForGameOver
+    let haMovido=false;
+    let haCombinado=false;
+    haMovido=moveRight();
+    haCombinado= combineRowRight();   //include checkForWin
+    moveRight();    // 2 2 4 4 depens if there is combination
+    if (haMovido || haCombinado)
+      generate();     //include checkForGameOver
   }
 
   function keyLeft() {
+    let haMovido=false;
+    let haCombinado=false;
+    haMovido= moveLeft();
+    haCombinado= combineRow();
     moveLeft();
-    combineRow();
-    moveLeft();
-    generate();
+    if (haMovido || haCombinado)
+      generate();
   }
 
   function keyUp() {
+    let haMovido=false;
+    let haCombinado=false;
+    haMovido= moveUp();
+    haCombinado= combineColumn();
     moveUp();
-    combineColumn();
-    moveUp();
-    generate();
+    if (haMovido || haCombinado)
+      generate();
   }
 
   function keyDown() {
+    let haMovido=false;
+    let haCombinado=false;
+    haMovido= moveDown();
+    haCombinado= combineColumnDown();
     moveDown();
-    combineColumnDown();
-    moveDown();
-    generate();
+    if (haMovido || haCombinado)
+      generate();
   }
 
 
@@ -299,7 +365,7 @@
         resultDisplay.innerHTML = 'You WIN';
         document.removeEventListener('keyup', control);
         keyboard.style.display = 'none';
-        setTimeout(() => clear(), 3000);
+        //setTimeout(() => clear(), 3000);
       }
     }
   }
@@ -333,14 +399,14 @@
       resultDisplay.innerHTML = 'GAME OVER';
       document.removeEventListener('keyup', control);
       keyboard.style.display = 'none';
-      setTimeout(() => clear(), 3000);
+      //setTimeout(() => clear(), 3000);
     }
   }
 
   //clear timer
-  function clear() {
-    clearInterval(myTimer);
-  }
+  //function clear() {
+  //  clearInterval(myTimer);
+  //}
 
 
   //add colours and sizes
@@ -362,18 +428,18 @@
       else if (squares[i].innerHTML == 512) squares[i].style.backgroundColor = '#76daff';
       else if (squares[i].innerHTML == 1024) {
         squares[i].style.backgroundColor = '#beeaa5'; 
-        squares[i].style.fontSize = '26px';
+        //squares[i].style.fontSize = '26px';
         //squares[i].style.lineHeight = 2.0;
       }
       else if (squares[i].innerHTML == 2048) {
         squares[i].style.backgroundColor = '#d7d4f0';
-        squares[i].style.fontSize = '26px';
+        //squares[i].style.fontSize = '26px';
       }
     }
   }
   addColours();
 
-  var myTimer = setInterval(addColours, 50);
+  //var myTimer = setInterval(addColours, 50);
 
 //});
 
@@ -392,6 +458,7 @@ function leerTeclado(but) {
   } else if (tecla == 'R') {
     keyRight();
   }
+  addColours();
 }
 
 function loadSquaresOld() {
@@ -401,4 +468,14 @@ function loadSquaresOld() {
 
   score -= 50;
   scoreDisplay.innerHTML = score;
+}
+
+function newGame() {
+  for (let i=0; i<16; i++) {
+    squares[i].innerHTML = 0;
+  }
+  score = 0;
+  scoreDisplay.innerHTML = 0;
+  generate();
+  generate();
 }
