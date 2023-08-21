@@ -6,7 +6,12 @@
   const bestDisplay = document.getElementById('best');
 
   let squares = [];
-  let squaresOld = [];
+  let squaresOld = [
+    2,2,0,0,
+    0,0,0,0,
+    0,0,0,0,
+    0,0,0,0
+  ];
   const width = 4;
   let score = 0;
 
@@ -16,9 +21,20 @@
   if (best===null) {
     window.localStorage.setItem('best', 0);
     best = 0;
+  } else {
+    best = parseInt(best);
   }
   bestDisplay.innerHTML = best;
 
+  score = window.localStorage.getItem('score');
+  if (score === null) {
+    score = 0;
+    window.localStorage.setItem('score', score);
+        
+    window.localStorage.setItem('squares', squaresOld);
+  }
+
+  /*
   function createOld() {
     for (let i=0; i<width*width; i++) {
       let square = document.createElement('div');
@@ -28,15 +44,51 @@
       squaresOld.push(square);
     }
   }
+  */
 
   function saveSquaresOld() {
     for (let i=0; i<16; i++) {
-      squaresOld[i].innerHTML = squares[i].innerHTML;
+      squaresOld[i] = squares[i].innerHTML;
     }
   }
 
+  let arr = [];
+
+  let test = [
+    1024,256,8,16,
+    2,4,8,16,
+    2,4,8,16,
+    2,4,8,16
+  ];
+
   function savegame() {
+    for (let i=0; i<16; i++) {
+      arr[i] = squares[i].innerHTML;
+    } 
+    window.localStorage.setItem("squares", arr);
+    window.localStorage.setItem("score", score);
+  } 
+
+  function loadGame() {
+    let cadena = window.localStorage.getItem("squares");
+    arr = cadena.split(",");
+    console.log(arr);
+    for (let i=0; i<16; i++) {
+      squares[i].innerHTML = arr[i];
+    }
     
+    score = parseInt(window.localStorage.getItem("score"));
+    scoreDisplay.innerHTML = score;
+
+    //addColours();
+  }
+
+  function rellenar() {
+    console.log("hola");
+    for (let i=0; i<16; i++) {
+      squares[i].innerHTML = test[i];
+    }
+    addColours();
   }
 
   //create the playing board
@@ -54,9 +106,8 @@
   }
   //first action at load document
   createBoard();
-  createOld();
-  savegame();
-
+  //createOld();
+  loadGame();
 
   //generate a new number (write 2 or 4 in random position)
   function generate() {
@@ -303,7 +354,8 @@
   //assign functions to keyCodes
   function control(e) {
     saveSquaresOld();
-    eliminar_ani();       
+    eliminar_ani(); 
+    //console.log(e.keyCode);
     if (e.keyCode === 37) {
       keyLeft();
     } else if (e.keyCode === 38) {
@@ -312,8 +364,15 @@
       keyRight();
     } else if (e.keyCode === 40) {
       keyDown();
-    }
+    } else if (e.keyCode === 78) {  //letra N
+      newGame();
+    } 
+    //else if (e.keyCode === 82) {  //letra R
+      //loadSquaresOld();
+    //}
+
     addColours();
+    savegame();
   }
   document.addEventListener('keyup', control);
 
@@ -458,16 +517,21 @@ function leerTeclado(but) {
   } else if (tecla == 'R') {
     keyRight();
   }
+
   addColours();
+  savegame();
 }
 
 function loadSquaresOld() {
   for (let i=0; i<16; i++) {
-    squares[i].innerHTML = squaresOld[i].innerHTML;
+    squares[i].innerHTML = squaresOld[i];
   }
 
   score -= 50;
   scoreDisplay.innerHTML = score;
+  console.log(squaresOld);
+  addColours();
+  savegame();
 }
 
 function newGame() {
@@ -478,4 +542,7 @@ function newGame() {
   scoreDisplay.innerHTML = 0;
   generate();
   generate();
+
+  addColours();
+  savegame();
 }
