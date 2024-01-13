@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ahorcado</title>
+  <link rel="stylesheet" href="./estilos.css">
+</head>
+<body>
+  <div id="wrapper">
+    <header>
+      <h1>Juego del Ahorcado</h1>
+    </header>
+    <br>
+    <div id="imagen"></div>
+    <div id="enviado"></div>
+    <br>
+    <form action="#" method="post" id="formu" autocomplete="off">
+      Letra: <input type="text" id="entrada" name="letra" size="5" autofocus>
+      <input type="submit" value="Enviar">
+    </form>    
+  </div>
+
+  <script src="juego.js"></script>
+  <script>
+    const formu = document.getElementById("formu");
+    const imagen = document.getElementById("imagen");
+    const enviado = document.getElementById("enviado");
+    const entrada = document.getElementById("entrada");
+    const j = new Juego();
+    let palabra = "";
+
+    function logica() {
+      if (palabra!=null) {
+        if (palabra=="") {
+          palabra = null;
+        }
+      }
+
+      if (palabra!=null) {
+        if (!j.letraYaIntroducida(palabra.toUpperCase().charAt(0))) {
+          if (j.getFallos()<5) {
+            if (!j.compruebaLetra(palabra.toUpperCase().charAt(0))) {
+              j.addFallos();
+            }        
+          }
+        } else {
+          window.alert("Letra ya introducida.");
+        }
+      }
+      
+      if (j.compruebaGanaJuego() || j.getFallos()==5) {   //oculta formulario al finalizar        
+        formu.style.visibility = "hidden";
+      }
+
+      if (j.getFallos()==5) {
+        j.setOculta();
+      }
+
+      imagen.innerHTML = `<img src="img/dibujo${j.getFallos()}.jpg">`;
+      enviado.innerHTML = `<h1>${j}</h1>`;
+    }
+    
+    function enviar(e) {
+      e.preventDefault();
+      palabra = e.target.elements[0].value;
+      //console.log(palabra);
+      entrada.value = "";
+      logica();
+    }
+
+    formu.addEventListener("submit", enviar);
+
+    logica();
+  </script>
+</body>
+</html>
