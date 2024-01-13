@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poker</title>
+  <style>
+    img {
+      width: 60px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Baraja de Poker</h1>
+  <table border="1" id="tabla1">
+    <!--
+    <tr>
+      <td><img src="cards/Poker-sm-CA.png" alt=""></td>
+      <td><img src="cards/Poker-sm-C2.png" alt=""></td>
+    </tr>
+    <tr>
+      <td><img src="cards/Poker-sm-PA.png" alt=""></td>
+      <td><img src="cards/Poker-sm-P2.png" alt=""></td>
+    </tr>
+    -->
+  </table>
+  <h2>Barajamos...</h2>
+  <table border="1" id="tabla2">
+
+  </table>
+
+  <script src="carta.js"></script>
+  <script src="baraja.js"></script>
+  <script>
+
+    let tabla1 = document.getElementById("tabla1")
+    let tabla2 = document.getElementById("tabla2")
+
+    let baraja = new Baraja();
+
+    function mostrar(tabla, obj) {
+      let salida="";  
+      
+      for (let i=0; i<4; i++) {
+        salida += "<tr>";
+        for (let j=0; j<13; j++) {
+          salida += `<td><img src="./cards/${obj.miraCarta(j+i*13).dameNombreFichImg()}" alt=""></td>`;
+        }
+        salida += "</tr>";
+      }
+      tabla.innerHTML = salida;
+    }
+    
+    mostrar(tabla1, baraja);
+    baraja.barajar();
+    mostrar(tabla2, baraja);
+
+  </script>
+</body>
+</html>
