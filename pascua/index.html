@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pascua</title>
+  <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">  
+  <style>
+    .card-header{
+      background-color: white;
+      height: 180px;
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">PASCUA</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto mt-4">
+        <div class="card">
+          <div class="card-header">
+            <img src="https://www.ngenespanol.com/wp-content/uploads/2018/08/%C2%BFCu%C3%A1l-es-el-origen-de-los-huevos-de-Pascua-1280x720.jpg" alt="logo" width="300px">
+          </div>
+          <div class="card-body">
+            <form id="formu">
+              <div class="form-group">
+                <input type="text" id="year" placeholder="Introducir el año" class="form-control">
+              </div>
+              <div class="form-group">
+                <input type="text" id="salida" class="form-control" placeholder="Domingo de pascua" readonly>
+              </div>              
+              <button type="submit" class="btn btn-warning btn-block text-center">Calcular</button>
+            </form>
+          </div>
+        </div>
+      </div>    
+    </div>
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script>
+
+    $(document).ready(function() {
+
+      $('#formu').submit((e) => {
+        e.preventDefault();
+        let num = $('#year').val();
+        let salida = calculo(num);
+        
+        console.log(salida);
+        $('#salida').val(salida);
+      });
+
+      function calculo(anio) {
+        const m = 24;
+        const n = 5;
+
+        let a = anio % 19;
+        let b = anio % 4;
+        let c = anio % 7;
+        let d = (19*a + m) % 30;
+        let e = (2*b + 4*c + 6*d + n) % 7;
+
+        let mar = 22+d+e;
+        let abr = d+e-9;
+        if (mar <= 31) {
+          return `El domingo de pascua para ${anio} es el ${mar} de marzo`;
+        } else {
+          return `El domingo de pascua para ${anio} es el ${abr} de abril`;
+        }      
+      }
+
+    });
+
+  </script>
+</body>
+</html>
