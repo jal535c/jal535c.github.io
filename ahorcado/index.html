@@ -1,24 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ahorcado</title>
-  <link rel="stylesheet" href="./estilos.css">
+  <link rel="stylesheet" href="./estilos2.css">
 </head>
 <body>
   <div id="wrapper">
     <header>
       <h1>Juego del Ahorcado</h1>
     </header>
-    <br>
-    <div id="imagen"></div>
-    <div id="enviado"></div>
-    <br>
-    <form action="#" method="post" id="formu" autocomplete="off">
-      Letra: <input type="text" id="entrada" name="letra" size="5" autofocus>
-      <input type="submit" value="Enviar">
-    </form>    
+    <main>
+      <br>
+      <div id="imagen"></div>
+      <div id="enviado"></div>
+      <br>
+      <form action="#" method="post" id="formu" autocomplete="off">
+        Letra: <input type="text" id="entrada" name="letra" size="5" autofocus>
+        <input type="submit" value="Enviar">
+      </form>
+    </main>        
   </div>
 
   <script src="juego.js"></script>
@@ -27,8 +29,22 @@
     const imagen = document.getElementById("imagen");
     const enviado = document.getElementById("enviado");
     const entrada = document.getElementById("entrada");
-    const j = new Juego();
+    
+    let j = Object;
     let palabra = "";
+
+    
+    let url = 'https://random-word-api.herokuapp.com/word?number=10&lang=es';
+    //let url = 'http://localhost:4000/palabras';
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        j = new Juego(data);
+        logica();
+      })
+      .catch(error => console.log(error));
+    
 
     function logica() {
       if (palabra!=null) {
@@ -71,7 +87,7 @@
 
     formu.addEventListener("submit", enviar);
 
-    logica();
+    //logica();
   </script>
 </body>
 </html>

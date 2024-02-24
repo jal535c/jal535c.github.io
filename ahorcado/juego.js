@@ -1,11 +1,14 @@
-const palabras = [
-  "COCHE", "CASA", "COMIDA", "CARRETERA",
-  "ORDENADOR", "HEROE", "SUEÑO", "OBJETO",
-  "BARCO", "VENTANA", "TIENDA", "INVIERNO",
-  "MEMORIA", "TECLADO", "LIBRETA", "MUEBLE",
-  "JUEGO", "ELECTRICIDAD", "TELEFONO"
-];
+//let palabras = [
+  //"COCHE", "CASA", "COMIDA", "CARRETERA",
+  //"ORDENADOR", "HEROE", "SUEÑO", "OBJETO",
+  //"BARCO", "VENTANA", "TIENDA", "INVIERNO",
+  //"MEMORIA", "TECLADO", "LIBRETA", "MUEBLE",
+  //"JUEGO", "ELECTRICIDAD", "TELEFONO"
+//];
 
+const removeAccents = (str) => {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+} 
 
 class Juego {  
   elegida = "";
@@ -14,17 +17,19 @@ class Juego {
   fallos;
   lista = [];     //guarda las letras que se van introduciendo
 
-  constructor() {
+  constructor(arrPalabras) {
     this.fallos = 0;
-    this.eligePalabra();
+    this.eligePalabra(arrPalabras);
     this.generaPalabraOculta();
   }
 
-  eligePalabra() {    //elige palabra y crea array de char
-    this.elegida = palabras[parseInt(Math.random()*palabras.length)];
+  eligePalabra(palabras) {    //elige palabra y crea array de char    
+    this.elegida = palabras[parseInt(Math.random()*palabras.length)].toUpperCase();
+    this.elegida = removeAccents(this.elegida);
+    console.log(this.elegida);    
     for (let i=0; i<this.elegida.length; i++) {
       this.palabra.push(this.elegida.charAt(i));
-    }
+    }    
   }
 
   generaPalabraOculta() {        
