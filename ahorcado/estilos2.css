@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #bcdeff;
+  /* background-color: #bcdeff; */
   /* #164c81; */
   margin: 0;
   padding: 0;
@@ -23,6 +23,14 @@ h1 {
   text-shadow: #242424 2px 2px 1px;
 }
 
+p {
+  text-align: center;
+  color: #333;
+  font-size: 32px;
+  font-weight: bold;
+  /* text-shadow: #777070 2px 2px 1px; */
+}
+
 main {
   display: flex;
   flex-direction: column;
@@ -35,10 +43,10 @@ img {
 }
 
 form {
-  background-color: #abcdef;
+  background-color: #928c8c;
   /* width: 400px; */
   /* margin: auto; */
-  padding: 30px;
+  padding: 25px;
   box-shadow: #242424 4px 4px 4px;
   border-radius: 6px;
   /* text-align: center; */
