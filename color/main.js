@@ -10,6 +10,7 @@ let grid = [];
 
         function selectRandomPattern() {
             currentPattern = PATTERNS[Math.floor(Math.random() * PATTERNS.length)];
+            //currentPattern = PATTERNS[7];
             grid = currentPattern.pattern.map(row => [...row]);
             attemptsLeft = currentPattern.attempts;
             puzzleIdDisplay.textContent = currentPattern.id;
@@ -100,21 +101,21 @@ let grid = [];
                     gameOver = true;
                     //setTimeout(() => alert(`Congratulations! You completed Puzzle #${currentPattern.id}!`), 100);
                     new Noty({
-			type: 'alert',
+			type: 'information',
 			layout: 'topCenter',
 			theme: 'nest',
 			text: 'Has acertado !!!',
-			timeout: 4000
+			timeout: 3000
 		}).show();
                 } else if (attemptsLeft === 0) {
                     gameOver = true;
                     //setTimeout(() => alert(`Game Over! You failed Puzzle #${currentPattern.id}.`), 100);
                     new Noty({
-			type: 'alert',
+			type: 'error',
 			layout: 'topCenter',
 			theme: 'nest',
 			text: 'Game Over !!!',
-			timeout: 4000
+			timeout: 3000
 		}).show();
                 }
             }
