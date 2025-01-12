@@ -10,7 +10,7 @@ let grid = [];
 
         function selectRandomPattern() {
             currentPattern = PATTERNS[Math.floor(Math.random() * PATTERNS.length)];
-            //currentPattern = PATTERNS[7];
+            //currentPattern = PATTERNS[11];
             grid = currentPattern.pattern.map(row => [...row]);
             attemptsLeft = currentPattern.attempts;
             puzzleIdDisplay.textContent = currentPattern.id;

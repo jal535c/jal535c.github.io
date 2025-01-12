@@ -108,6 +108,28 @@ const PATTERNS = [
       ['pink', 'yellow', 'pink', 'pink', 'blue']
     ],
     attempts: 9
+  },
+  {
+    id: 43,
+    pattern: [
+      ['blue', 'white', 'yellow', 'yellow', 'yellow'],
+      ['blue', 'yellow', 'white', 'blue', 'yellow'],
+      ['blue', 'blue', 'yellow', 'white', 'white'],
+      ['blue', 'white', 'blue', 'pink', 'yellow'],
+      ['yellow', 'pink', 'yellow', 'blue', 'yellow']
+    ],
+    attempts: 9
+  },
+  {
+    id: 931,
+    pattern: [
+      ['pink', 'yellow', 'pink', 'yellow', 'pink'],
+      ['white', 'pink', 'yellow', 'pink', 'pink'],
+      ['yellow', 'pink', 'pink', 'white', 'blue'],
+      ['white', 'yellow', 'white', 'pink', 'pink'],
+      ['white', 'white', 'blue', 'pink', 'pink']
+    ],
+    attempts: 8
   }
 
 ];
