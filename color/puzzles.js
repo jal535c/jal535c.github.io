@@ -266,10 +266,10 @@ const PATTERNS = [
   {
     id: 66,
     pattern: [
-      ["pink", "yellow", "blue", "yellow", "pink"]
-      ["pink", "blue", "white", "yellow", "white"]
-      ["white", "pink", "pink", "blue", "yellow"]
-      ["blue", "white", "pink", "yellow", "yellow"]
+      ["pink", "yellow", "blue", "yellow", "pink"],
+      ["pink", "blue", "white", "yellow", "white"],
+      ["white", "pink", "pink", "blue", "yellow"],
+      ["blue", "white", "pink", "yellow", "yellow"],
       ["white", "yellow", "blue", "pink", "yellow"]     
     ],
     attempts: 11
