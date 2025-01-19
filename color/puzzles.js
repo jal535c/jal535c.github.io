@@ -273,6 +273,72 @@ const PATTERNS = [
       ["white", "yellow", "blue", "pink", "yellow"]     
     ],
     attempts: 11
+  },
+  {
+    id: 938,
+    pattern: [
+      ["pink", "blue", "white", "white", "pink"],
+      ["pink", "yellow", "blue", "pink", "pink"],
+      ["blue", "pink", "yellow", "blue", "white"],
+      ["white", "pink", "blue", "white", "white"],
+      ["blue", "blue", "white", "pink", "blue"]     
+    ],
+    attempts: 9
+  },
+  {
+    id: 69,
+    pattern: [
+      ["blue", "blue", "blue", "yellow", "white"],
+      ["blue", "white", "yellow", "pink", "yellow"],
+      ["pink", "yellow", "white", "pink", "white"],
+      ["white", "white", "pink", "blue", "blue"],
+      ["pink", "white", "white", "blue", "white"]     
+    ],
+    attempts: 9
+  },
+  {
+    id: 70,
+    pattern: [
+      ["white", "white", "white", "white", "pink"],
+      ["white", "yellow", "yellow", "pink", "white"],
+      ["pink", "pink", "blue", "blue", "white"],
+      ["white", "white", "blue", "blue", "white"],
+      ["yellow", "white", "white", "yellow", "blue"]     
+    ],
+    attempts: 8
+  },
+  {
+    id: 71,
+    pattern: [
+      ["blue", "blue", "white", "white", "yellow"],
+      ["pink", "blue", "white", "pink", "blue"],
+      ["blue", "pink", "blue", "blue", "pink"],
+      ["white", "white", "white", "pink", "white"],
+      ["pink", "blue", "yellow", "yellow", "white"]   
+    ],
+    attempts: 11
+  },
+  {
+    id: 72,
+    pattern: [
+      ["blue", "blue", "white", "white", "blue"],
+      ["yellow", "blue", "blue", "yellow", "pink"],
+      ["pink", "pink", "white", "blue", "pink"],
+      ["pink", "blue", "yellow", "pink", "blue"],
+      ["blue", "yellow", "blue", "yellow", "yellow"]     
+    ],
+    attempts: 10
+  },
+  {
+    id: 73,
+    pattern: [
+      ["blue", "yellow", "pink", "yellow", "white"],
+      ["yellow", "blue", "blue", "pink", "yellow"],
+      ["blue", "pink", "yellow", "pink", "pink"],
+      ["yellow", "blue", "pink", "blue", "pink"],
+      ["blue", "yellow", "pink", "pink", "yellow"]     
+    ],
+    attempts: 9
   }
   
 ];

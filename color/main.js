@@ -8,6 +8,12 @@ let grid = [];
         const puzzleIdDisplay = document.getElementById('current-puzzle-id');
         const resetButton = document.getElementById('reset-btn');
 
+        const instructionsBtn = document.getElementById('instructions-btn');
+        const modalOverlay = document.getElementById('modal-overlay');
+        const closeModalBtn = document.getElementById('close-modal');
+
+        const modalContent = document.getElementById('modal-content');
+
         function selectRandomPattern() {
             currentPattern = PATTERNS[Math.floor(Math.random() * PATTERNS.length)];
             //currentPattern = PATTERNS[11];
@@ -136,5 +142,46 @@ let grid = [];
         resetButton.addEventListener('click', resetGame);
 
         
+        instructionsBtn.addEventListener('click', () => {
+            //modalOverlay.classList.remove('hidden');
+        
+            // Limpiar contenido anterior
+            modalContent.innerHTML = '';
+        
+            // Generar listado de puzzles
+            PATTERNS.forEach((pattern) => {
+                const button = document.createElement('button');
+                button.textContent = `Puzzle #${pattern.id}`;
+                button.addEventListener('click', () => {
+                    loadPuzzleById(pattern.id);
+                    modalOverlay.classList.add('hidden');
+                });
+                modalContent.appendChild(button);
+            });
+        
+            modalOverlay.classList.remove('hidden');
+        });
+
+        modalOverlay.addEventListener('click', (event) => {
+            if (event.target === modalOverlay) {
+                modalOverlay.classList.add('hidden');
+            }
+        });
+
+        function loadPuzzleById(id) {
+            const selectedPattern = PATTERNS.find((pattern) => pattern.id === id);
+            if (selectedPattern) {
+                currentPattern = selectedPattern;
+                grid = currentPattern.pattern.map(row => [...row]);
+                attemptsLeft = currentPattern.attempts;
+                puzzleIdDisplay.textContent = currentPattern.id;
+                gameOver = false;
+                renderGrid();
+                attemptsDisplay.textContent = attemptsLeft;
+            }
+        }
+
+
+
         selectRandomPattern();
         resetGame();

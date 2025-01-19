@@ -14,7 +14,14 @@
     <div id="puzzle-id">Puzzle nº: <span id="current-puzzle-id"></span></div>
     <div id="game-container"></div>
     <div id="attempts">Intentos: <span id="attempts-left"></span></div>
-    <button id="reset-btn">Reset</button>
+    <div>
+        <button id="reset-btn">Reset</button>
+        <button id="instructions-btn">Select</button>
+    </div>
+    <div id="modal-overlay" class="hidden">
+        <div id="modal-content"></div>
+    </div>
+    
 
     <script src="lib/noty.js"></script>
     <script src="puzzles.js"></script>
