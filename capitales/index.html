@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capitales de Europa</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+        }
+        h2 {
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        p {
+            font-size: 18px;
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            margin: 10px 0;
+            text-align: center;
+        }       
+        button {
+            width: 90%;
+            padding: 12px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+        button:hover {
+            opacity: 0.8;
+        }
+        .btn-primary {
+            background: #ffcc00;
+            color: black;
+        }
+        .btn-secondary {
+            background: #aeadad;
+            color: white;
+        }
+        .correcto {
+            color: #2ecc71;
+            font-weight: bold;
+        }
+        .incorrecto {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Adivina la Capital</h2>
+        <p id="pais"></p>
+        <input type="text" id="respuesta" placeholder="Escribe la capital" autocomplete="off">
+        <button class="btn-primary" onclick="verificarRespuesta()">Resolver</button>        
+        <button class="btn-secondary" onclick="mostrarSolucion()">Mostrar Solución</button>
+        <button class="btn-primary" onclick="siguientePais()">Siguiente País</button>
+        <p id="resultado"></p>
+    </div>
+
+    <script>
+        const paises = [
+            { pais: "Albania", capital: "Tirana" },
+            { pais: "Alemania", capital: "Berlín" },
+            { pais: "Andorra", capital: "Andorra la Vieja" },
+            { pais: "Armenia", capital: "Ereván" },
+            { pais: "Austria", capital: "Viena" },
+            { pais: "Azerbaiyán", capital: "Bakú" },
+            { pais: "Bélgica", capital: "Bruselas" },
+            { pais: "Bielorrusia", capital: "Minsk" },
+            { pais: "Bosnia y Herzegovina", capital: "Sarajevo" },
+            { pais: "Bulgaria", capital: "Sofía" },
+            { pais: "Chipre", capital: "Nicosia" },
+            { pais: "Croacia", capital: "Zagreb" },
+            { pais: "Dinamarca", capital: "Copenhague" },
+            { pais: "Eslovaquia", capital: "Bratislava" },
+            { pais: "Eslovenia", capital: "Liubliana" },
+            { pais: "España", capital: "Madrid" },
+            { pais: "Estonia", capital: "Tallin" },
+            { pais: "Finlandia", capital: "Helsinki" },
+            { pais: "Francia", capital: "París" },
+            { pais: "Georgia", capital: "Tiflis" },
+            { pais: "Grecia", capital: "Atenas" },
+            { pais: "Hungría", capital: "Budapest" },
+            { pais: "Irlanda", capital: "Dublín" },
+            { pais: "Islandia", capital: "Reikiavik" },
+            { pais: "Italia", capital: "Roma" },
+            { pais: "Kazajistán", capital: "Astana" },
+            { pais: "Letonia", capital: "Riga" },
+            { pais: "Liechtenstein", capital: "Vaduz" },
+            { pais: "Lituania", capital: "Vilna" },
+            { pais: "Luxemburgo", capital: "Luxemburgo" },
+            { pais: "Malta", capital: "La Valeta" },
+            { pais: "Moldavia", capital: "Chisináu" },
+            { pais: "Mónaco", capital: "Mónaco" },
+            { pais: "Montenegro", capital: "Podgorica" },
+            { pais: "Noruega", capital: "Oslo" },
+            { pais: "Países Bajos", capital: "Ámsterdam" },
+            { pais: "Polonia", capital: "Varsovia" },
+            { pais: "Portugal", capital: "Lisboa" },
+            { pais: "Reino Unido", capital: "Londres" },
+            { pais: "República Checa", capital: "Praga" },
+            { pais: "Rumania", capital: "Bucarest" },
+            { pais: "Rusia", capital: "Moscú" },
+            { pais: "San Marino", capital: "San Marino" },
+            { pais: "Serbia", capital: "Belgrado" },
+            { pais: "Suecia", capital: "Estocolmo" },
+            { pais: "Suiza", capital: "Berna" },
+            { pais: "Ucrania", capital: "Kiev" } 
+        ];
+
+        let indiceActual = Math.floor(Math.random() * paises.length);
+
+        function mostrarPais() {
+            document.getElementById("pais").innerText = "¿Cuál es la capital de " + paises[indiceActual].pais + "?";
+            document.getElementById("resultado").innerText = "";
+            document.getElementById("respuesta").value = "";
+        }
+
+        function verificarRespuesta() {
+            let respuesta = document.getElementById("respuesta").value.trim();
+            let capitalCorrecta = paises[indiceActual].capital;
+            if (respuesta.toLowerCase() === capitalCorrecta.toLowerCase()) {
+                document.getElementById("resultado").innerHTML = "✅ ¡Correcto!";
+                document.getElementById("resultado").className = "correcto";
+            } else {
+                document.getElementById("resultado").innerHTML = "❌ Incorrecto";
+                document.getElementById("resultado").className = "incorrecto";
+            }
+        }
+
+        function mostrarSolucion() {
+            document.getElementById("respuesta").value = paises[indiceActual].capital;
+        }
+
+        function siguientePais() {
+            indiceActual = (indiceActual + 1) % paises.length;
+            mostrarPais();
+        }
+
+        mostrarPais();
+    </script>
+</body>
+</html>
