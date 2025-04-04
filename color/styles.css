@@ -100,7 +100,7 @@ h1 {
   max-width: 400px;
   animation: fadeIn 0.3s ease-in-out;
 
-  max-height: 460px;  /*365px*/ 
+  max-height: 365px;   
   overflow-y: auto; 
 }
 
