@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Arial:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* min-height: 100vh; */
+            margin: 0;
+            background-color: #121212;
+        }
+
+        .container {
+            /* background-color: #1f1f1f; */
+            background-color: #2f2f2f;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            text-align: center;
+            
+            width: 310px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 60px;
+            
+        }
+
+        h1 {
+            color: #fff;
+            margin-bottom: 25px;
+            font-size: 2.5em;
+            letter-spacing: 2px;
+        }
+
+        .botones {
+            display: grid;
+            grid-template-columns: repeat(2, 120px);
+            grid-template-rows: repeat(2, 120px);
+            gap: 15px;
+            margin-bottom: 45px;
+        }
+
+        .boton {
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .boton:hover {
+            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+            transform: scale(1.05);
+        }
+
+        .boton:active {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            transform: scale(0.95);
+        }
+
+        .rojo { background-color: #e53e3e; }
+        .verde { background-color: #38a169; }
+        .amarillo { background-color: #d69e2e; }
+        .azul { background-color: #3182ce; }
+
+        .rojo.iluminado { background-color: #f56565; box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0.5); }
+        .verde.iluminado { background-color: #48bb78; box-shadow: 0 0 10px 5px rgba(0, 255, 0, 0.5); }
+        .amarillo.iluminado { background-color: #ecc94b; box-shadow: 0 0 10px 5px rgba(255, 255, 0, 0.5); }
+        .azul.iluminado { background-color: #4299e1; box-shadow: 0 0 10px 5px rgba(0, 0, 255, 0.5); }
+
+        #startButton {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        #startButton:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        #startButton:active {
+            transform: scale(0.95);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .score {
+            font-size: 20px;
+            color: #eee;
+            margin-bottom: 15px;
+        }
+
+        .message {
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            min-height: 24px;
+
+            display: none;
+        }
+/*
+        @media (max-width: 600px) {
+            .botones {
+                grid-template-columns: repeat(2, 100px);
+                grid-template-rows: repeat(2, 100px);
+                gap: 10px;
+            }
+
+            .boton {
+                border-radius: 6px;
+            }
+
+            #startButton {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+
+            .score, .message {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+        }
+*/
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SIMON</h1>
+        <div class="botones">
+            <button class="boton rojo" data-color="rojo"></button>
+            <button class="boton verde" data-color="verde"></button>
+            <button class="boton amarillo" data-color="amarillo"></button>
+            <button class="boton azul" data-color="azul"></button>
+        </div>
+        <button id="startButton">Empezar</button>
+        <div class="score">Puntuación: <span id="scoreValue">0</span></div>
+        <div class="message" aria-live="polite"></div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const botones = document.querySelectorAll('.boton');
+            const startButton = document.getElementById('startButton');
+            const scoreValue = document.getElementById('scoreValue');
+            const messageElement = document.querySelector('.message');
+
+            let secuencia = [];
+            let secuenciaUsuario = [];
+            let puntuacion = 0;
+            let puedeHacerClic = false;
+            let gameOverFlag = false;
+
+            const colores = ['rojo', 'verde', 'amarillo', 'azul'];
+            const sonidos = {
+                rojo: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'),
+                verde: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'),
+                amarillo: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'),
+                azul: new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3')
+            };
+
+            function generarColorAleatorio() {
+                return colores[Math.floor(Math.random() * colores.length)];
+            }
+
+            function iluminarBoton(color) {
+                const boton = document.querySelector(`.boton[data-color="${color}"]`);
+                if (!boton) return;
+
+                boton.classList.add('iluminado');
+                sonidos[color].play();
+
+                setTimeout(() => {
+                    boton.classList.remove('iluminado');
+                }, 250);
+            }
+
+            async function mostrarSecuencia() {
+                puedeHacerClic = false;
+                messageElement.textContent = "Memoriza la secuencia...";
+                for (const color of secuencia) {
+                    await new Promise(resolve => setTimeout(() => {
+                        iluminarBoton(color);
+                        resolve();
+                    }, 750));
+                }
+                puedeHacerClic = true;
+                messageElement.textContent = "¡Tu turno!";
+            }
+
+            function handleClick(event) {
+                if (!puedeHacerClic || gameOverFlag) return;
+
+                const botonClicado = event.target;
+                const colorClicado = botonClicado.dataset.color;
+
+                iluminarBoton(colorClicado);
+                secuenciaUsuario.push(colorClicado);
+
+                const indiceActual = secuenciaUsuario.length - 1;
+                if (secuenciaUsuario[indiceActual] !== secuencia[indiceActual]) {
+                    gameOver();
+                    return;
+                }
+
+                if (secuenciaUsuario.length === secuencia.length) {
+                    setTimeout(nuevaRonda, 1000);
+                }
+            }
+
+            function nuevaRonda() {
+                secuenciaUsuario = [];
+                secuencia.push(generarColorAleatorio());
+                puntuacion++;
+                scoreValue.textContent = puntuacion;
+                mostrarSecuencia();
+            }
+
+            function gameOver() {
+                gameOverFlag = true;
+                messageElement.textContent = `¡Juego Terminado! Puntos: ${puntuacion}`;
+                startButton.textContent = 'Jugar de Nuevo';
+                secuencia = [];
+                secuenciaUsuario = [];
+                puntuacion = 0;
+                puedeHacerClic = false;
+                botones.forEach(boton => boton.removeEventListener('click', handleClick));
+                startButton.addEventListener('click', iniciarJuego);
+            }
+
+            function iniciarJuego() {
+                if (gameOverFlag) {
+                    gameOverFlag = false;
+                    puntuacion = 0;
+                    scoreValue.textContent = puntuacion;
+                    startButton.textContent = 'Empezar';
+                }
+                secuencia = [];
+                secuenciaUsuario = [];
+                puntuacion = 0;
+                puedeHacerClic = false;
+                startButton.removeEventListener('click', iniciarJuego);
+                botones.forEach(boton => boton.addEventListener('click', handleClick));
+                nuevaRonda();
+            }
+
+            botones.forEach(boton => {
+                boton.addEventListener('click', handleClick);
+            });
+            startButton.addEventListener('click', iniciarJuego);
+        });
+    </script>
+</body>
+</html>
