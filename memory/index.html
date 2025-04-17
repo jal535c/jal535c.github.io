@@ -175,14 +175,14 @@
             background-color: var(--cell-correct-bg);
             color: #1e8449; /* Verde oscuro */
             cursor: default;
-            animation: pulseCorrect 0.5s ease;
+            /* animation: pulseCorrect 0.5s ease; */
         }
 
         .grid-cell.incorrect {
             background-color: var(--cell-incorrect-bg);
             color: #a93226; /* Rojo oscuro */
             cursor: default;
-            animation: shakeIncorrect 0.5s ease;
+            /* animation: shakeIncorrect 0.5s ease; */
         }
 
         /* --- Animaciones sutiles --- 
@@ -220,8 +220,8 @@
             <input type="number" id="level" value="4" min="2" max="25"> 
         </div>
          <div>
-            <label for="display-time">Tiempo (ms):</label>
-            <input type="number" id="display-time" value="1500" min="100" step="100"> 
+            <label for="display-time">Tiempo (s):</label>
+            <input type="number" id="display-time" value="2" min="1" step="1"> 
         </div>
         <button id="start-button">Empezar</button>
     </div>
@@ -271,7 +271,7 @@
             }
 
             const level = parseInt(levelInput.value);
-            let displayTime = parseInt(displayTimeInput.value);
+            let displayTime = parseInt(displayTimeInput.value)*1000;
 
             // Validación básica
             if (level < 2 || level > gridSize * gridSize) {
