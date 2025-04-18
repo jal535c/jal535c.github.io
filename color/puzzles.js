@@ -835,6 +835,17 @@ const PATTERNS = [
       ["pink", "blue", "blue", "pink", "blue"]
     ],
     attempts: 9
+  },
+  {
+    id: 1027,
+    pattern: [
+      ["white", "blue", "pink", "blue", "pink"],
+      ["white", "blue", "white", "blue", "blue"],
+      ["pink", "pink", "blue", "yellow", "pink"],
+      ["pink", "white", "pink", "blue", "blue"],
+      ["blue", "yellow", "white", "pink", "blue"],
+    ],
+    attempts: 9
   }
   
 ];

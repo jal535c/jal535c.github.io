@@ -2,11 +2,10 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <!-- Crucial para responsiveness -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Reto Numérico Mejorado</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory</title>
     <style>
-        /* --- Estilos Generales --- */
+        /* --- Estilos Generales (igual que antes) --- */
         :root {
             --primary-color: #3498db; /* Azul */
             --secondary-color: #2ecc71; /* Verde */
@@ -19,212 +18,158 @@
             --cell-showing-bg: #aed6f1; /* Azul claro */
             --cell-correct-bg: #abebc6; /* Verde claro */
             --cell-incorrect-bg: #f5b7b1; /* Rojo claro */
+            --number-showing-color: #1a5276; /* Azul oscuro */
+            --number-correct-color: #1e8449; /* Verde oscuro */
+            --number-incorrect-color: #a93226; /* Rojo oscuro */
             --border-radius: 8px;
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            font-size: 16px; /* Base para REM */
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { font-size: 16px; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
+            /* min-height: 100vh; */
+            margin-top: 10px;
             background-color: var(--light-bg);
             color: var(--dark-text);
-            padding: 15px; /* Espacio en bordes para móviles */
-            text-align: center;
-        }
-
-        h1 {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-size: 2rem;
-        }
-
-        /* --- Controles --- */
-        #game-controls {
-            display: flex;
-            flex-wrap: wrap; /* Para que se ajusten en pantallas pequeñas */
-            justify-content: center;
-            align-items: center;
-            gap: 15px; /* Espacio entre controles */
-            margin-bottom: 1.5rem;
             padding: 15px;
-            background-color: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            max-width: 90%;
-        }
-
-        #game-controls label {
-            font-weight: bold;
-            margin-right: 5px;
-        }
-
-        #game-controls input[type="number"] {
-            width: 70px;
-            padding: 8px 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 1rem;
             text-align: center;
         }
+        h1 { color: var(--primary-color); margin-bottom: 1.5rem; font-size: 2rem; }
 
+        /* --- Controles (igual que antes) --- */
+        #game-controls {
+            display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+            gap: 15px; margin-bottom: 1.5rem; padding: 15px;
+            background-color: white; border-radius: var(--border-radius);
+            box-shadow: var(--shadow); max-width: 90%;
+        }
+        #game-controls label { font-weight: bold; margin-right: 5px; }
+        #game-controls input[type="number"] {
+            width: 70px; padding: 8px 10px; border: 1px solid #ccc;
+            border-radius: 4px; font-size: 1rem; text-align: center;
+        }
         #start-button {
-            padding: 10px 20px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: var(--border-radius);
-            transition: background-color 0.2s ease, transform 0.1s ease;
+            padding: 10px 20px; font-size: 1rem; font-weight: bold; cursor: pointer;
+            background-color: var(--primary-color); color: white; border: none;
+            border-radius: var(--border-radius); transition: background-color 0.2s ease, transform 0.1s ease;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+        #start-button:hover { background-color: #2980b9; }
+        #start-button:active { transform: scale(0.98); }
+        #start-button:disabled { background-color: #bdc3c7; cursor: not-allowed; box-shadow: none; }
 
-        #start-button:hover {
-            background-color: #2980b9; /* Azul más oscuro */
-        }
-        
-        #start-button:active {
-             transform: scale(0.98); /* Efecto de presión */
-        }
-
-        #start-button:disabled {
-            background-color: #bdc3c7; /* Gris */
-            cursor: not-allowed;
-            box-shadow: none;
-        }
-
-        /* --- Área de Mensajes --- */
+        /* --- Área de Mensajes (igual que antes) --- */
         #message-area {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            font-weight: 500;
-            min-height: 1.5em; /* Evita saltos */
-            color: var(--dark-text);
-            padding: 0 10px;
+            margin-bottom: 1.5rem; font-size: 1.1rem; font-weight: 500;
+            min-height: 1.5em; color: var(--dark-text); padding: 0 10px;
         }
-        
         #message-area.success { color: var(--secondary-color); }
         #message-area.error { color: var(--error-color); }
         #message-area.info { color: var(--primary-color); }
 
-
         /* --- Cuadrícula del Juego --- */
         #grid-container {
-            display: grid;
-            /* grid-template-columns se definirá en JS */
-            gap: 8px;
+            display: grid; 
+            gap: 8px; 
             padding: 10px;
-            background-color: #abb2b9; /* Fondo de cuadrícula grisáceo */
+            background-color: #abb2b9; 
             border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            
-            /* --- Clave para Responsiveness --- */
-            width: 90%; /* Usa porcentaje del contenedor padre */
-            max-width: 450px; /* Límite máximo para pantallas grandes */
-            aspect-ratio: 1 / 1; /* Mantiene la forma cuadrada */
-            /* width y max-width son más importantes que height aquí */
+            box-shadow: var(--shadow); 
+            width: 90%; 
+            max-width: 450px;
+            aspect-ratio: 1 / 1;
+            /* grid-template-columns se definirá en JS */
         }
 
+        /* --- Celda Individual --- */
         .grid-cell {
             background-color: var(--cell-bg);
-            border: 1px solid #95a5a6; /* Borde sutil */
+            border: 1px solid #95a5a6;
             border-radius: 6px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /* --- Tamaño de fuente Responsive (Ajustar si es necesario) --- */
-            
-            /* font-size: clamp(1rem, 5vw, 2rem);  */
-            /* Adapta tamaño entre 1rem y 2rem basado en 5% viewport width */
-            
-            font-weight: bold;
-            cursor: default; 
+            /* display: flex y align/justify ya no son necesarios para centrar el número */
+            cursor: default;
             transition: background-color 0.2s ease, border-color 0.2s ease;
             user-select: none;
-            color: var(--dark-text);
+            /* --- CLAVE: Posicionamiento Relativo para el Contenedor --- */
+            position: relative;
+            overflow: hidden; /* Por si acaso el número es enorme */
         }
 
+        /* --- Span Interno para el Número --- */
+        .cell-number {
+            /* --- CLAVE: Posicionamiento Absoluto --- */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Centrado perfecto */
+
+            /* --- Estilos del Número --- */
+            font-size: clamp(1rem, 5vw, 2rem); /* Mantenemos tamaño responsive */
+            font-weight: bold;
+            color: transparent; /* Por defecto, oculto hasta que se necesite */
+            transition: color 0.1s ease; /* Transición suave si cambiamos color */
+        }
+
+
+        /* --- Estilos de Estado para la CELDA (fondo y borde) --- */
         .grid-cell.clickable {
             cursor: pointer;
-            background-color: var(--cell-clickable-bg); 
+            background-color: var(--cell-clickable-bg);
         }
-
         .grid-cell.clickable:hover {
-            background-color: #fdfefe; /* Casi blanco al pasar el ratón */
+            background-color: #fdfefe;
             border-color: var(--primary-color);
         }
+        .grid-cell.showing { background-color: var(--cell-showing-bg); }
+        .grid-cell.correct { background-color: var(--cell-correct-bg); animation: pulseCorrect 0.5s ease; }
+        .grid-cell.incorrect { background-color: var(--cell-incorrect-bg); animation: shakeIncorrect 0.5s ease; }
 
-        .grid-cell.showing {
-            background-color: var(--cell-showing-bg);
-            color: #1a5276; /* Azul oscuro para el número */
-        }
 
-        .grid-cell.correct {
-            background-color: var(--cell-correct-bg);
-            color: #1e8449; /* Verde oscuro */
-            cursor: default;
-            /* animation: pulseCorrect 0.5s ease; */
-        }
+         /* --- Estilos de Estado para el NÚMERO (color del texto) --- */
+        .grid-cell.showing .cell-number { color: var(--number-showing-color); }
+        .grid-cell.correct .cell-number { color: var(--number-correct-color); }
+        .grid-cell.incorrect .cell-number { color: var(--number-incorrect-color); }
+        /* Si fallas y mostramos el número correcto */
+        .grid-cell.missed .cell-number { color: var(--warning-color); }
 
-        .grid-cell.incorrect {
-            background-color: var(--cell-incorrect-bg);
-            color: #a93226; /* Rojo oscuro */
-            cursor: default;
-            /* animation: shakeIncorrect 0.5s ease; */
-        }
 
-        /* --- Animaciones sutiles --- 
+        /* --- Animaciones (igual que antes) --- */
         @keyframes pulseCorrect {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); }
+        }
+        @keyframes shakeIncorrect {
+            0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); }
         }
 
-        @keyframes shakeIncorrect {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
-        }
-        */
-        /* --- Media Query Opcional (Ajustes finos si son necesarios) --- */
+        /* --- Media Query (igual que antes) --- */
         @media (max-width: 480px) {
             h1 { font-size: 1.8rem; }
             #game-controls { gap: 10px; }
             #game-controls input[type="number"] { width: 60px; padding: 6px 8px;}
             #start-button { padding: 8px 16px; font-size: 0.9rem;}
-            /* Podrías ajustar el clamp() en .grid-cell si el texto se ve muy grande/pequeño */
-            .grid-cell { font-size: clamp(0.9rem, 6vw, 1.8rem); }
+            .cell-number { font-size: clamp(0.9rem, 6vw, 1.8rem); } /* Ajustar si es necesario */
         }
 
     </style>
 </head>
 <body>
 
-    <h1>Reto Numérico</h1>
+    <h1>Memory Game</h1>
 
     <div id="game-controls">
         <div>
-            <label for="level">Nivel:</label>
-            <input type="number" id="level" value="4" min="2" max="25"> 
+          <label for="level">Nivel:</label>
+          <input type="number" id="level" value="4" min="2" max="25">
         </div>
-         <div>
-            <label for="display-time">Tiempo (s):</label>
-            <input type="number" id="display-time" value="2" min="1" step="1"> 
+        <div>
+          <label for="display-time">Tiempo (s):</label>
+          <input type="number" id="display-time" value="2" min="1" step="1">
         </div>
         <button id="start-button">Empezar</button>
     </div>
@@ -242,171 +187,153 @@
         const displayTimeInput = document.getElementById('display-time');
         const messageArea = document.getElementById('message-area');
 
-        let gridSize = 5; // Cuadrícula de 5x5 = 25 celdas
-        let numbersToRemember = []; 
-        let currentSequence = []; 
+        let gridSize = 5;
+        let numbersToRemember = [];
+        let currentSequence = [];
         let userClickCount = 0;
-        let cells = []; 
+        let cells = []; // Array de { element: div, numberSpan: span }
         let gameActive = false;
-        let showingPhase = false; 
-        let timeoutId = null; // Para poder cancelar el timeout si se reinicia rápido
+        let showingPhase = false;
+        let timeoutId = null;
 
         // --- Funciones del Juego ---
 
         function setupGrid() {
-            gridContainer.innerHTML = ''; 
-            cells = []; 
-            gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`; 
+            gridContainer.innerHTML = '';
+            cells = [];
+            gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
 
             for (let i = 0; i < gridSize * gridSize; i++) {
                 const cell = document.createElement('div');
                 cell.classList.add('grid-cell');
-                cell.dataset.index = i; 
+                cell.dataset.index = i;
+
+                // --- CLAVE: Añadir el span para el número ---
+                const numberSpan = document.createElement('span');
+                numberSpan.classList.add('cell-number');
+                cell.appendChild(numberSpan); // Añadir span dentro de la celda
+
                 cell.addEventListener('click', handleCellClick);
                 gridContainer.appendChild(cell);
-                cells.push(cell); 
+                // Guardar referencia tanto a la celda como al span
+                cells.push({ element: cell, numberSpan: numberSpan });
             }
         }
 
         function startGame() {
-            if (showingPhase) { // Si ya se están mostrando, cancela el timeout anterior
-                 clearTimeout(timeoutId);
-            }
+            if (showingPhase) { clearTimeout(timeoutId); }
 
             const level = parseInt(levelInput.value);
             let displayTime = parseInt(displayTimeInput.value)*1000;
 
-            // Validación básica
             if (level < 2 || level > gridSize * gridSize) {
-                setMessage(`El nivel debe estar entre 2 y ${gridSize * gridSize}.`, 'error');
-                return;
+                setMessage(`El nivel debe estar entre 2 y ${gridSize * gridSize}.`, 'error'); return;
             }
-             if (isNaN(displayTime) || displayTime < 100) {
+            if (isNaN(displayTime) || displayTime < 100) {
                 setMessage('El tiempo de espera debe ser al menos 100 ms.', 'error');
-                displayTime = 100; // Corregir a un mínimo
-                displayTimeInput.value = displayTime;
+                displayTime = 100; displayTimeInput.value = displayTime;
             }
 
+            gameActive = false; showingPhase = true;
+            startButton.disabled = true; levelInput.disabled = true; displayTimeInput.disabled = true;
+            userClickCount = 0; numbersToRemember = []; currentSequence = [];
 
-            gameActive = false;
-            showingPhase = true;
-            startButton.disabled = true;
-            levelInput.disabled = true;
-            displayTimeInput.disabled = true; // Deshabilitar también el tiempo
-            userClickCount = 0;
-            numbersToRemember = [];
-            currentSequence = [];
-
-            // Resetea visualmente las celdas
-            cells.forEach(cell => {
-                cell.textContent = '';
-                cell.className = 'grid-cell'; // Resetea todas las clases extra
+            // Resetea visualmente celdas y spans
+            cells.forEach(cellData => {
+                cellData.element.className = 'grid-cell'; // Resetea clases de la celda
+                cellData.numberSpan.textContent = '';     // Limpia texto del span
             });
 
             setMessage('Memoriza los números...', 'info');
 
-            // 1. Elegir celdas y números aleatorios
             const availableIndices = Array.from({ length: gridSize * gridSize }, (_, i) => i);
             for (let i = 1; i <= level; i++) {
-                if (availableIndices.length === 0) break; // Seguridad por si acaso
+                if (availableIndices.length === 0) break;
                 const randomIndex = Math.floor(Math.random() * availableIndices.length);
-                const cellIndex = availableIndices.splice(randomIndex, 1)[0]; 
+                const cellIndex = availableIndices.splice(randomIndex, 1)[0];
                 numbersToRemember.push({ index: cellIndex, value: i });
             }
-
             currentSequence = [...numbersToRemember].sort((a, b) => a.value - b.value);
 
-            // 2. Mostrar números
+            // Mostrar números DENTRO DEL SPAN y añadir clase a la CELDA
             numbersToRemember.forEach(item => {
-                cells[item.index].textContent = item.value;
-                cells[item.index].classList.add('showing');
+                cells[item.index].numberSpan.textContent = item.value; // Poner número en el span
+                cells[item.index].element.classList.add('showing');   // Clase de estado en la celda
             });
 
-            // 3. Ocultar números después del tiempo especificado
             timeoutId = setTimeout(() => {
                 numbersToRemember.forEach(item => {
-                    cells[item.index].textContent = '';
-                    cells[item.index].classList.remove('showing');
-                    // Solo añadir 'clickable' si el juego no ha terminado por un error o reinicio rápido
-                    if(showingPhase) { 
-                      cells[item.index].classList.add('clickable'); 
+                    // --- CLAVE: Quitar clase 'showing', pero el número sigue en el span (invisible por CSS) ---
+                    cells[item.index].element.classList.remove('showing');
+                    if (showingPhase) { // Solo si el timeout completó normalmente
+                        cells[item.index].element.classList.add('clickable');
                     }
                 });
-                 if(showingPhase) { // Solo si el timeout completó normalmente
-                     setMessage(`Ahora haz clic en orden: 1 a ${level}`, 'info');
-                     gameActive = true; 
-                 }
-                 showingPhase = false; 
-                 // No reactivamos botones aquí, solo al final (ganar/perder)
-            }, displayTime); 
+                if (showingPhase) {
+                    setMessage(`Ahora haz clic en orden: 1 a ${level}`, 'info');
+                    gameActive = true;
+                }
+                showingPhase = false;
+            }, displayTime);
         }
 
         function handleCellClick(event) {
-            if (!gameActive || showingPhase) return; 
-
-            const clickedCell = event.target;
-            const clickedIndex = parseInt(clickedCell.dataset.index);
-
-            if (!clickedCell.classList.contains('clickable')) {
-                return; // Ignora clics en celdas no activas o ya usadas
+             // --- CLAVE: Usar currentTarget para asegurar que obtenemos la celda aunque se haga clic en el span ---
+            const clickedCellElement = event.currentTarget; 
+            if (!gameActive || showingPhase || !clickedCellElement.classList.contains('clickable')) {
+                 return; 
             }
 
-            // Comprobar si el clic es correcto
+            const clickedIndex = parseInt(clickedCellElement.dataset.index);
+            const cellData = cells[clickedIndex]; // Obtener { element, numberSpan }
+
             if (currentSequence.length > userClickCount && clickedIndex === currentSequence[userClickCount].index) {
                 // Clic correcto
-                clickedCell.textContent = currentSequence[userClickCount].value; 
-                clickedCell.classList.remove('clickable');
-                clickedCell.classList.add('correct');
+                // El número ya está en el span, solo necesitamos actualizar clases de la celda
+                cellData.element.classList.remove('clickable');
+                cellData.element.classList.add('correct'); // La clase 'correct' hará visible el número en el span
                 userClickCount++;
 
-                // Comprobar si se completó la secuencia
                 if (userClickCount === currentSequence.length) {
                     setMessage(`¡Correcto! Nivel ${currentSequence.length} superado.`, 'success');
-                    endGame(true); // Ganó
+                    endGame(true);
                 }
             } else {
                 // Clic incorrecto
-                clickedCell.classList.remove('clickable');
-                clickedCell.classList.add('incorrect');
-                setMessage(`¡Incorrecto! Fin del juego. La secuencia era hasta ${currentSequence[userClickCount]?.value || userClickCount + 1}.`, 'error');
-                endGame(false); // Perdió
-                // Opcional: Mostrar dónde estaba el número correcto
-                 if(currentSequence[userClickCount]) {
-                     const correctCell = cells[currentSequence[userClickCount].index];
-                     correctCell.classList.add('showing'); // Resaltar la celda correcta
-                     correctCell.textContent = currentSequence[userClickCount].value;
-                 }
+                cellData.element.classList.remove('clickable');
+                cellData.element.classList.add('incorrect'); // La clase 'incorrect' hará visible el número incorrecto
+
+                // Muestra dónde estaba el número correcto (si existe)
+                const correctItem = currentSequence[userClickCount];
+                if (correctItem) {
+                    const correctCellData = cells[correctItem.index];
+                    // Asegurarse de no sobreescribir si era el mismo click incorrecto
+                    if (clickedIndex !== correctItem.index) {
+                       correctCellData.numberSpan.textContent = correctItem.value; // Poner el número correcto
+                       correctCellData.element.classList.add('missed'); // Añadir clase para color de aviso
+                    }
+                     setMessage(`¡Incorrecto! Se esperaba ${correctItem.value}. Fin del juego.`, 'error');
+                } else {
+                     setMessage(`¡Incorrecto! Fin del juego.`, 'error'); // Caso raro
+                }
+                endGame(false);
             }
         }
-        
+
         function endGame(playerWon) {
-             gameActive = false;
-             showingPhase = false; // Asegurarse de que esta fase termine
-             clearTimeout(timeoutId); // Limpiar cualquier timeout pendiente
-
-             // Quita la clase 'clickable' de todas las celdas restantes
-             cells.forEach(cell => cell.classList.remove('clickable'));
-
-             // Habilita los controles de nuevo
-             startButton.disabled = false; 
-             levelInput.disabled = false;
-             displayTimeInput.disabled = false;
-
-             // Opcional: Incrementar nivel si ganó y no está al máximo
-             // if (playerWon && parseInt(levelInput.value) < gridSize * gridSize) {
-             //    levelInput.value = parseInt(levelInput.value) + 1;
-             // }
+            gameActive = false; showingPhase = false;
+            clearTimeout(timeoutId);
+            cells.forEach(cellData => cellData.element.classList.remove('clickable')); // Quitar clickable de todas
+            startButton.disabled = false; levelInput.disabled = false; displayTimeInput.disabled = false;
         }
 
-        // Helper para mostrar mensajes con clase CSS
         function setMessage(text, type = 'info') {
-             messageArea.textContent = text;
-             messageArea.className = 'message-area ' + type; // Asigna clase para color
+            messageArea.textContent = text;
+            messageArea.className = 'message-area ' + type;
         }
-
 
         // --- Inicialización ---
-        setupGrid(); // Crea la cuadrícula inicial al cargar
+        setupGrid();
         startButton.addEventListener('click', startGame);
 
     </script>
