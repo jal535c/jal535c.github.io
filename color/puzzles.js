@@ -1000,7 +1000,51 @@ const PATTERNS = [
       ["pink", "pink", "white", "blue", "white"]
     ],
     attempts: 9
+  },
+  {
+    id: 414,
+    pattern: [
+      ["blue", "pink", "white", "pink", "pink"],
+      ["white", "blue", "pink", "pink", "pink"],
+      ["yellow", "white", "yellow", "blue", "blue"],
+      ["blue", "yellow", "blue", "white", "blue"],
+      ["pink", "pink", "blue", "blue", "blue"]
+    ],
+    attempts: 7
+  },
+  {
+    id: 1070,
+    pattern: [
+      ["white", "blue", "blue", "yellow", "pink"],
+      ["pink", "yellow", "blue", "yellow", "pink"],
+      ["white", "yellow", "yellow", "yellow", "white"],
+      ["blue", "white", "pink", "pink", "yellow"],
+      ["pink", "white", "yellow", "yellow", "white"]
+    ],
+    attempts: 9
+  },
+  {
+    id: 1076,
+    pattern: [
+      ["yellow", "blue", "yellow", "blue", "yellow"],
+      ["blue", "yellow", "pink", "yellow", "white"],
+      ["blue", "pink", "yellow", "pink", "yellow"],
+      ["yellow", "pink", "white", "blue", "pink"],
+      ["yellow", "yellow", "pink", "white", "blue"]
+    ],
+    attempts: 9
+  },
+  {
+    id: 1079, 
+    pattern: [
+      ["yellow", "yellow", "blue", "pink", "yellow"],
+      ["pink", "pink", "pink", "blue", "white"],
+      ["blue", "blue", "white", "yellow", "blue"],
+      ["blue", "blue", "yellow", "blue", "white"],
+      ["blue", "yellow", "pink", "blue", "blue"]
+    ],
+    attempts: 9
   }
-  
+
 
 ];
