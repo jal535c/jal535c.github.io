@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Examen</title>
+    <style>
+        :root {
+            --bg-body: #f4f7f6;
+            --bg-card: #ffffff;
+            --text-main: #2c3e50;
+            --text-light: #7f8c8d;
+            --primary: #3498db;
+            --primary-dark: #2980b9;
+            --success: #27ae60;
+            --success-bg: #d4edda;
+            --error: #c0392b;
+            --error-bg: #f8d7da;
+            --accent: #8e44ad;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+
+        .main-container {
+            width: 100%;
+            max-width: 800px;
+            background: var(--bg-card);
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- HEADER / NAV --- */
+        .top-bar {
+            background: #fff;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #eee;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto; 
+            gap: 10px;
+            align-items: center;
+        }
+
+        .action-group {
+            display: flex;
+            gap: 5px;
+        }
+
+        button {
+            border: none;
+            border-radius: 8px;
+            padding: 10px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            height: 42px; 
+        }
+
+        .btn-nav { background-color: var(--primary); width: 100%; }
+        .btn-nav:hover { background-color: var(--primary-dark); }
+        .btn-nav:disabled { background-color: #cbd5e0; cursor: not-allowed; }
+
+        .btn-finish { background-color: var(--success); }
+        .btn-exit { background-color: var(--error); }
+
+        .progress-bar-container {
+            height: 6px;
+            background: #f1f1f1;
+            width: 100%;
+            margin-top: 15px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* --- CONTENT --- */
+        .content-area {
+            padding: 20px 25px;
+            flex-grow: 1;
+            padding-bottom: 60px;
+        }
+
+        .q-header {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .question-text {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        /* --- OPTIONS --- */
+        .options-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .opt-card {
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 15px 20px;
+            font-size: 1.05rem;
+            line-height: 1.5;
+            cursor: pointer;
+            transition: transform 0.1s, border-color 0.2s;
+        }
+
+        .opt-card:hover:not(.disabled) {
+            border-color: var(--primary);
+            background-color: #f8fbff;
+        }
+
+        .opt-card.correct {
+            background-color: var(--success-bg);
+            border-color: var(--success);
+            color: #155724;
+        }
+
+        .opt-card.incorrect {
+            background-color: var(--error-bg);
+            border-color: var(--error);
+            color: #721c24;
+        }
+
+        .opt-card.disabled { cursor: default; }
+
+        /* --- INFO SLIDE --- */
+        .info-slide {
+            background: #fff8e1;
+            border-left: 5px solid #ffc107;
+            padding: 25px;
+            border-radius: 8px;
+            line-height: 1.8;
+            font-size: 1.05rem;
+
+            
+        }
+
+        .info-slide img {
+            width: 100%;
+
+        }
+
+        /* --- MENUS --- */
+        .menu-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh; /* Centrado vertical */
+            padding: 20px;
+            text-align: center;
+        }
+
+        .menu-btn {
+            width: 100%;
+            max-width: 350px;
+            margin: 10px 0;
+            padding: 20px;
+            font-size: 1.1rem;
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.2s;
+        }
+        .menu-btn:hover { 
+            background: var(--primary); 
+            color: white; 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* --- RESULTS --- */
+        .results-box {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+
+        .my-results .menu-btn {
+          margin: auto;
+        }
+
+
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 0 auto 30px;
+        }
+
+        @media (min-width: 800px) {
+            .main-container { border-radius: 20px; margin-top: 20px; margin-bottom: 20px; min-height: auto; }
+            .question-text { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+    
+    <div id="exam-selector" class="menu-screen">
+        <h1 style="color:var(--primary); margin-bottom: 10px;">Examenes</h1>
+        <p style="color:var(--text-light); margin-bottom: 30px;">Selecciona una convocatoria:</p>
+        <div id="exam-list" style="width: 100%; display: flex; flex-direction: column; align-items: center;"></div>
+    </div>
+
+    <div id="part-selector" class="menu-screen" style="display:none;">
+        <h2 id="selected-exam-title" style="color:var(--primary); margin-bottom: 20px;"></h2>
+        <div id="loader" class="loader"></div>
+        <div id="part-buttons" style="display:none; width: 100%; flex-direction: column; align-items: center;">
+            <p style="color:var(--text-light); margin-bottom: 20px;">Elige el bloque:</p>
+            <button class="menu-btn" onclick="startQuiz('parte1')">Primera Parte (Teoría)</button>
+            <button class="menu-btn" onclick="startQuiz('supuesto1')">Supuesto Práctico 1</button>
+            <button class="menu-btn" onclick="startQuiz('supuesto2')">Supuesto Práctico 2</button>
+            <button class="menu-btn" style="border-color: var(--error); color: var(--error);" onclick="exit()">← Cambiar Examen</button>
+        </div>
+    </div>
+
+    <div id="quiz-ui" style="display:none;">
+        <div class="top-bar">
+            <div class="nav-grid">
+                <button class="btn-nav" id="prev-btn" onclick="move(-1)">&#8592;</button>
+                <button class="btn-nav" id="next-btn" onclick="move(1)">&#8594;</button>
+                
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <div class="action-group">
+                        <button class="btn-finish" onclick="finish()" title="Finalizar">&#10003;</button>
+                        <button class="btn-exit" onclick="exit()" title="Salir">&#10005;</button>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+        </div>
+
+        <div class="content-area" id="render-area">
+            <img src="" alt="">
+        </div>
+    </div>
+
+    <div id="results" style="display:none;" class="results-box">
+        <div class="score-circle" id="final-score">0.0</div>
+        <h2 id="final-msg">¡Completado!</h2>
+        <div class="my-results">
+            <div style="font-size: 1.1rem; color: var(--text-light); margin-bottom: 30px;">
+                <p>Aciertos: <span id="r-correct" style="color:var(--success); font-weight:bold;">0</span></p>
+                <p>Fallos/Blancos: <span id="r-incorrect" style="color:var(--error); font-weight:bold;">0</span></p>
+                <p>Tiempo: <span id="r-time" style="color:var(--text-main); font-weight:bold;">00:00</span></p>
+            </div>
+            <button class="menu-btn" style="background:var(--primary); color:white;" onclick="exit()">Volver al Menú</button>
+            <button class="menu-btn" style="border-color:var(--error); color:var(--error); margin-top: 10px;" onclick="resetExam()">Borrar progreso y Reiniciar</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // --- CONFIGURACIÓN DE EXÁMENES ---
+    // AÑADE AQUÍ TUS NUEVOS EXÁMENES CUANDO CREES LAS CARPETAS
+    const AVAILABLE_EXAMS = [
+        { id: '1', title: 'TAI 2024 P (Modelo A)' },
+        { id: '2', title: 'TAI 2024 P (Modelo B)' },
+        { id: '3', title: 'AUX 2024 (Modelo B)' },
+        { id: '4', title: 'AUX 2024 (Modelo A)' },
+        { id: '5', title: 'TAI 2024 L (Modelo A)' },
+        
+    ];
+
+    // Variables de Estado
+    let activeData = [];
+    let currentIdx = 0;
+    let answers = {};
+    let currentKey = '';
+    let currentExamId = ''; // ID del examen actual (carpeta)
+    
+    // Variables del Temporizador
+    let startTime = 0;
+    let timerInterval = null;
+
+    // Al cargar la página, mostramos la lista de exámenes
+    window.onload = function() {
+        const listContainer = document.getElementById('exam-list');
+        
+        AVAILABLE_EXAMS.forEach(exam => {
+            const btn = document.createElement('button');
+            btn.className = 'menu-btn';
+            btn.innerText = exam.title;
+            btn.onclick = () => loadExamScripts(exam.id, exam.title);
+            listContainer.appendChild(btn);
+        });
+    };
+
+    // Carga dinámica de los scripts de la carpeta seleccionada
+    function loadExamScripts(id, title) {
+        currentExamId = id;
+        document.getElementById('exam-selector').style.display = 'none';
+        document.getElementById('part-selector').style.display = 'flex';
+        document.getElementById('selected-exam-title').innerText = title;
+
+        // Definimos los scripts a cargar
+        const scripts = ['parte1.js', 'supuesto1.js', 'supuesto2.js'];
+        let loadedCount = 0;
+
+        scripts.forEach(scriptName => {
+            const script = document.createElement('script');
+            // AQUÍ ESTÁ LA MAGIA: Busca en la carpeta del examen (ej: examenes/1/parte1.js)
+            script.src = `examenes/${id}/${scriptName}`;
+            script.onload = () => {
+                loadedCount++;
+                if (loadedCount === scripts.length) {
+                    // Todos cargados
+                    document.getElementById('loader').style.display = 'none';
+                    document.getElementById('part-buttons').style.display = 'flex';
+                }
+            };
+            script.onerror = () => {
+                alert(`Error cargando ${scriptName}. ¿Existe la carpeta "examenes/${id}"?`);
+            };
+            document.body.appendChild(script);
+        });
+    }
+
+    // --- LÓGICA DEL EXAMEN (Igual que antes pero adaptada) ---
+
+    // Objeto contenedor de los datos cargados
+    const datasets = {}; 
+
+    function startQuiz(key) {
+        // Mapeamos las variables globales que cargaron los scripts al objeto datasets
+        // Nota: Asumimos que los archivos .js definen const parte1, supuesto1, etc.
+        try {
+            if(typeof parte1 !== 'undefined') datasets.parte1 = parte1;
+            if(typeof supuesto1 !== 'undefined') datasets.supuesto1 = supuesto1;
+            if(typeof supuesto2 !== 'undefined') datasets.supuesto2 = supuesto2;
+        } catch (e) {
+            console.error("Error asignando datasets", e);
+        }
+
+        currentKey = key;
+        activeData = datasets[key];
+        
+        if (!activeData) {
+            alert("No se han podido cargar los datos de esta parte.");
+            return;
+        }
+
+        // Recuperar progreso (usamos ID de examen + parte para la key única)
+        const storageKey = `tai_${currentExamId}_${key}`;
+        
+        const savedIdx = localStorage.getItem(`${storageKey}_idx`);
+        const savedAns = localStorage.getItem(`${storageKey}_ans`);
+        const savedTime = localStorage.getItem(`${storageKey}_time`);
+
+        currentIdx = savedIdx ? parseInt(savedIdx) : 0;
+        answers = savedAns ? JSON.parse(savedAns) : {};
+        
+        if (savedTime) {
+            startTime = parseInt(savedTime); 
+        } else {
+            startTime = Date.now();
+            localStorage.setItem(`${storageKey}_time`, startTime);
+        }
+
+        // timerInterval = setInterval(updateLiveTimer, 1000);
+        // updateLiveTimer();
+
+        document.getElementById('part-selector').style.display = 'none';
+        document.getElementById('quiz-ui').style.display = 'block';
+        render();
+    }
+
+    // --- COMENTADO: LOGICA VISUAL DEL RELOJ ---
+    /*
+    function updateLiveTimer() {
+        const now = Date.now();
+        const diff = Math.floor((now - startTime) / 1000);
+        const mins = Math.floor(diff / 60).toString().padStart(2, '0');
+        const secs = (diff % 60).toString().padStart(2, '0');
+        const timerDisplay = document.getElementById('live-timer');
+        if(timerDisplay) timerDisplay.innerText = `${mins}:${secs}`;
+    }
+    */
+
+    function render() {
+        const item = activeData[currentIdx];
+        const area = document.getElementById('render-area');
+        const qNum = currentIdx + 1;
+        const total = activeData.length;
+        
+        document.getElementById('progress-fill').style.width = `${(qNum/total)*100}%`;
+        document.getElementById('prev-btn').disabled = currentIdx === 0;
+
+        // Limpiar área
+        area.innerHTML = '';
+
+        if (item.type === 'info') {
+            area.innerHTML = `
+                <div class="q-header">Información Adicional</div>
+                <div class="info-slide">
+                    <h3 style="margin-top:0">${item.title}</h3>
+                    <img src="${item.img}" alt="">
+                    <p>${item.content}</p>
+                </div>
+                <div style="text-align:center; margin-top:30px; color:#999; font-style:italic;">
+                    Pulsa "Siguiente" para comenzar las preguntas.
+                </div>`;
+        } else {
+            let html = `
+                <div class="q-header">Pregunta ${qNum} de ${total}</div>
+                <div class="question-text">${item.q}</div>
+                <div class="options-grid">`;
+            
+            item.o.forEach((optText, i) => {
+                let className = 'opt-card';
+                if (answers[currentIdx] !== undefined) {
+                    className += ' disabled';
+                    if (i === item.a) className += ' correct';
+                    else if (answers[currentIdx] === i) className += ' incorrect';
+                }
+                html += `<div class="${className}" onclick="selectAnswer(${i})">${optText}</div>`;
+            });
+            html += `</div>`;
+            area.innerHTML = html;
+        }
+
+        // Guardar progreso
+        const storageKey = `tai_${currentExamId}_${currentKey}`;
+        localStorage.setItem(`${storageKey}_idx`, currentIdx);
+    }
+
+    function selectAnswer(i) {
+        if (answers[currentIdx] !== undefined) return;
+        answers[currentIdx] = i;
+        const storageKey = `tai_${currentExamId}_${currentKey}`;
+        localStorage.setItem(`${storageKey}_ans`, JSON.stringify(answers));
+        render();
+    }
+
+    function move(delta) {
+        const newIdx = currentIdx + delta;
+        if (newIdx >= 0 && newIdx < activeData.length) {
+            currentIdx = newIdx;
+            render();
+        }
+    }
+
+    function finish() {
+        // clearInterval(timerInterval); 
+        const endTime = Date.now();
+        const totalSeconds = Math.floor((endTime - startTime) / 1000);
+
+        const mins = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
+        const secs = (totalSeconds % 60).toString().padStart(2, '0');
+        const timeStr = `${mins}m ${secs}s`;
+
+        let correctCount = 0;
+        let questionCount = 0;
+
+        activeData.forEach((item, idx) => {
+            if (item.type !== 'info') {
+                questionCount++;
+                if (answers[idx] === item.a) correctCount++;
+            }
+        });
+
+        const score = questionCount > 0 ? (correctCount / questionCount) * 10 : 0;
+
+        document.getElementById('quiz-ui').style.display = 'none';
+        document.getElementById('results').style.display = 'block';
+        
+        document.getElementById('final-score').innerText = score.toFixed(2);
+        document.getElementById('r-correct').innerText = correctCount;
+        document.getElementById('r-incorrect').innerText = questionCount - correctCount;
+        document.getElementById('r-time').innerText = timeStr;
+    }
+
+    function exit() {
+        // Recargar la página es NECESARIO para limpiar las variables 'const' cargadas
+        // y permitir elegir otro examen sin conflictos.
+        location.reload();
+    }
+
+    function resetExam() {
+        // Pedimos confirmación por si el usuario pulsa sin querer
+        if (confirm("¿Estás seguro de que quieres borrar todas tus respuestas de esta parte y empezar de cero?")) {
+            
+            // Reconstruimos la clave exacta que usa este examen y esta parte
+            const storageKey = `tai_${currentExamId}_${currentKey}`;
+            
+            // Borramos los 3 datos de la memoria del navegador
+            localStorage.removeItem(`${storageKey}_idx`);
+            localStorage.removeItem(`${storageKey}_ans`);
+            localStorage.removeItem(`${storageKey}_time`);
+            
+            // Recargamos la página para que la app vuelva a su estado inicial limpio
+            location.reload();
+        }
+    }
+</script>
+
+</body>
+</html>
