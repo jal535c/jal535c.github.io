@@ -73,9 +73,9 @@ const supuesto2 = [
     "a": 2
   },
   {
-    "q": "12. En la organización se están planteando instalar puntos de acceso WiFi. ¿Cuál de estos estándares puede funcionar a 2,4 GHz, 5 GHz y 6 GHz?",
+    "q": "?12. En la organización se están planteando instalar puntos de acceso WiFi. ¿Cuál de estos estándares puede funcionar a 2,4 GHz, 5 GHz y 6 GHz?",
     "o": ["a) No existe la banda de los 6 GHz", "b) 802.11ax", "c) 802.11ac", "d) 802.11be"],
-    "a": 1
+    "a": 3
   },
   {
     "q": "13. Desde su equipo en la subred de PCs de Usuarios del Modelo B... necesita conectarse mediante SSH y SCP. ¿Qué puerto o puertos estándares deberían tener abiertos en el firewall?",
@@ -88,14 +88,14 @@ const supuesto2 = [
     "a": 1
   },
   {
-    "q": "15. En uno de los servidores de la Subred de Aplicaciones del Modelo B se necesita realizar una captura del tráfico que pasa por la interfaz de red eth1 y guardarlo en fichero.out...",
+    "q": "?15. En uno de los servidores de la Subred de Aplicaciones del Modelo B se necesita realizar una captura del tráfico que pasa por la interfaz de red eth1 y guardarlo en fichero.out para su posterior analisis, ¿cual de las siguientes sentencias es la correcta?",
     "o": [
       "a) snoop -d eth1 -w fichero.out",
       "b) tcpdump -i any -o fichero.out",
       "c) tcpdump -i eth1 -w fichero.out",
       "d) snoop -d any -o fichero.out"
     ],
-    "a": -1
+    "a": 2
   },
   {
     "q": "16. En el servidor de la Subred de Aplicaciones... que utiliza Apache 2.4, quieren servir páginas de otros dominios. ¿Cuál de las siguientes directivas debe utilizar?",
@@ -123,16 +123,16 @@ const supuesto2 = [
     "a": 1
   },
   {
-    "q": "20. En la Subred de PCs de Usuario... saber la tabla de enrutamiento de los equipos. ¿Cuál de los siguientes comandos permite ver esa información?",
+    "q": "20. En la Subred de PCs de Usuario del modelo B, los PCs tienen Windows 10. Necesitamos saber la tabla de enrutamiento de los equipos. ¿Cuál de los siguientes comandos permite ver esa información?",
     "o": ["a) route show", "b) ip route ls", "c) route print", "d) ip route print"],
     "a": 2
   },
 
 
   {
-    "q": "R1. ¿Qué comando muestra información del conjunto resultante de directivas (RSoP) para un usuario y equipo de destino en los equipos Windows 10...?",
+    "q": "?R1. ¿Qué comando muestra información del conjunto resultante de directivas (RSoP) para un usuario y equipo de destino en los equipos Windows 10 de la subred de PCs de usuarios del modelo B?",
     "o": ["a) gpshow", "b) gpprint", "c) gpresult", "d) gplist"],
-    "a": -1
+    "a": 2
   },
   {
     "q": "R2. Una vez implementado el acceso telemático... VPN, en relación con esta tecnología, indique en qué RFC está definido el protocolo PPTP:",
@@ -140,23 +140,23 @@ const supuesto2 = [
     "a": 1
   },
   {
-    "q": "R3. Los dispositivos de interconexión... son compatibles con POE++. Señale la afirmación correcta con respecto a este término:",
+    "q": "?R3. Los dispositivos de interconexión de redes de nuestro sitema son compatibles con POE++. Señale la afirmación correcta con respecto a este término:",
     "o": [
       "a) Las siglas corresponden a Power-of-Ethernet.",
       "b) Como estándar, recibe la denominación IEEE 802.3at.",
       "c) La alimentación real recibida es de 25,50 Watts.",
       "d) Se subdivide en dos tipos: Tipo 3 y Tipo 4."
     ],
-    "a": 0
+    "a": 3
   },
   {
-    "q": "R4. Si fuese el motor de Base de Datos ORACLE, indique cuál de los siguientes comandos utilizaria para crear una copia de seguridad de la base de datos origen:",
+    "q": "?R4. Si fuese el motor de Base de Datos ORACLE, indique cuál de los siguientes comandos utilizaria para crear una copia de seguridad de la base de datos origen:",
     "o": ["a) RMAN", "b) DUMPALL", "c) ORACLE_BCK", "d) COPYDB"],
-    "a": 2
+    "a": 0
   },
   {
-    "q": "R5. Se ha decidido que la última IP válida de host para la Subred de Aplicaciones del Modelo B sea considerada como Puerta de Enlace... señale la opción correcta:",
+    "q": "?R5. Se ha decidido que la última IP válida de host para la Subred de Aplicaciones del Modelo B sea considerada como Puerta de Enlace o Default Gateway... señale la opción correcta:",
     "o": ["a) 10.20.30.191", "b) 10.20.30.190", "c) 10.20.30.193", "d) 10.20.30.192"],
-    "a": 0
+    "a": 1
   }
 ];

@@ -65,7 +65,7 @@ const parte1 = [
     "a": 3
   },
   {
-    "q": "14. Según establece el artículo 34 de la Ley Orgánica 3/2018... los responsables y encargados de tratamiento comunicarán a la Agencia Española de Protección de Datos... en el plazo de:",
+    "q": "14. Según establece el artículo 34 de la Ley Orgánica 3/2018... los responsables y encargados de tratamiento comunicarán a la Agencia Española de Protección de Datos, las designaciones, nombramientos y ceses de los delegados de proteccion de datos en el plazo de:",
     "o": ["a) 10 días.", "b) 15 días.", "c) 1 mes.", "d) 3 meses."],
     "a": 0
   },
@@ -115,7 +115,7 @@ const parte1 = [
     "a": 1
   },
   {
-    "q": "24.",
+    "q": "24. La ALU es una parte de:",
     "o": ["a) La memoria.", "b) La CPU.", "c) El bus de operaciones.", "d) El multiplexor de entrada."],
     "a": 1
   },
@@ -175,12 +175,12 @@ const parte1 = [
     "a": 1
   },
   {
-    "q": "36. [Opciones disponibles en fuente]",
-    "o": ["a) Un atributo se define sobre diversos dominios.", "b) El dominio no tiene existencia propia y depende de las entidades...", "c) La entidad es aquel objeto, real o abstracto, acerca del cual se desea almacenar información...", "d) La clave candidata es el conjunto de atributos que garantizan la unicidad..."],
+    "q": "36. Señale la respuesta correcta relativa al Modelo Entidad/Relación Extendido según establece METRICA v3:",
+    "o": ["a) Un atributo se define sobre diversos dominios.", "b) El dominio no tiene existencia propia y depende de las entidades, las relaciones o los atributos.", "c) La entidad es aquel objeto, real o abstracto, acerca del cual se desea almacenar información en la base de datos.", "d) La clave candidata es el conjunto de atributos que garantizan la unicidad de las ocurrencias e identifican la ocurrencia univocamente."],
     "a": 2
   },
   {
-    "q": "37. La arquitectura ANSI/SPARC define para un sistema de gestión de bases de datos tres niveles de abstracción. Indicar la afirmación INCORRECTA:",
+    "q": "An37. La arquitectura ANSI/SPARC define para un sistema de gestión de bases de datos tres niveles de abstracción. Indicar la afirmación INCORRECTA:",
     "o": ["a) El nivel externo contiene las vistas externas...", "b) El nivel físico define cómo se almacenan los datos...", "c) El nivel contextual define el formato de los campos.", "d) El nivel interno también recibe el nombre de nivel lógico."],
     "a": -1
   },
@@ -220,7 +220,7 @@ const parte1 = [
     "a": 1
   },
   {
-    "q": "45. Según METRICA v3, la relación jerárquica entre un objeto que representa la totalidad de ese objeto y las partes que lo componen, es una relación entre clases de tipo:",
+    "q": "An45. Según METRICA v3, la relación jerárquica entre un objeto que representa la totalidad de ese objeto y las partes que lo componen, es una relación entre clases de tipo:",
     "o": ["a) Herencia.", "b) Composición.", "c) Asociación.", "d) Agregación."],
     "a": -1
   },
@@ -240,12 +240,12 @@ const parte1 = [
     "a": 1
   },
   {
-    "q": "49. [Texto no disponible en la fuente]",
+    "q": "49. Señale la respuesta INCORRECTA referente al objeto POCO en .NET:",
     "o": ["a) Es una estructura de datos de .NET que solo contiene propiedades o campos públicos.", "b) Es el acrónimo de Plain Old CLR Object.", "c) No hereda de otra clase o implementa una interfaz.", "d) Podrá contener miembros como: métodos. eventos y delegados."],
     "a": 3
   },
   {
-    "q": "50. Cuál de las siguientes afirmaciones sobre REST es FALSA:",
+    "q": "An50. Cuál de las siguientes afirmaciones sobre REST es FALSA:",
     "o": ["a) REST es el acrónimo de Representational State Transfer.", "b) Los objetos en REST siempre se manipulan a partir de la URI.", "c) URI son las siglas de Unique Resource Identifier.", "d) Utiliza un protocolo cliente/servidor sin estado."],
     "a": -1
   },
@@ -275,7 +275,7 @@ const parte1 = [
     "a": 3
   },
   {
-    "q": "56. Para detectar, eliminar y/o mitigar las debilidades... se pueden realizar diferentes análisis de seguridad... entre los que NO se encuentra:",
+    "q": "56. Para detectar, eliminar y/o mitigar las debilidades... se pueden realizar diferentes análisis de seguridad durante el ciclo de vida del desarrollo de software, entre los que NO se encuentra:",
     "o": ["a) SAST", "b) S-SDLC (Secure Software Development Liability Control)", "c) DAST", "d) SCA"],
     "a": 1
   },
@@ -285,7 +285,7 @@ const parte1 = [
     "a": 3
   },
   {
-    "q": "58. Según METRICA v3, ¿qué tipo de pruebas son las que tienen como objetivo verificar el correcto ensamblaje entre los distintos componentes...?",
+    "q": "58. Según METRICA v3, ¿qué tipo de pruebas son las que tienen como objetivo verificar el correcto ensamblaje entre los distintos componentes para comprobar que interactuan correctamente a traves de sus interfaces, cumplen la funcionalidad establecida y se ajustan a los requisitos no funcionales especificados?",
     "o": ["a) Pruebas del sistema.", "b) Pruebas de implantación.", "c) Pruebas de regresión.", "d) Pruebas de integración."],
     "a": 3
   },
@@ -305,7 +305,7 @@ const parte1 = [
     "a": 2
   },
   {
-    "q": "62. [Texto no disponible en la fuente]",
+    "q": "62. En un sistema UNIX, cuál es la respuesta INCORRECTA:",
     "o": ["a) El GID es el número de identificación de grupo.", "b) El UID es el número de identificación de usuario.", "c) El administrador del sistema se denomina root.", "d) El proceso init se refiere al proceso de arranque de un usuario."],
     "a": 3
   },
@@ -375,13 +375,13 @@ const parte1 = [
     "a": 1
   },
   {
-    "q": "76. [Texto no disponible en la fuente]",
-    "o": ["a) La clave pública del certificado del sitio web...", "b) La clave privada del certificado del sitio web...", "c) Las claves pública y privada del certificado del sitio web...", "d) Ninguna."],
+    "q": "76. ¿Qué parte de un certificado de sitio web necesita un navegador para establecer una conexión segura HTTPS?",
+    "o": ["a) La clave pública del certificado del sitio web, para que el navegador descifre los mensajes enviados por ese sitio web.", "b) La clave privada del certificado del sitio web, para que el navegador cifre los mensajes que envía al sitio web", "c) Las claves pública y privada del certificado del sitio web, para poder cifrar y descifrar los mensajes que se intercambia con el sitio web.", "d) Ninguna. Es el sitio web el que debe recibir las claves pública y privada del certificado de la persona que navega."],
     "a": 0
   },
   {
     "q": "77. ¿Qué es un portal cautivo?",
-    "o": ["a) Un sitio web bloqueado por un ransomware...", "b) Una página con acceso limitado en fase de pruebas...", "c) Un sitio web que no cumple los criterios AA de WCAG.", "d) Una página web que gestiona el acceso de los usuarios a una red."],
+    "o": ["a) Un sitio web bloqueado por un ransomware, cuyo acceso no se recupera hasta que se paga un rescate.", "b) Una página con acceso limitado en fase de pruebas...", "c) Un sitio web que no cumple los criterios AA de WCAG.", "d) Una página web que gestiona el acceso de los usuarios a una red, generalmente inalámbrica."],
     "a": 3
   },
   {
@@ -395,22 +395,25 @@ const parte1 = [
     "a": 1
   },
   {
-    "q": "80. ¿Qué dispositivo tiene como objetivo principal filtrar el tráfico de una LAN... permitiendo conectividad a otros segmentos?",
+    "q": "An80. ¿Qué dispositivo tiene como objetivo principal filtrar el tráfico de una LAN para que el trafico local continue siendo local permitiendo conectividad a otros segmentos?",
     "o": ["a) Switch", "b) Hub", "c) Router", "d) Gateway"],
     "a": -1
   },
+
+
+
   {
     "q": "R1. ¿A qué se corresponden las siglas de Red SOHO?",
     "o": ["a) Small Own, Home Own.", "b) Small Office, Home Own.", "c) Small Office, Home Office.", "d) Small Office, House Office."],
     "a": 2
   },
   {
-    "q": "R2. Dentro de los dispositivos Android... Señale cuál NO es una de ellas:",
+    "q": "R2. Dentro de los dispositivos Android, es posible encontrar un gran número de capas de personalización. Señale cuál NO es una de ellas:",
     "o": ["a) MIUI", "b) PenPoint OS", "c) One UI", "d) OriginOS"],
     "a": 1
   },
   {
-    "q": "R3. Señale qué paquete R en SQL Server Machine Learning Services permite realizar transformaciones...:",
+    "q": "R3. Señale qué paquete R en SQL Server Machine Learning Services permite realizar transformaciones y manipulaciones de datos, resúmenes estadísticos, visualizaciones y muchas formas de modelado:",
     "o": ["a) Revoscalepy", "b) Microsoftml", "c) Revoscaler", "d) SqlRutils"],
     "a": 2
   },

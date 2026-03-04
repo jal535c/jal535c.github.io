@@ -6,5 +6,7 @@
       { id: '3', title: 'AUX 2024 (Modelo B)' },
       { id: '4', title: 'AUX 2024 (Modelo A)' },
       { id: '5', title: 'TAI 2024 L (Modelo A)' },
-      { id: '7', title: 'TAI 2022 L'},
+      { id: '7', title: '2022 TAI L'},
+      { id: '8', title: '2019 TAI L'},
+
   ];

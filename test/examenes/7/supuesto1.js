@@ -1,9 +1,9 @@
 const supuesto1 = [
   {
-    type:"info",
-    title:"info",
-    content:"Se va a desarrollar un sistema que permitirá a una persona (interesado) otorgar permiso a otra (representante) para que actúe en su nombre ante la Administración en un determinado trámite. El sistema contará con los siguientes módulos: Un frontal web (Punto de Acceso General) que recoge todos los trámites de la Administración y donde el interesado puede otorgar la representación. Un proceso que tramita las peticiones de representación, envía notificaciones PUSH a los representantes y recaba los consentimientos producidos. Un módulo de gestión para el personal funcionario de atención al público. Cuando el interesado pulse el botón Otorgar representación en un trámite, el sistema generará un enlace único con caducidad, que será enviado por notificación PUSH al representante. En el momento en que el representante acceda al enlace tendrá disponible la acción Obtener PIN y deberá usar la aplicación móvil Cl@ve PIN para obtener un PIN válido. El funcionario, en el módulo de gestión, podrá comparar el PIN generado para la operación con el que le ofrece el representante, permitiendo el trámite si estos coinciden. Un interesado podrá solicitar representación para tantos trámites como considere y cada trámite podrá ser solicitado por un número cualquiera de interesados, pero una representación solo es válida para un trámite a la vez. Asimismo, cada representante podrá obtener permisos en cualquier número de trámites",
-    img:"./examenes/7/Captura1.JPG"
+    type: "info",
+    title: "Desarrollo y base de datos",
+    content: "Se va a desarrollar un sistema que permitirá a una persona (interesado) otorgar permiso a otra (representante) para que actúe en su nombre ante la Administración en un determinado trámite. El sistema contará con los siguientes módulos: Un frontal web (Punto de Acceso General) que recoge todos los trámites de la Administración y donde el interesado puede otorgar la representación. Un proceso que tramita las peticiones de representación, envía notificaciones PUSH a los representantes y recaba los consentimientos producidos. Un módulo de gestión para el personal funcionario de atención al público. Cuando el interesado pulse el botón Otorgar Representación en un trámite, el sistema generará un enlace único con caducidad, que será enviado por notificación PUSH al representante. En el momento en que el representante acceda al enlace tendrá disponible la acción Obtener PIN y deberá usar la aplicación móvil Cl@ve PIN para obtener un PIN válido. El funcionario, en el módulo de gestión, podrá comparar el PIN generado para la operación con el que le ofrece el representante, permitiendo el trámite si estos coinciden. Un interesado podrá solicitar representación para tantos trámites como considere y cada trámite podrá ser solicitado por un número cualquiera de interesados, pero una representación solo es válida para un trámite a la vez. Asimismo, cada representante podrá obtener permisos en cualquier número de trámites",
+    img: "./examenes/7/Captura1.JPG"
   },
   
   
@@ -28,7 +28,7 @@ const supuesto1 = [
     "a": 0
   },
   {
-    "q": "3. [Texto de la pregunta no disponible íntegramente en la fuente]",
+    "q": "3. En Java SE 17, ¿cuál de los siguientes tipos de colección no admite duplicados?",
     "o": [
       "a) List",
       "b) Stack",
@@ -148,7 +148,7 @@ const supuesto1 = [
     "a": 0
   },
   {
-    "q": "15. ¿Cuál de los siguientes es un protocolo de seguridad usado en las comunicaciones HTTP?",
+    "q": "An15. ¿Cuál de los siguientes es un protocolo de seguridad usado en las comunicaciones HTTP?",
     "o": [
       "a) TLS",
       "b) SSL",
@@ -211,7 +211,7 @@ const supuesto1 = [
 
 
   {
-    "q": "R1. En JSON, ¿qué valor mostraría la consola si ejecutamos este código: console.log(4 * 3 ** 2)?",
+    "q": "AnR1. En JSON, ¿qué valor mostraría la consola si ejecutamos este código: console.log(4 * 3 ** 2)?",
     "o": [
       "a) 36",
       "b) -1",
