@@ -268,7 +268,7 @@
         <div id="loader" class="loader"></div>
         <div id="part-buttons" style="display:none; width: 100%; flex-direction: column; align-items: center;">
             <p style="color:var(--text-light); margin-bottom: 20px;">Elige el bloque:</p>
-            <button class="menu-btn" onclick="startQuiz('parte1')">Primera Parte (Teoría)</button>
+            <button class="menu-btn" onclick="startQuiz('parte1')">Primera Parte</button>
             <button class="menu-btn" onclick="startQuiz('supuesto1')">Supuesto Práctico 1</button>
             <button class="menu-btn" onclick="startQuiz('supuesto2')">Supuesto Práctico 2</button>
             <button class="menu-btn" style="border-color: var(--error); color: var(--error);" onclick="exit()">← Cambiar Examen</button>
@@ -278,8 +278,8 @@
     <div id="quiz-ui" style="display:none;">
         <div class="top-bar">
             <div class="nav-grid">
-                <button class="btn-nav" id="prev-btn" onclick="move(-1)">&#8592;</button>
-                <button class="btn-nav" id="next-btn" onclick="move(1)">&#8594;</button>
+                <button class="btn-nav" id="prev-btn" onclick="move(-1)">&#8592; Ant.</button>
+                <button class="btn-nav" id="next-btn" onclick="move(1)">Sig. &#8594;</button>
                 
                 <div style="display:flex; align-items:center; gap:10px;">
                     <div class="action-group">
@@ -304,8 +304,12 @@
         <div class="my-results">
             <div style="font-size: 1.1rem; color: var(--text-light); margin-bottom: 30px;">
                 <p>Aciertos: <span id="r-correct" style="color:var(--success); font-weight:bold;">0</span></p>
-                <p>Fallos/Blancos: <span id="r-incorrect" style="color:var(--error); font-weight:bold;">0</span></p>
+                <p>Fallos: <span id="r-incorrect" style="color:var(--error); font-weight:bold;">0</span></p>
+                <p>En blanco: <span id="r-blank" style="color:var(--accent); font-weight:bold;">0</span></p>
+                <!--
                 <p>Tiempo: <span id="r-time" style="color:var(--text-main); font-weight:bold;">00:00</span></p>
+                -->
+                
             </div>
             <button class="menu-btn" style="background:var(--primary); color:white;" onclick="exit()">Volver al Menú</button>
             <button class="menu-btn" style="border-color:var(--error); color:var(--error); margin-top: 10px;" onclick="resetExam()">Borrar progreso y Reiniciar</button>
@@ -406,12 +410,14 @@
         currentIdx = savedIdx ? parseInt(savedIdx) : 0;
         answers = savedAns ? JSON.parse(savedAns) : {};
         
+        /*
         if (savedTime) {
             startTime = parseInt(savedTime); 
         } else {
             startTime = Date.now();
             localStorage.setItem(`${storageKey}_time`, startTime);
         }
+        */
 
         // timerInterval = setInterval(updateLiveTimer, 1000);
         // updateLiveTimer();
@@ -498,32 +504,46 @@
 
     function finish() {
         // clearInterval(timerInterval); 
+        /*
         const endTime = Date.now();
         const totalSeconds = Math.floor((endTime - startTime) / 1000);
 
         const mins = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
         const secs = (totalSeconds % 60).toString().padStart(2, '0');
         const timeStr = `${mins}m ${secs}s`;
+        */
 
-        let correctCount = 0;
-        let questionCount = 0;
+        let aciertos = 0;
+        let fallos = 0;
+        let blancas = 0;
+        let numPreguntas = 0;
 
         activeData.forEach((item, idx) => {
             if (item.type !== 'info') {
-                questionCount++;
-                if (answers[idx] === item.a) correctCount++;
+                numPreguntas++;
+                if (answers[idx] === undefined) 
+                    blancas++;
+                else if (answers[idx] === item.a) 
+                    aciertos++;
+                else 
+                    fallos++;
             }
         });
 
-        const score = questionCount > 0 ? (correctCount / questionCount) * 10 : 0;
+        // Calculo Nota: aciertos - fallos/3, normalizar escala de 0 a 10
+        let notaFinal = aciertos - (fallos/3);
+        let notaDiez = (notaFinal/numPreguntas) * 10;
+        if (notaDiez < 0) notaDiez = 0;
 
+        // Mostrar en la UI
         document.getElementById('quiz-ui').style.display = 'none';
         document.getElementById('results').style.display = 'block';
         
-        document.getElementById('final-score').innerText = score.toFixed(2);
-        document.getElementById('r-correct').innerText = correctCount;
-        document.getElementById('r-incorrect').innerText = questionCount - correctCount;
-        document.getElementById('r-time').innerText = timeStr;
+        document.getElementById('final-score').innerText = notaDiez.toFixed(2);
+        document.getElementById('r-correct').innerText = aciertos;
+        document.getElementById('r-incorrect').innerText = fallos;
+        document.getElementById('r-blank').innerText = blancas;
+        //document.getElementById('r-time').innerText = timeStr;
     }
 
     function exit() {
@@ -542,7 +562,7 @@
             // Borramos los 3 datos de la memoria del navegador
             localStorage.removeItem(`${storageKey}_idx`);
             localStorage.removeItem(`${storageKey}_ans`);
-            localStorage.removeItem(`${storageKey}_time`);
+            //localStorage.removeItem(`${storageKey}_time`);
             
             // Recargamos la página para que la app vuelva a su estado inicial limpio
             location.reload();

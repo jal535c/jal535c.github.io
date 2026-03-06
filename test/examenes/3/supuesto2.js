@@ -249,6 +249,8 @@ const supuesto2 = [
     "o": ["a) Google.", "b) Amazon.", "c) Lenovo.", "d) Microsoft."],
     "a": 3
   },
+
+  
   {
     "q": "R1. En la Unión Europea y España se aplican normas y leyes para garantizar la accesibilidad web... ¿Desde qué año se aplican estas normas y leyes?",
     "o": ["a) 2002.", "b) 1985.", "c) 1996.", "d) 2014."],

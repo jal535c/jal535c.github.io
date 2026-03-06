@@ -1,174 +1,210 @@
 
 
+
 const supuesto1 = [
   {
     type: "info",
-    title: "Red y sistemas",
-    content: "El Ministerio de Educación, Formación Profesional y Deportes tiene una red asignada en el Plan de Direccionamiento de la AGE 10.9.0.0/16 y ha creado un organismo para la enseñanza online de formadores, OEOF (en adelante nos referiremos en este supuesto sólo como “organismo”), al que le ha correspondido la última de las subredes de las 16 en las que se ha dividido la red ministerial. El sistema de enseñanza online de formadores se fundamenta en un servidor de formación accesible también desde Internet en la URL https://www.profesores.es. Los servidores de este sistema (web, http, DNS, DHCP, LDAP), se van a instalar con sistema operativo Linux Ubuntu. El portal web está montado usando Apache Tomcat. El certificado del portal (SSL) estará asociado al dominio profesores.es. Para poder gestionar el correo de los profesores, se ha instalado un servidor de correo con tecnología Postfix. Los DNS se han instalado usando el software BIND así como la asignación dinámica de direcciones IP mediante DHCP. Hay un servidor llamado BIBLIOTECA que contiene un compendio de documentos e información de utilidad para los profesores. El acceso está permitido por RDP. En los elementos de configuración está permitido el acceso remoto para todos los usuarios que en el Directorio Activo estén en el Grupo de Profesores. El resto no podrán conectarse. No hay elementos de red que impidan la conexión libre por el puerto RDP 389 a dicho servidor, desde su misma VLAN. La base de datos de la biblioteca es MySQL. Además, sobre servidores Ubuntu, se han instalado herramientas de detección de vulnerabilidades (Tenable Nessus y Nmap) y de monitorización de sistemas y de aplicaciones web (Nagios). Los usuarios de la red (profesores) usan escritorios virtuales. Los switches para configurar las VLANs son CISCO (usan sistema operativo Cisco IOS). El CPD principal del organismo tiene un respaldo en un CPD secundario, pero no está configurado como activo-activo y los cambios de los servicios tienen que pasarse manualmente. Tiene redundancia de componentes y de suministro eléctrico y de red. El CPD es TIER III. Salvo que se indique lo contrario en el enunciado, se supone que usted posee permisos de administrador."
-  },
-  
-  {
-    "q": "1. ¿Cuántas direcciones hay disponibles para hosts en la subred del organismo?",
-    "o": ["a) 4094", "b) 65534", "c) 4096", "d) 65536"],
-    "a": 2
+    title: "dev y db",
+    content: "El organismo en el que usted presta servicios es el órgano competente para la concesión de unas becas para personas opositoras y, por tanto, ha surgido la necesidad de desarrollar un sistema de información que cubra todas las fases que se producen en la concesión de las becas. A continuación, se expone parte del modelo de datos del sistema, donde los atributos señalados en negrita son claves primarias y los señalados en cursiva, claves foráneas. El sistema, en su parte frontend, permitirá la firma y presentación de solicitudes, subsanaciones y alegaciones por parte de los interesados una vez se autentiquen. También permitirá la descarga de los distintos listados que se publiquen por parte de los empleados públicos del organismo que tramita estas becas. Por otra parte, el backend dará el servicio necesario al frontend y, además, permitirá a los empleados públicos del organismo, desde una aplicación de gestión, visualizar la información y documentación de las solicitudes, subsanaciones y alegaciones presentadas, así como la publicación de los listados mencionados anteriormente. Para el desarrollo del frontend se utilizará un framework de desarrollo web con JavaScript, HTML5 y CSS3, mientras que el backend podrá desarrollarse con .NET o Java, dependiendo de la experiencia y conocimientos de los desarrolladores del organismo. También se ha decidido usar GitHub (plataforma de desarrollo colaborativo para alojar proyectos utilizando el sistema de control de versiones Git) para poder compartir el trabajo entre los desarrolladores en la cual se puede almacenar, compartir y trabajar de forma conjunta en el código. De esta forma se permite seguir y administrar los cambios en el código a lo largo del tiempo. Adicionalmente, se utilizará un gestor documental para la gestión de la documentación aportada en cada uno de los trámites por los interesados, así como los respectivos servicios del Catálogo de Servicios de Administración Digital que puedan reutilizarse.",
+    img:"./examenes/5/captura.jpg"
   },
   {
-    "q": "2. Al arrancar el servidor donde se aloja la web de profesores, aparecen errores en la partición sda8. ¿Qué comando hay que usar para reparar de forma automática los errores en el sistema de ficheros correspondiente, que no ha podido montarse?",
-    "o": ["a) mount –T /dev/sda8", "b) fsck -y /dev/sda8", "c) fsck -m /dev/sda8", "d) checkdisk /dev/sda8"],
-    "a": 2
-  },
-  {
-    "q": "3. Analizando la seguridad del sistema, surge la duda de si abrir o no el puerto 80 en un servidor web expuesto mediante HTTPS. El Centro Criptológico Nacional recomienda:",
+    "q": "1. ¿Qué elemento HTML utilizaría para impedir que el e-mail exceda los 100 caracteres cuando el interesado lo cumplimente?",
     "o": [
-      "a) Exhibir una web estática en el puerto 80 indicando que esa no es la web actual.",
-      "b) Cambiar el puerto HTTPS al 8892.",
-      "c) Utilizar un analizador de peticiones en las cabeceras HTTP en el puerto 80.",
-      "d) Disponer del puerto TCP/80, configurando el servidor web para que lleve a cabo una redirección automática de HTTP a HTTPS."
-    ],
-    "a": 3
-  },
-  {
-    "q": "4. El CPD donde está alojado el sistema tiene una puerta cuyo control de acceso es con tarjeta inteligente y PIN... alguien no autorizado había entrado esperando agazapado a que alguien autorizado entrase... Este incidente de ingeniería social en seguridad física se conoce con el nombre de:",
-    "o": ["a) Tailgating o piggybacking.", "b) Quid pro quo.", "c) Pretexto.", "d) Disrupción."],
-    "a": 0
-  },
-  {
-    "q": "5. El organismo tiene, para controlar la seguridad física del CPD, un circuito cerrado de televisión con cámaras que usa una red coaxial y se necesita interconectar esta red a la red local Ethernet para poder monitorizarlas. ¿Con qué dispositivo de red puede hacerlo?",
-    "o": ["a) Un cortafuegos (firewall).", "b) Una pasarela (gateway).", "c) Un conmutador (switch).", "d) Un repetidor (repeater)."],
-    "a": 0
-  },
-  {
-    "q": "6. En el sistema se utilizan los protocolos DNS y FTP seguro. De acuerdo con el modelo TCP/IP, estos protocolos se diferencian en que:",
-    "o": [
-      "a) DNS es un protocolo de usuario y FTP es un protocolo de soporte.",
-      "b) DNS es siempre un protocolo orientado a la conexión mientras que FTP no.",
-      "c) No existe diferencia entre ambos protocolos, ambos son protocolos de soporte.",
-      "d) FTP es un protocolo de usuario y DNS es un protocolo de soporte."
-    ],
-    "a": 3
-  },
-  {
-    "q": "7. ¿Qué función realizaría en el switch el comando: Switch(config-if)# switchport access vlan 1?",
-    "o": [
-      "a) Asignar un puerto a la VLAN 1.",
-      "b) Asignar el puerto 1 del switch a la VLAN donde estamos situados en la consola del switch.",
-      "c) Visualizar todos los hosts asignados a la VLAN 1.",
-      "d) Asignar todos los hosts conectados a cualquier puerto del switch a la VLAN 1."
-    ],
-    "a": 2
-  },
-  {
-    "q": "8. La base de datos se ha corrompido y además, los usuarios no pueden acceder a la información... este incidente, ¿a qué dimensión o dimensiones de la seguridad afecta?",
-    "o": [
-      "a) A la disponibilidad... y la integridad...",
-      "b) A la confidencialidad...",
-      "c) Sólo a la disponibilidad...",
-      "d) A la trazabilidad, porque no podremos averiguar lo que ha pasado por mucho que nos esforcemos, la seguridad es así."
-    ],
-    "a": 3
-  },
-  {
-    "q": "9. La red de área local está implementada con Gigabit Ethernet y, al conectar un nuevo dispositivo a la red, en su tarjeta, parpadea una luz de color naranja. ¿A qué puede deberse?",
-    "o": [
-      "a) A que está mal configurada la VLAN donde está ubicado el dispositivo.",
-      "b) A que la tarjeta de red del dispositivo transmite a menor velocidad de la que permite la red.",
-      "c) A que la tarjeta de red está estropeada...",
-      "d) A que el cable del dispositivo es coaxial y no Ethernet."
+      "a) input type='email' id='email' name='email' size='100'",
+      "b) input type='email' id='email' name='email' max='100'",
+      "c) input type='email' id='email' name='email' maxlength='100'",
+      "d) input type='email' id='email' name='email' length='100'"
     ],
     "a": 0
   },
   {
-    "q": "10. Nos anuncian que hay una vulnerabilidad que afecta a una determinada versión del kernel de Linux Ubuntu. ¿Con qué comando podemos saber qué versión del kernel tiene nuestro sistema operativo Ubuntu?",
-    "o": ["a) sudo dpkg -i linux*.deb", "b) uname -r", "c) uname -o", "d) kexec -l"],
-    "a": 3
-  },
-  {
-    "q": "11. Para descargar algunos ficheros del servidor BIBLIOTECA, los administradores están sopesando entre el uso de SFTP y FTPS. Indique, de las siguientes afirmaciones, la INCORRECTA:",
+    "q": "2. ¿Qué ORM podría utilizar, en función de la solución de backend escogida?",
     "o": [
-      "a) SFTP usa típicamente el puerto 22 de SSH mientras que FTPS usa el puerto en el que tengamos definido el protocolo SSL/TLS.",
-      "b) SFTP usa autenticación con certificado (clave pública) mientras que FTPS usa autenticación con usuario y contraseña.",
-      "c) FTPS usa dos puertos, uno para los comandos y otro para descargarse los datos mientras que SFTP usa el mismo puerto para ambas tareas.",
-      "d) FTPS no contiene comandos estandarizados para manipular directorios o listar atributos, mientras que SFTP sí."
-    ],
-    "a": 0
-  },
-  {
-    "q": "12. ...se ha instalado en los PC de los profesores, la solución del CCN, CLAUDIA. ¿Cómo define el Centro Criptológico Nacional una APT?",
-    "o": [
-      "a) Es un tipo de ransomware como, por ejemplo, WannaCry...",
-      "b) Es un ataque de suplantación de identidad de un usuario corriente...",
-      "c) Es un ataque selectivo de ciberespionaje o cibersabotaje llevado a cabo bajo el auspicio o la dirección de un país u organización adversaria...",
-      "d) Es un ataque masivo a una organización ocurrido por un fallo que no se había advertido..."
+      "a) JPA en .NET e Hibernate en Java.",
+      "b) Hibernate en .NET y Entity Framework en Java.",
+      "c) Entity Framework en .NET e Hibernate en Java.",
+      "d) Spring Data en .NET e Hibernate en Java."
     ],
     "a": 1
   },
   {
-    "q": "13. Para mejorar la escalabilidad del sistema, está estudiando implantar una arquitectura de microservicios con Kubernetes. ¿Qué protocolos para servicios pueden utilizarse con Kubernetes?",
-    "o": ["a) SCTP, TCP (por defecto) y UDP.", "b) HTTP (por defecto), HTTPS y FTP.", "c) SSH, SFTP (por defecto) y UDP.", "d) UDP (por defecto) y TCP."],
-    "a": 0
-  },
-  {
-    "q": "14. Para poder atender las llamadas de las guardias de sistemas, se han comprado veinte móviles. Su responsable le pide realizar el enrolamiento de estos móviles, pero, ¿en qué consiste esta tarea?",
+    "q": "3. ¿Qué sentencia habría que ejecutar si se quiere añadir un nuevo registro a la tabla “CuerpoBecado”?",
     "o": [
-      "a) Emparejar... a cada usuario con su móvil.",
-      "b) Dar de alta en una base de datos de administración todos los dispositivos móviles.",
-      "c) Insertar la tarjeta SIM correspondiente a cada móvil.",
-      "d) Formatear a fábrica todos los dispositivos móviles."
+      "a) INSERT INTO CuerpoBecado (Codigo, Denominacion) VALUES ('TAI, 'Técnico Auxiliar de Informática');",
+      "b) INSERT INTO CuerpoBecado (Codigo, Denominacion) VALUES (TAI, Técnico Auxiliar de Informática);",
+      "c) INSERT TO CuerpoBecado (Codigo, Denominacion) VALUES ('TAI', 'Técnico Auxiliar de Informática');",
+      "d) INSERT INTO CuerpoBecado (Codigo, Denominacion) VALUES ('TAI', 'Técnico Auxiliar de Informática');"
     ],
     "a": 3
   },
   {
-    "q": "15. Se está instalando la nueva climatización del CPD y se plantea utilizar una toma derivada de la climatización del resto del edificio. ¿Cuál es la razón principal por la que NO se aconseja hacer eso?",
+    "q": "4. ¿Qué tipo de correspondencia hay entre las tablas “SolicitudBeca” y “FicheroAdjunto”?",
     "o": [
-      "a) Porque la humedad recomendada para un CPD es mucho menor...",
-      "b) Porque la temperatura recomendada para un CPD es mucho mayor...",
-      "c) Porque el filtro de impurezas y polvo... es mucho más sensible...",
-      "d) Porque el aire acondicionado para un CPD siempre debe provenir del techo..."
+      "a) Un registro de SolicitudBeca puede tener N registros de FicheroAdjunto.",
+      "b) Un registro de SolicitudBeca puede tener como máximo un registro de FicheroAdjunto.",
+      "c) N registros de SolicitudBeca pueden tener M registros de FicheroAdjunto.",
+      "d) Un registro de SolicitudBeca puede tener cero o como máximo un registro de FicheroAdjunto."
     ],
     "a": 0
   },
   {
-    "q": "16. Se ha descargado del sitio web del CCN-CERT una herramienta de antimalware y justo debajo aparece un hash de comprobación. ¿Qué tipo de medida de seguridad es este hash en este contexto?",
+    "q": "5. A este sistema le es de aplicación la normativa vigente de accesibilidad de sitios web. ¿Qué herramienta automatizada utilizaría para probar que la aplicación cumple con los estándares de accesibilidad?",
     "o": [
-      "a) Una medida antimalware, pues el hash... nos sanitiza el fichero...",
-      "b) Una medida para asegurar la integridad del fichero de descarga...",
-      "c) El hash es la firma del CCN como autoridad de certificación de productos...",
-      "d) El hash es la firma del CCN de la página web donde se presenta la herramienta..."
-    ],
-    "a": 0
-  },
-  {
-    "q": "17. Se ha implantado una solución VoIP que usa el protocolo SIP pero, al establecer sesiones con usuarios de fuera del organismo, la llamada se corta o congela y después, se restablece... ¿por qué puede ser?",
-    "o": [
-      "a) Se están usando incorrectamente los códecs.",
-      "b) La salida a Internet está empleando NAT.",
-      "c) El tráfico entre origen y destino está interceptado en el cortafuegos de Internet.",
-      "d) La CPU del ordenador es insuficiente."
-    ],
-    "a": 2
-  },
-  {
-    "q": "18. Se ha instalado un servidor de correo con Postfix y se está decidiendo si utilizar POP3 o IMAP... ¿Cuál de las siguientes opciones es INCORRECTA?",
-    "o": [
-      "a) Con IMAP, los mensajes se almacenan en un servidor remoto...",
-      "b) POP3 solo admite la sincronización de correo unidireccional...",
-      "c) Con IMAP, el correo enviado y recibido se almacena en el servidor...",
-      "d) Con POP3, si los usuarios organizan sus correos electrónicos... ya no tendrán que hacerlo en el resto de dispositivos."
+      "a) QualWeb.",
+      "b) Equal Automatic Checker.",
+      "c) AccSite.",
+      "d) Shovel."
     ],
     "a": 1
   },
   {
-    "q": "19. Se necesita saber los usuarios que acceden a la base de datos de la biblioteca y desde qué host o IP. Para averiguarlo... ejecutará el comando:",
-    "o": ["a) SELECT * FROM all_users", "b) mysql> SELECT user FROM mysql.user", "c) mysql> SELECT user,host FROM mysql.user", "d) sudo mysql -u root -p"],
+    "q": "6. ¿Cuál de las siguientes es una técnica para enviar datos o notificaciones de manera asíncrona desde el servidor?",
+    "o": [
+      "a) Server Sent Events.",
+      "b) Ajax.",
+      "c) WebSocket.",
+      "d) Server Side Rendering."
+    ],
     "a": 3
   },
   {
-    "q": "20. Se quiere aplicar políticas de seguridad al grupo de usuarios Profesores utilizando Directorio Activo y GPOs. Una buena práctica es definir primero:",
+    "q": "7. El proceso de presentación de solicitud implica la autenticación del usuario, la firma de la solicitud, el guardado en base de datos, la generación de un asiento registral y la generación de un justificante de presentación. ¿Qué diagrama UML utilizaría para representar las acciones implicadas en este flujo?",
     "o": [
-      "a) Una Unidad Organizativa (OU) para el grupo de usuarios Profesores.",
-      "b) Las ACLs (Access Control Lists)...",
-      "c) Un nuevo bosque de Directorio Activo.",
-      "d) Relaciones de confianza..."
+      "a) Diagrama de paquetes.",
+      "b) Diagrama de objetos.",
+      "c) Diagrama de secuencia.",
+      "d) Diagrama de Entidad/Relación."
+    ],
+    "a": 0
+  },
+  {
+    "q": "8. En caso de utilizar Java para el backend, ¿qué tecnología puede utilizar para generar un cliente de servicios web?",
+    "o": [
+      "a) Apache Flink.",
+      "b) Apache Xalan.",
+      "c) Apache Xerces.",
+      "d) Apache CXF."
+    ],
+    "a": 0
+  },
+  {
+    "q": "9. En un entorno de desarrollo Java, ¿qué utilizaría para mapear elementos XML a clases?",
+    "o": [
+      "a) JAXB.",
+      "b) JPA.",
+      "c) JAXR.",
+      "d) JAX-RS."
+    ],
+    "a": 1
+  },
+  {
+    "q": "10. Está escogiendo herramientas que le permitan analizar y mejorar la calidad del código. ¿Cuál de las siguientes NO le será de ayuda?",
+    "o": [
+      "a) SonarQube.",
+      "b) Un linter de JavaScript.",
+      "c) PMD.",
+      "d) Mercurial."
+    ],
+    "a": 1
+  },
+  {
+    "q": "11. Necesita controlar el plazo de presentación de solicitudes. Suponiendo que utiliza Java en el backend, ¿qué clase nativa de Java puede utilizar para trabajar con una fecha y hora simultáneamente?",
+    "o": [
+      "a) LocalDateTime.",
+      "b) LocalDate.",
+      "c) LocalTime.",
+      "d) OffsetTime."
+    ],
+    "a": 1
+  },
+  {
+    "q": "12. Para que la aplicación de gestión pueda interactuar con esta aplicación, se va a exponer una capa de servicios web. ¿Cuál de las siguientes opciones NO es válida para documentar dichos servicios?",
+    "o": [
+      "a) RAML.",
+      "b) REST.",
+      "c) WSDL.",
+      "d) OpenAPI/Swagger."
+    ],
+    "a": 2
+  },
+  {
+    "q": "13. Se desea añadir una tabla “Subsanacion” con las columnas numéricas IdSubsanacion e IdSolicitudBeca y la columna alfanumérica de 2000 caracteres TextoFundamento. ¿Cuál de las siguientes sentencias sería la correcta?",
+    "o": [
+      "a) CREATE TABLE Subsanacion (IdSubsanacion bigint, IdSolicitudBeca bigint, TextoFundamento varchar(2000));",
+      "b) CREATE Subsanacion (IdSubsanacion bigint, IdSolicitudBeca bigint, TextoFundamento varchar(2000));",
+      "c) CREATE NEW TABLE Subsanacion (IdSubsanacion bigint, IdSolicitudBeca bigint, TextoFundamento varchar(2000));",
+      "d) CREATE TABLE Subsanacion AS (IdSubsanacion bigint, IdSolicitudBeca bigint, TextoFundamento varchar(2000));"
+    ],
+    "a": 0
+  },
+  {
+    "q": "14. Se espera un alto volumen de concurrencia en el sistema. ¿Qué nivel de aislamiento de base de datos debería configurar para que no se produzcan lecturas sucias ni lecturas no repetibles, pero sí lecturas fantasmas?",
+    "o": [
+      "a) Serializable.",
+      "b) Read committed.",
+      "c) Read uncommited.",
+      "d) Repeatable read."
+    ],
+    "a": 0
+  },
+  {
+    "q": "15. Se ha determinado que es necesaria la integración de la aplicación con GEISER, cuyos servicios web son de naturaleza SOAP. ¿Con qué firmará las peticiones generadas por la aplicación?",
+    "o": [
+      "a) WS-Security.",
+      "b) SAML.",
+      "c) JWT.",
+      "d) XML-Encryption."
+    ],
+    "a": -1
+  },
+  {
+    "q": "16. Se quiere utilizar la librería iText de .NET para generar un documento PDF que sirva como justificante de presentación al interesado. ¿Con qué comando instalaría el paquete NuGet?",
+    "o": [
+      "a) dotnet add package iText.",
+      "b) dotnet install package iText.",
+      "c) dotnet add iText.",
+      "d) dotnet install iText."
+    ],
+    "a": 1
+  },
+  {
+    "q": "17. Según “Técnicas y Practicas” de Métrica v3, si se quisiera optimizar el modelo físico de datos para reducir o simplificar el número de accesos a la base de datos, ¿cuál de las siguientes acciones se aplicaría?",
+    "o": [
+      "a) Combinar entidades si los accesos son frecuentes en transacciones distintas.",
+      "b) Eliminar entidades.",
+      "c) Introducir elementos redundantes.",
+      "d) Normalizar las tablas en Forma Normal de Boyce-Codd (FNBC)."
+    ],
+    "a": 1
+  },
+  {
+    "q": "18. Suponiendo que se utilizara la metodología ágil SCRUM, si durante un sprint, se da cuenta de que se está aplicando una mala práctica que puede enlentecer el proyecto, ¿en qué reunión comentará esa mala práctica, para buscar la mejora continua y evitar aplicarla en los siguientes sprints?",
+    "o": [
+      "a) En la Daily Scrum.",
+      "b) En la Sprint Retrospective.",
+      "c) En la Sprint Planning.",
+      "d) En la Sprint Review."
+    ],
+    "a": 3
+  },
+  {
+    "q": "19. También el sistema se integrará con la PID (Plataforma de Intermediación de Datos)... ¿Cuáles son los componentes principales de esta arquitectura?",
+    "o": [
+      "a) Servicio, Proveedor de servicios, Consumidor de servicios y Orquestador de servicios.",
+      "b) Servicio, Proveedor de servicios, Consumidor de servicios y Depurador de servicios.",
+      "c) Servicio, Proveedor de servicios, Consumidor de servicios y Comparador de servicios.",
+      "d) Servicio, Proveedor de servicios, Consumidor de servicios y Registro de servicios."
+    ],
+    "a": 2
+  },
+  {
+    "q": "20. En caso de utilizar el lenguaje C#, ¿cuál de las siguientes sintaxis utilizaría para definir la opcionalidad de un tipo de dato?",
+    "o": [
+      "a) int? Telefono",
+      "b) int|null Telefono",
+      "c) int:null Telefono",
+      "d) int ?? Telefono"
     ],
     "a": 0
   },
@@ -176,48 +212,33 @@ const supuesto1 = [
 
 
   {
-    "q": "R1. ...cambiar el mensaje HELO... quiere que muestre \"CORREOBIBLIOTECA\" y además, que el cambio se aplique en todos los servidores SMTP que existan... ¿Cómo lo haría?",
-    "o": [
-      "a) Editando el parámetro $client en el fichero /etc/postfix/main.cf...",
-      "b) Accediendo al servidor SMTP y ejecutando EHLO -name CORREOBIBLIOTECA...",
-      "c) Editando el parámetro smtp_helo en el fichero /etc/postfix/master.cf...",
-      "d) Editando el parámetro $helo_name en /etc/postfix/main.cf..."
-    ],
-    "a": 1
-  },
-  {
-    "q": "R2. ...instalar una red WiFi con protocolo WPA3-Enterprise. En este caso, para acceder a la red WiFi habrá que utilizar:",
-    "o": ["a) Una contraseña de 64 bits.", "b) Una contraseña de 128 bits.", "c) Un servidor RADIUS o cualquier solución que permita EAP-TLS.", "d) Una contraseña de 192 bits..."],
-    "a": 0
-  },
-  {
-    "q": "R3. En la base de datos MySQL de Profesores, nos piden que añadamos una tabla... que se llamará \"ProfesoresIngles\" con sus nombres y apellidos... ingresaremos el comando:",
-    "o": [
-      "a) CREATE TABLE ProfesoresIngles (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, nombre VARCHAR(30), apellido1 VARCHAR(30), apellido2 VARCHAR(30));",
-      "b) CREATE TABLE ProfesoresIngles KEY id, nombre, apellidos;",
-      "c) CREAR TABLA ProfesoresIngles KEY apellidos, nombre;",
-      "d) CREATE TABLE ProfesoresIngles (nombre, apellido);"
-    ],
-    "a": 2
-  },
-  {
-    "q": "R4. ...quiere monitorizar, además, la URL de profesores (https://profesores.es)... ¿cuál comando utilizará?",
-    "o": [
-      "a) nagios –v /usr/local/nagios/etc/nagios.cfg",
-      "b) /mnt/nagios –check",
-      "c) systemctl status nagios",
-      "d) https://profesores.es nagios"
-    ],
+    "q": "R1. Para diseñar el estilo de los campos de entrada obligatorios del formulario de solicitud se va a hacer uso del siguiente selector CSS: “input:required”. ¿Cuál es su especificidad?",
+    "o": ["a) 1-1-0.", "b) 0-1-1.", "c) 1-0-1.", "d) 1-0-0."],
     "a": 3
   },
   {
-    "q": "R5. ...conexión usará TLS. Según las recomendaciones del Centro Criptológico Nacional, ¿cuál es la versión mínima y la recomendada a usar en TLS?",
+    "q": "R2. Se quiere facilitar el uso de herramientas de asistencia en la página. ¿Qué atributo utilizaría para indicar que un elemento se actualizará?",
+    "o": ["a) aria-live.", "b) aria-cheked.", "c) aria-flowto.", "d) aria-valuenow."],
+    "a": 2
+  },
+  {
+    "q": "R3. Para resolver una incidencia, necesita saber qué ficheros adjuntos de la solicitud del interesado con DNI 00000000T para el año 2024 no son PDF. ¿Cómo los obtendría?",
     "o": [
-      "a) Versión mínima 1.1 y recomendada 1.1.",
-      "b) Versión mínima 1.0 y recomendada 1.1.",
-      "c) Versión mínima 1.2 y recomendada 1.3.",
-      "d) Versión mínima 1.1 y recomendada 1.3."
+      "a) SELECT * FROM FicheroAdjunto WHERE Denominacion NOT LIKE '%.pdf' AND IdSolicitudBeca = (SELECT IdSolicitudBeca FROM SolicitudBeca WHERE AñoConvocatoria = 2024 AND IdInteresado = (SELECT IdInteresado FROM Interesado WHERE DocumentoIdentidad = '00000000T'))",
+      "b) SELECT * FROM FicheroAdjunto WHERE Denominacion LIKE '%.pdf' AND IdSolicitudBeca = (SELECT IdSolicitudBeca FROM SolicitudBeca WHERE AñoConvocatoria = 2024 AND IdInteresado = (SELECT IdInteresado WHERE DocumentoIdentidad = '00000000T'))",
+      "c) [Opciones fragmentadas en fuente]",
+      "d) [Opciones fragmentadas en fuente]"
     ],
-    "a": 1
+    "a": 0
+  },
+  {
+    "q": "R4. ¿Qué tendrá que configurar en el backend si quiere restringir que las únicas peticiones HTTP de origen cruzado iniciadas desde scripts que se acepten procedan del frontend?",
+    "o": ["a) HSTS.", "b) CSP.", "c) TLS.", "d) CORS."],
+    "a": 0
+  },
+  {
+    "q": "R5. Quiere facilitar la incorporación de otros desarrolladores... incluirá el propósito del proyecto y cómo arrancarlo localmente. Esa información se incluirá en el fichero:",
+    "o": ["a) CODEOWNERS.", "b) README.MD.", "c) LICENSE.", "d) CITATION."],
+    "a": 2
   }
 ];

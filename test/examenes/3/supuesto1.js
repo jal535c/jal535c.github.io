@@ -240,12 +240,18 @@ const supuesto1 = [
     "a": 3
   },
   {
-    "q": "49. Según los datos del cuadro Biblioteca... ¿en cuál de las siguientes ubicaciones, habría que colocar este libro? Tema: Derecho Económico. Nombre: \"Trabajo temporal. Tributación\".",
+    type: "info",
+    title: "",
+    content: "",
+    img: "./examenes/3/biblioteca.jpg"
+  },
+  {
+    "q": "49. Según los datos del cuadro Biblioteca, siendo que la columna Clasificación de ubicación se refiere al nombre del título, ¿en cuál de las siguientes ubicaciones, habría que colocar este libro? Tema: Derecho Económico. Nombre: \"Trabajo temporal. Tributación\".",
     "o": ["a) Planta: 1. Pasillo: 2 izquierda. Estanterías: 2 a 5.", "b) Planta: 1. Pasillo: 3 derecha. Estanterías: 2 a 5.", "c) Planta: 2. Pasillo: 2 derecha. Estanterías: 3 a 5.", "d) Planta: 1. Pasillo: 3 derecha. Estanterías: 1 a 5."],
     "a": 3
   },
   {
-    "q": "50. Según los datos del cuadro Biblioteca... ¿cuál de los siguientes títulos se ubicará en la planta 3, pasillo 1 izquierda, estanterías 1 a 4?",
+    "q": "50. Según los datos del cuadro Biblioteca, siendo que la columna Clasificación de ubicación se refiere al nombre del título, ¿cuál de los siguientes títulos se ubicará en la planta 3, pasillo 1 izquierda, estanterías 1 a 4?",
     "o": ["a) Tema: Derecho económico. Nombre: \"Leyes aduaneras de la Unión Europea\".", "b) Tema: Geografía política. Nombre: \"Agricultura en el sur de Europa\".", "c) Tema: Geografía física. Nombre: \"Picos más altos de España.", "d) Tema: Derecho laboral. Nombre: \"Contratos y acuerdos laborales\"."],
     "a": 1
   },
@@ -255,7 +261,7 @@ const supuesto1 = [
     "a": 1
   },
   {
-    "q": "52. Según los datos del cuadro Biblioteca... ¿en cuál de las siguientes ubicaciones, habría que colocar este libro? Tema: Geografía física. Nombre: \"Cordilleras asiáticas\".",
+    "q": "52. Según los datos del cuadro Biblioteca, siendo que la columna Clasificación de ubicación se refiere al nombre del título, ¿en cuál de las siguientes ubicaciones, habría que colocar este libro? Tema: Geografía física. Nombre: \"Cordilleras asiáticas\".",
     "o": ["a) Planta: 3 Pasillo: 1 derecha. Estanterías: 1 a 4.", "b) Planta: 2 Pasillo: 2 derecha. Estanterías: 3 a 5.", "c) Planta: 2. Pasillo: 3 derecha. Estanterías: 2 a 4.", "d) Planta: 3 Pasillo: 1 derecha. Estanterías: 1 a 5."],
     "a": 2
   },
@@ -265,9 +271,15 @@ const supuesto1 = [
     "a": 2
   },
   {
-    "q": "54. Según los datos del cuadro Biblioteca... ¿cuál de los siguientes títulos se ubicará en la planta 2, pasillo 1 izquierda, estanterías 2 a 4?",
+    "q": "54. Según los datos del cuadro Biblioteca, siendo que la columna Clasificación de ubicación se refiere al nombre del título, ¿cuál de los siguientes títulos se ubicará en la planta 2, pasillo 1 izquierda, estanterías 2 a 4?",
     "o": ["a) Tema: Derecho laboral. Nombre: \"Contratos y acuerdos laborales\".", "b) Tema: Geografía cartografía. Nombre: \"Mapas de Europa\".", "c) Tema: Geografía física. Nombre: \"Cordilleras asiáticas\".", "d) Tema: Derecho económico. Nombre: \"Teoría y práctica del derecho económico\"."],
     "a": 0
+  },
+  {
+    type: "info",
+    title: "",
+    content: "",
+    img: "./examenes/3/laboratorio.jpg"
   },
   {
     "q": "55. Según los datos del cuadro Laboratorios y suponiendo que asisten todos los inscritos, ¿qué día hay mayor asistencia de alumnos?",
@@ -280,7 +292,7 @@ const supuesto1 = [
     "a": 1
   },
   {
-    "q": "57. Según los datos del cuadro Laboratorios, ¿cuál de los siguientes profesores imparte su materia en la planta 2 y termina más tarde...?",
+    "q": "57. Según los datos del cuadro Laboratorios, ¿cuál de los siguientes profesores imparte su materia en la planta 2 y termina más tarde, teniendo en cuenta que todas las clases tienen una hora de duración?",
     "o": ["a) Marta Torres.", "b) Rubén Gómez.", "c) Inés Herrera.", "d) Ignacio Benítez."],
     "a": 0
   },
@@ -299,6 +311,8 @@ const supuesto1 = [
     "o": ["a) Biología.", "b) Genética.", "c) Bioinformática.", "d) Inmunología."],
     "a": 3
   },
+
+  
   {
     "q": "R1. Indique la respuesta correcta en referencia al Plan Anual Normativo previsto en el artículo 25 de la Ley 50/1997... del Gobierno:",
     "o": ["a) El Ministro de la Presidencia lo elevará al Consejo de Ministros para su aprobación antes del 30 de abril.", "b) El Ministro de la Presidencia lo elevará al Consejo de Ministros para su aprobación antes del 1 de junio.", "c) El Ministro de la Presidencia lo elevará al Consejo de Ministros para su aprobación antes del 31 de octubre.", "d) El Ministro de la Presidencia lo elevará al Consejo de Ministros para su aprobación antes del 31 de diciembre."],
