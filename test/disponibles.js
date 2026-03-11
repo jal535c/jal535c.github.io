@@ -3,10 +3,10 @@
     const AVAILABLE_EXAMS = [
       { id: '1', title: 'TAI 2024 P (Modelo A)' },
       { id: '2', title: 'TAI 2024 P (Modelo B)' },
-      { id: '3', title: 'AUX 2024 L (Modelo B) ok' },
-      { id: '4', title: 'AUX 2024 L (Modelo A)' },
-      { id: '5', title: '2024 TAI L (Modelo A)' },
-      { id: '7', title: '2022 TAI L ok'},
-      { id: '8', title: '2019 TAI L ok'},
+      { id: '3', title: 'AUX 2024 L (Modelo B) (ok)' },
+      { id: '4', title: 'AUX 2024 L (Modelo A) (ok)' },
+      { id: '5', title: '2024 TAI L (Modelo A) (ok)' },
+      { id: '7', title: '2022 TAI L'},
+      { id: '8', title: '2019 TAI L (ok)'},
 
   ];

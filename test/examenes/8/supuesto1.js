@@ -16,30 +16,30 @@ const  supuesto1 = [
     {
       "q": "1. Se necesita presentar una estadística utilizando HTML5 mediante una tabla en la que una de sus columnas contendrá la descripción de cada Proceso Selectivo. Suponiendo que a dicha columna la denominamos \"Proceso\", ¿qué etiqueta deberá utilizar para definir la celda de encabezado de la tabla para dicha columna, con un formato de letra diferenciado?",
       "o": [
-        "a) th Proceso /th",
-        "b) tableheader Proceso /tableheader",
-        "c) theader Proceso /theader",
-        "d) tableh Proceso /tableh "
+        "a) < th>Proceso< /th>",
+        "b) < tableheader>Proceso< /tableheader>",
+        "c) < theader>Proceso< /theader>",
+        "d) < tableh>Proceso< /tableh>"
       ],
       "a": 0
     },
     {
       "q": "2. Le indican que debe presentar también una lista de opositores con las notas correspondientes a los dos primeros ejercicios. Las notas se representarán como una lista anidada para cada opositor, debiendo ser el resultado a obtener: * Opositor ◦ Nota 1 ◦ Nota 2. ¿Cuál es el código HTML5 correcto si presentamos un solo opositor?",
       "o": [
-        "a) ul li Opositor ul li Nota 1 /li li Nota 2 /li /ul /li /ul",
-        "b) ul li Opositor /li /ul ul li Nota 1 /li li Nota 2 /li /ul",
-        "c) ul li1 Opositor /li1 li2 Nota 1 /li2 li2 Nota 2 /li2 /ul",
-        "d) ul li Opositor li Nota 1 /li li Nota 2 /li /li /ul"
+        "a) < ul> < li> Opositor < ul> < li> Nota 1 < /li> < li> Nota 2 < /li> < /ul> < /li> < /ul>",
+        "b) < ul> < li> Opositor < /li> < /ul> < ul> < li> Nota 1 < /li> < li> Nota 2 < /li> < /ul>",
+        "c) < ul> < li1> Opositor < /li1> < li2> Nota 1 < /li2> < li2> Nota 2 < /li2> < /ul>",
+        "d) < ul> < li> Opositor < li> Nota 1 < /li> < li> Nota 2 < /li> < /li> < /ul>"
       ],
       "a": 0
     },
     {
-      "q": "3. Se quiere incluir un campo de texto obligatorio para que el opositor introduzca su nombre de usuario. Para desarrollar esta petición, de entre las siguientes opciones de código, ¿cuál debería utilizar para incorporarlo en el fragmento de código marcado como [---------------------------------------] ? form label for=\"username\" Nombre de Opositor: /label [---------------------------------------] input type=\"submit\" value=\"Confirmar\" / /form",
+      "q": "3. Se quiere incluir un campo de texto obligatorio para que el opositor introduzca su nombre de usuario. Para desarrollar esta petición, de entre las siguientes opciones de código, ¿cuál debería utilizar para incorporarlo en el fragmento de código marcado como [---------------------------------------] ? < form > < label for=\"username\" > Nombre de Opositor: < /label > [---------------------------------------] < input type=\"submit\" value=\"Confirmar\"/ > < /form >",
       "o": [
-        "a) input type=\"text\" name=\"username\" required/",
-        "b) input type=\"text\" name=\"username\" enforced/",
-        "c) input type=\"text\" name=\"username\" mandatory/",
-        "d) input type=\"text\" name=\"username\" compulsory/"
+        "a) < input type=\"text\" name=\"username\" required/>",
+        "b) < input type=\"text\" name=\"username\" enforced/>",
+        "c) < input type=\"text\" name=\"username\" mandatory/>",
+        "d) < input type=\"text\" name=\"username\" compulsory/>"
       ],
       "a": 0
     },
@@ -66,10 +66,10 @@ const  supuesto1 = [
     {
       "q": "6. Se han detectado varios errores en la exportación a XML de los diferentes listados de notas y le solicitan su ayuda. Sin tener en cuenta si la información está bien representada, ¿cuál de los siguientes XML está bien formado?",
       "o": [
-        "a) Opositor Winston Churchill Nota1 95 /nota1 Nota2 65 /nota2 /opositor",
-        "b) Opositor Winston Churchill Nota1 95 /Nota1 Nota2 65 /Opositor /Nota2",
-        "c) Opositor Winston Churchill Nota1/ 95 Nota2/ 65 /Opositor",
-        "d) Opositor Winston Churchill Nota1 95 / Nota2 65 / /"
+        "a) < Opositor> Winston Churchill < Nota1/> 95 < /nota1> < Nota2> 65 < /nota2> < /opositor>",
+        "b) < Opositor> Winston Churchill < Nota1> 95 < /Nota1> < Nota2> 65 < /Opositor> < /Nota2>",
+        "c) < Opositor> Winston Churchill < Nota1/> 95 < Nota2/> 65 < /Opositor>",
+        "d) < Opositor> Winston Churchill < Nota1> 95 < /> < Nota2> 65 < /> < />"
       ],
       "a": 2
     },
@@ -216,7 +216,7 @@ const  supuesto1 = [
 
 
     {
-      "q": "R1. Dentro del código de la página web a la que acceden los opositores, se encuentra el siguiente código HTML: html body h1 id=\"titulo\" Primer ejercicio TAI /h1 /body /html ¿Cuál es el código javascript para obtener la cadena \"Primer ejercicio TAI\"?",
+      "q": "R1. Dentro del código de la página web a la que acceden los opositores, se encuentra el siguiente código HTML: < html> < body> < h1 id=\"titulo\"> Primer ejercicio TAI < /h1> < /body> < /html> ¿Cuál es el código javascript para obtener la cadena \"Primer ejercicio TAI\"?",
       "o": [
         "a) var titulo = document.getElementById(\"titulo\"). firstChild.nodeValue;",
         "b) var titulo = document.titulo.InnerHTML;",
@@ -246,7 +246,7 @@ const  supuesto1 = [
       "a": 0
     },
     {
-      "q": "R4. Se ha realizado un vídeo explicativo para los opositores y se ha publicado en una página web. ¿Qué mostrará el siguiente fragmento de código en un navegador que soporte HTML5?: video width=\"320\" height=\"240\" controls source src=\"movie.mp4\" type=\"video/mp4\" source src=\"movie.ogg\" type=\"video/ogg\" No soportado /video",
+      "q": "R4. Se ha realizado un vídeo explicativo para los opositores y se ha publicado en una página web. ¿Qué mostrará el siguiente fragmento de código en un navegador que soporte HTML5?: < video width=\"320\" height=\"240\" controls> < source src=\"movie.mp4\" type=\"video/mp4\"> < source src=\"movie.ogg\" type=\"video/ogg\"> No soportado < /video>",
       "o": [
         "a) Se mostrarán los dos vídeos \"movie.mp4\" y \"movie.ogg\".",
         "b) Se mostrará el mensaje \"No soportado\" en todos los casos.",

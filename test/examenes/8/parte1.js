@@ -453,7 +453,17 @@ const parte1 = [
       "a": 2
     },
     {
-      "q": "46. En la representación de una dirección IPv4 en decimal con puntos, ¿cuál es el valor máximo que puede tener cualquiera de los cuatro octetos?",
+      "q": "An46. En la representación de una dirección IPv4 en decimal con puntos, ¿cuál es el valor máximo que puede tener cualquiera de los cuatro octetos?",
+      "o": [
+        "a) 216",
+        "b) 63",
+        "c) 3",
+        "d) 5"
+      ],
+      "a": -1
+    },
+    {
+      "q": "46. En JAVA, siendo x=6 e y=3 (ambas variables de tipo int), la operación x^y da como resultado:",
       "o": [
         "a) 216",
         "b) 63",
@@ -515,10 +525,10 @@ const parte1 = [
     {
       "q": "52. En el lenguaje XML, ¿cuál de las siguientes sentencias sería correcta para añadir comentarios?",
       "o": [
-        "a) <-- Aquí va el comentario /-->",
+        "a) < -- Aquí va el comentario /-->",
         "b) < Aquí va el comentario !>",
-        "c) <!-- Aquí va el comentario -->",
-        "d) <--! Aquí va el comentario -->"
+        "c) < !-- Aquí va el comentario -->",
+        "d) < --! Aquí va el comentario -->"
       ],
       "a": 2
     },

@@ -11,12 +11,12 @@ const supuesto2 = [
   {
     "q": "1. ¿Cuántas direcciones hay disponibles para hosts en la subred del organismo?",
     "o": ["a) 4094", "b) 65534", "c) 4096", "d) 65536"],
-    "a": 2
+    "a": 0
   },
   {
     "q": "2. Al arrancar el servidor donde se aloja la web de profesores, aparecen errores en la partición sda8. ¿Qué comando hay que usar para reparar de forma automática los errores en el sistema de ficheros correspondiente, que no ha podido montarse?",
     "o": ["a) mount –T /dev/sda8", "b) fsck -y /dev/sda8", "c) fsck -m /dev/sda8", "d) checkdisk /dev/sda8"],
-    "a": 2
+    "a": 1
   },
   {
     "q": "3. Analizando la seguridad del sistema, surge la duda de si abrir o no el puerto 80 en un servidor web expuesto mediante HTTPS. El Centro Criptológico Nacional recomienda:",
@@ -36,7 +36,7 @@ const supuesto2 = [
   {
     "q": "5. El organismo tiene, para controlar la seguridad física del CPD, un circuito cerrado de televisión con cámaras que usa una red coaxial y se necesita interconectar esta red a la red local Ethernet para poder monitorizarlas. ¿Con qué dispositivo de red puede hacerlo?",
     "o": ["a) Un cortafuegos (firewall).", "b) Una pasarela (gateway).", "c) Un conmutador (switch).", "d) Un repetidor (repeater)."],
-    "a": 0
+    "a": 1
   },
   {
     "q": "6. En el sistema se utilizan los protocolos DNS y FTP seguro. De acuerdo con el modelo TCP/IP, estos protocolos se diferencian en que:",
@@ -49,24 +49,24 @@ const supuesto2 = [
     "a": 3
   },
   {
-    "q": "7. ¿Qué función realizaría en el switch el comando: Switch(config-if)# switchport access vlan 1?",
+    "q": "7. En un switch Cisco que hay en la organización, se ejecuta el comando “switchport access vlan 1”. Esto permitirá:",
     "o": [
       "a) Asignar un puerto a la VLAN 1.",
       "b) Asignar el puerto 1 del switch a la VLAN donde estamos situados en la consola del switch.",
       "c) Visualizar todos los hosts asignados a la VLAN 1.",
       "d) Asignar todos los hosts conectados a cualquier puerto del switch a la VLAN 1."
     ],
-    "a": 2
+    "a": 0
   },
   {
     "q": "8. La base de datos se ha corrompido y además, los usuarios no pueden acceder a la información... este incidente, ¿a qué dimensión o dimensiones de la seguridad afecta?",
     "o": [
-      "a) A la disponibilidad... y la integridad...",
-      "b) A la confidencialidad...",
-      "c) Sólo a la disponibilidad...",
+      "a) A la disponibilidad porque no está accesible la base de datos y la integridad porque el fichero de la base de datos está corrupto.",
+      "b) A la confidencialidad porque los datos, una vez dañados, pueden ser accesibles por cualquiera.",
+      "c) Sólo a la disponibilidad porque la base de datos está temporalmente fuera de servicio hasta que se repare si es posible el fichero donde se aloja.",
       "d) A la trazabilidad, porque no podremos averiguar lo que ha pasado por mucho que nos esforcemos, la seguridad es así."
     ],
-    "a": 3
+    "a": 0
   },
   {
     "q": "9. La red de área local está implementada con Gigabit Ethernet y, al conectar un nuevo dispositivo a la red, en su tarjeta, parpadea una luz de color naranja. ¿A qué puede deberse?",
@@ -76,12 +76,12 @@ const supuesto2 = [
       "c) A que la tarjeta de red está estropeada...",
       "d) A que el cable del dispositivo es coaxial y no Ethernet."
     ],
-    "a": 0
+    "a": 1
   },
   {
     "q": "10. Nos anuncian que hay una vulnerabilidad que afecta a una determinada versión del kernel de Linux Ubuntu. ¿Con qué comando podemos saber qué versión del kernel tiene nuestro sistema operativo Ubuntu?",
     "o": ["a) sudo dpkg -i linux*.deb", "b) uname -r", "c) uname -o", "d) kexec -l"],
-    "a": 3
+    "a": 1
   },
   {
     "q": "11. Para descargar algunos ficheros del servidor BIBLIOTECA, los administradores están sopesando entre el uso de SFTP y FTPS. Indique, de las siguientes afirmaciones, la INCORRECTA:",
@@ -91,17 +91,17 @@ const supuesto2 = [
       "c) FTPS usa dos puertos, uno para los comandos y otro para descargarse los datos mientras que SFTP usa el mismo puerto para ambas tareas.",
       "d) FTPS no contiene comandos estandarizados para manipular directorios o listar atributos, mientras que SFTP sí."
     ],
-    "a": 0
+    "a": 1
   },
   {
     "q": "12. Para la detección de malware complejo y movimiento lateral relacionado con APTs (Advanced Persistent Threats), se ha instalado en los PC de los profesores, la solución del CCN, CLAUDIA. ¿Cómo define el Centro Criptológico Nacional una APT?",
     "o": [
-      "a) Es un tipo de ransomware como, por ejemplo, WannaCry...",
-      "b) Es un ataque de suplantación de identidad de un usuario corriente...",
-      "c) Es un ataque selectivo de ciberespionaje o cibersabotaje llevado a cabo bajo el auspicio o la dirección de un país u organización adversaria...",
-      "d) Es un ataque masivo a una organización ocurrido por un fallo que no se había advertido..."
+      "a) Es un tipo de ransomware como, por ejemplo, WannaCry, que te cifra los archivos del PC y se requiere la clave de descifrado a cambio del pago de un rescate",
+      "b) Es un ataque de suplantación de identidad de un usuario corriente en un organismo para después mediante escalada de privilegios obtener las credenciales de un alto cargo de la empresa u organización.",
+      "c) Es un ataque selectivo de ciberespionaje o cibersabotaje llevado a cabo bajo el auspicio o la dirección de un país u organización adversaria, por razones que van más allá de las meramente financieras/delictivas o de protesta política.",
+      "d) Es un ataque masivo a una organización ocurrido por un fallo que no se había advertido hasta ese momento y, por tanto, no se cuenta con la salvaguarda o parche para prevenirlo"
     ],
-    "a": 1
+    "a": 2
   },
   {
     "q": "13. Para mejorar la escalabilidad del sistema, está estudiando implantar una arquitectura de microservicios con Kubernetes. ¿Qué protocolos para servicios pueden utilizarse con Kubernetes?",
@@ -116,52 +116,52 @@ const supuesto2 = [
       "c) Insertar la tarjeta SIM correspondiente a cada móvil.",
       "d) Formatear a fábrica todos los dispositivos móviles."
     ],
-    "a": 3
+    "a": 0
   },
   {
-    "q": "15. Se está instalando la nueva climatización del CPD y se plantea utilizar una toma derivada de la climatización del resto del edificio. ¿Cuál es la razón principal por la que NO se aconseja hacer eso?",
+    "q": "An15. Se está instalando la nueva climatización del CPD y se plantea utilizar una toma derivada de la climatización del resto del edificio. ¿Cuál es la razón principal por la que NO se aconseja hacer eso?",
     "o": [
       "a) Porque la humedad recomendada para un CPD es mucho menor...",
       "b) Porque la temperatura recomendada para un CPD es mucho mayor...",
       "c) Porque el filtro de impurezas y polvo... es mucho más sensible...",
       "d) Porque el aire acondicionado para un CPD siempre debe provenir del techo..."
     ],
-    "a": 0
+    "a": -1
   },
   {
     "q": "16. Se ha descargado del sitio web del CCN-CERT una herramienta de antimalware y justo debajo aparece un hash de comprobación. ¿Qué tipo de medida de seguridad es este hash en este contexto?",
     "o": [
-      "a) Una medida antimalware, pues el hash... nos sanitiza el fichero...",
-      "b) Una medida para asegurar la integridad del fichero de descarga...",
-      "c) El hash es la firma del CCN como autoridad de certificación de productos...",
-      "d) El hash es la firma del CCN de la página web donde se presenta la herramienta..."
+      "a) Una medida antimalware, pues el hash aplicado al fichero descargado nos sanitiza el fichero y ya se puede usar sin problemas, pues está limpio de malware, lo cual en una herramienta antimalware es altamente necesario.",
+      "b) Una medida para asegurar la integridad del fichero de descarga, pues si al calcular nosotros el hash del fichero descargado no coincide con el que nos aparece en la página del CCN, el fichero descargado no sería válido para su uso.",
+      "c) El hash es la firma del CCN como autoridad de certificación de productos que garantiza que el software descargado es apto para ser usado en sistemas categorizados como de nivel ALTO o incluso en sistemas clasificados como reservado nacional.",
+      "d) El hash es la firma del CCN de la página web donde se presenta la herramienta que estamos intentando descargar y es una medida para evitar que los hackers puedan manipular la página y subir otro fichero en vez del que se pretende descargar."
     ],
-    "a": 0
+    "a": 1
   },
   {
-    "q": "17. Se ha implantado una solución VoIP que usa el protocolo SIP pero, al establecer sesiones con usuarios de fuera del organismo, la llamada se corta o congela y después, se restablece... ¿por qué puede ser?",
+    "q": "17. Se ha implantado una solución VoIP que usa el protocolo SIP pero, al establecer sesiones con usuarios de fuera del organismo, la llamada se corta o congela y después, se restablece. Este problema no sucede en sesiones entre usuarios internos del organismo ¿por qué puede ser?",
     "o": [
       "a) Se están usando incorrectamente los códecs.",
       "b) La salida a Internet está empleando NAT.",
       "c) El tráfico entre origen y destino está interceptado en el cortafuegos de Internet.",
       "d) La CPU del ordenador es insuficiente."
     ],
-    "a": 2
+    "a": 1
   },
   {
     "q": "18. Se ha instalado un servidor de correo con Postfix y se está decidiendo si utilizar POP3 o IMAP... ¿Cuál de las siguientes opciones es INCORRECTA?",
     "o": [
-      "a) Con IMAP, los mensajes se almacenan en un servidor remoto...",
-      "b) POP3 solo admite la sincronización de correo unidireccional...",
-      "c) Con IMAP, el correo enviado y recibido se almacena en el servidor...",
-      "d) Con POP3, si los usuarios organizan sus correos electrónicos... ya no tendrán que hacerlo en el resto de dispositivos."
+      "a) Con IMAP, los mensajes se almacenan en un servidor remoto y los usuarios pueden iniciar sesión en varios clientes de correo electrónico y leer los mismos mensajes.",
+      "b) POP3 solo admite la sincronización de correo unidireccional, lo que solo permite a los usuarios descargar correos electrónicos desde un servidor a un cliente.",
+      "c) Con IMAP, el correo enviado y recibido se almacena en el servidor hasta que el usuario lo elimina permanentemente.",
+      "d) Con POP3, si los usuarios organizan sus correos electrónicos en un dispositivo mediante carpetas, ya no tendrán que hacerlo en el resto de dispositivos porque se replica la organización en carpetas."
     ],
-    "a": 1
+    "a": 3
   },
   {
     "q": "19. Se necesita saber los usuarios que acceden a la base de datos de la biblioteca y desde qué host o IP. Para averiguarlo... ejecutará el comando:",
     "o": ["a) SELECT * FROM all_users", "b) mysql> SELECT user FROM mysql.user", "c) mysql> SELECT user,host FROM mysql.user", "d) sudo mysql -u root -p"],
-    "a": 3
+    "a": 2
   },
   {
     "q": "20. Se quiere aplicar políticas de seguridad al grupo de usuarios Profesores utilizando Directorio Activo y GPOs. Una buena práctica es definir primero:",
@@ -169,7 +169,7 @@ const supuesto2 = [
       "a) Una Unidad Organizativa (OU) para el grupo de usuarios Profesores.",
       "b) Las ACLs (Access Control Lists)...",
       "c) Un nuevo bosque de Directorio Activo.",
-      "d) Relaciones de confianza..."
+      "d) Relaciones de confianza entre el Directorio Activo actual y el dominio de seguridad del grupo de usuarios Profesores."
     ],
     "a": 0
   },
@@ -177,48 +177,48 @@ const supuesto2 = [
 
 
   {
-    "q": "R1. ...cambiar el mensaje HELO... quiere que muestre \"CORREOBIBLIOTECA\" y además, que el cambio se aplique en todos los servidores SMTP que existan... ¿Cómo lo haría?",
+    "q": "R1. Como administrador de correo, quiere cambiar el mensaje HELO que aparece cuando se establecen conexiones al servidor SMTP. Actualmente aparece el nombre del servidor, pero quiere que muestre 'CORREOBIBLIOTECA' y además, que el cambio se aplique en todos los servidores SMTP que existan, no solo en aquel en el que está trabajando. ¿Cómo lo haría?",
     "o": [
-      "a) Editando el parámetro $client en el fichero /etc/postfix/main.cf...",
-      "b) Accediendo al servidor SMTP y ejecutando EHLO -name CORREOBIBLIOTECA...",
-      "c) Editando el parámetro smtp_helo en el fichero /etc/postfix/master.cf...",
-      "d) Editando el parámetro $helo_name en /etc/postfix/main.cf..."
+      "a) Editando el parámetro $client en el fichero /etc/postfix/main.cf y reiniciando posteriormente el servidor Postfix.",
+      "b) Accediendo al servidor SMTP y ejecutando EHLO -name CORREOBIBLIOTECA en la consola.",
+      "c) Editando el parámetro smtp_helo en el fichero /etc/postfix/master.cf y reiniciando posteriormente el servidor Postfix.",
+      "d) Editando el parámetro $helo_name en /etc/postfix/main.cf y reiniciando posteriormente el servidor Postfix."
     ],
-    "a": 1
+    "a": 3
   },
   {
-    "q": "R2. ...instalar una red WiFi con protocolo WPA3-Enterprise. En este caso, para acceder a la red WiFi habrá que utilizar:",
-    "o": ["a) Una contraseña de 64 bits.", "b) Una contraseña de 128 bits.", "c) Un servidor RADIUS o cualquier solución que permita EAP-TLS.", "d) Una contraseña de 192 bits..."],
-    "a": 0
+    "q": "R2. Como no hay suficientes tomas Ethernet en la zona física donde están los profesores, se va a instalar una red WiFi con protocolo WPA3-Enterprise. En este caso, para acceder a la red WiFi habrá que utilizar:",
+    "o": ["a) Una contraseña de 64 bits.", "b) Una contraseña de 128 bits.", "c) Un servidor RADIUS o cualquier solución que permita EAP-TLS.", "d) Una contraseña de 192 bits usando el algoritmo GMCP-256"],
+    "a": 2
   },
   {
-    "q": "R3. En la base de datos MySQL de Profesores, nos piden que añadamos una tabla... que se llamará \"ProfesoresIngles\" con sus nombres y apellidos... ingresaremos el comando:",
+    "q": "R3. En la base de datos MySQL de Profesores, nos piden que añadamos una tabla para el curso de ingles basico... que se llamará \"ProfesoresIngles\" con sus nombres y apellidos... ingresaremos el comando:",
     "o": [
       "a) CREATE TABLE ProfesoresIngles (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, nombre VARCHAR(30), apellido1 VARCHAR(30), apellido2 VARCHAR(30));",
       "b) CREATE TABLE ProfesoresIngles KEY id, nombre, apellidos;",
       "c) CREAR TABLA ProfesoresIngles KEY apellidos, nombre;",
       "d) CREATE TABLE ProfesoresIngles (nombre, apellido);"
     ],
-    "a": 2
+    "a": 0
   },
   {
-    "q": "R4. ...quiere monitorizar, además, la URL de profesores (https://profesores.es)... ¿cuál comando utilizará?",
+    "q": "R4. Ha instalado el servicio Nagios para monitorizar los servidores y servicios en su sistema y quiere monitorizar, además, la URL de profesores (https://profesores.es), pero antes quiere comprobar que este servicio está configurado correctamente. Para ello, utilizará el comando:",
     "o": [
       "a) nagios –v /usr/local/nagios/etc/nagios.cfg",
       "b) /mnt/nagios –check",
       "c) systemctl status nagios",
       "d) https://profesores.es nagios"
     ],
-    "a": 3
+    "a": 0
   },
   {
-    "q": "R5. ...conexión usará TLS. Según las recomendaciones del Centro Criptológico Nacional, ¿cuál es la versión mínima y la recomendada a usar en TLS?",
+    "q": "R5. Se ha instalado un servidor web con HTTPS y certificado SSL de servidor para proteger la conexión entre los clientes y el servidor, para lo cual la conexión usará TLS. Según las recomendaciones del Centro Criptológico Nacional, ¿cuál es la versión mínima y la recomendada a usar en TLS?",
     "o": [
       "a) Versión mínima 1.1 y recomendada 1.1.",
       "b) Versión mínima 1.0 y recomendada 1.1.",
       "c) Versión mínima 1.2 y recomendada 1.3.",
       "d) Versión mínima 1.1 y recomendada 1.3."
     ],
-    "a": 1
+    "a": 2
   }
 ];

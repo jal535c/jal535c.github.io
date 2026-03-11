@@ -249,6 +249,8 @@ const supuesto2 = [
     "o": ["a) Internet Corporation for Assigned Names and Numbers (ICANN).", "b) Internet Assigned Numbers Authority (IANA).", "c) World Wide Web Consortium (W3C).", "d) Internet Engineering Task Force (IETF)."],
     "a": 2
   },
+
+  
   {
     "q": "R1. En la Unión Europea y España se aplican normas y leyes para garantizar la accesibilidad web... ¿Desde qué año se aplican estas normas y leyes?",
     "o": ["a) 2002.", "b) 1985.", "c) 1996.", "d) 2014."],

@@ -105,7 +105,7 @@ const parte1 = [
     "a": 3
   },
   {
-    "q": "A22. Un controlador de dispositivo periférico:",
+    "q": "An22. Un controlador de dispositivo periférico:",
     "o": ["a) Es el componente electrónico de la unidad de entrada y salida.", "b) Es el componente mecánico de la unidad de entrada y salida.", "c) Es la interfaz entre el adaptador y la unidad de entrada y salida.", "d) Es la interfaz entre la tarjeta controladora y el cable de conexión."],
     "a": -1
   },
@@ -220,7 +220,7 @@ const parte1 = [
     "a": 0
   },
   {
-    "q": "45. Sobre JPA (Java Persistence API), indique la respuesta correcta:",
+    "q": "45. La persistencia en Jakarta EE se gestiona principalmente a traves de la especificacion Jakarta Persistence API (JPA), indique la respuesta correcta:",
     "o": ["a) Una de sus ventajas es que no necesita utilizar un proveedor de JPA.", "b) El lenguaje de consulta similar a SQL pero orientado a objetos de JPA es JPSQL.", "c) Normalmente, una entidad representa una tabla en una base de datos relacional y cada instancia de la entidad corresponde a una fila de esa tabla.", "d) JPA no permite definir relaciones entre entidades del tipo uno a muchos."],
     "a": 2
   },
@@ -245,12 +245,12 @@ const parte1 = [
     "a": 1
   },
   {
-    "q": "50. Con respecto a las solicitudes de información accesible y quejas, el Real Decreto 1112/2018... establece que:",
+    "q": "50. Con respecto a las solicitudes de información accesible y quejas, el Real Decreto 1112/2018, sobre accesibilidad de los sitios web y aplicaciones para dispositivos moviles del sector publico establece que:",
     "o": ["a) Recibidas las solicitudes de información accesible y quejas, la entidad obligada deberá responder a la persona interesada en el plazo de veinte días naturales.", "b) Recibidas las solicitudes de información accesible y quejas, la entidad obligada deberá responder a la persona interesada en el plazo de veinte días hábiles.", "c) Recibidas las solicitudes de información accesible y quejas, la entidad obligada deberá responder a la persona interesada en el plazo de diez días naturales.", "d) Recibidas las solicitudes de información accesible y quejas, la entidad obligada deberá responder a la persona interesada en el plazo de diez días hábiles."],
     "a": 1
   },
   {
-    "q": "A51. En relación a los principios del Diseño Universal, señale cuál es uno de ellos:",
+    "q": "An51. En relación a los principios del Diseño Universal, señale cuál es uno de ellos:",
     "o": ["a) Seguridad.", "b) Información operable.", "c) Robustez.", "d) Alto esfuerzo físico."],
     "a": -1
   },
@@ -280,9 +280,9 @@ const parte1 = [
     "a": 0
   },
   {
-    "q": "57. ¿Cuál es el tamaño máximo de la MTU (Maximum Transmission Unit) para Ethernet?",
+    "q": "57. ¿Cuanta carga util puede almacenar un jumboframe?",
     "o": ["a) 7.000 bytes.", "b) 1.500 bytes.", "c) 9.000 bytes.", "d) 10.000 bytes."],
-    "a": 1
+    "a": 2
   },
   {
     "q": "58. ¿Qué protocolo hay que utilizar para obtener una dirección física a partir de una dirección lógica?",
@@ -305,7 +305,7 @@ const parte1 = [
     "a": 2
   },
   {
-    "q": "62. Señale la respuesta correcta sobre backups:",
+    "q": "62. Señale la respuesta correcta:",
     "o": ["a) Los backups utilizan poca capacidad de almacenamiento.", "b) Los backups son manuales, los snapshots son programables.", "c) Los backups pueden almacenarse en localizaciones y medios distintos.", "d) Los backups son una representación instantánea del estado de un sistema en un momento específico."],
     "a": 2
   },
@@ -341,11 +341,11 @@ const parte1 = [
   },
   {
     "q": "69. Indique la respuesta correcta sobre tipos de ataque a un sistema de información:",
-    "o": ["a) El sniffing es la generación de tráfico utilizando un origen falseado.", "b) El spoofing es la captura del tráfico que circula por una red.", "c) Denegacion de servicio distribuida (DDoS) es un ataque a varios objetivos desde un solo punto...", "d) El barrido (“escaneo”) de puertos es un ataque que trata de obtener información básica acerca de qué servicios se ofrecen en un determinado sistema..."],
+    "o": ["a) El sniffing es la generación de tráfico utilizando un origen falseado.", "b) El spoofing es la captura del tráfico que circula por una red.", "c) Denegacion de servicio distribuida (DDoS) es un ataque a varios objetivos desde un solo punto, con la finalidad de degradar los servicios prestados por esos recursos a sus usuarios legitimos", "d) El barrido (“escaneo”) de puertos es un ataque que trata de obtener información básica acerca de qué servicios se ofrecen en un determinado sistema..."],
     "a": 3
   },
   {
-    "q": "A70. ¿Cuál de las siguientes categorías de cable Ethernet tiene 10.000 Mbps como tope de velocidad de transferencia?",
+    "q": "An70. ¿Cuál de las siguientes categorías de cable Ethernet tiene 10.000 Mbps como tope de velocidad de transferencia?",
     "o": ["a) Categoría 6A.", "b) Categoría 8.", "c) Categoría 6.", "d) Categoría 5E."],
     "a": -1
   },
@@ -355,7 +355,7 @@ const parte1 = [
     "a": 1
   },
   {
-    "q": "72. Indique la respuesta correcta sobre el modelo de referencia OSI:",
+    "q": "72. Indique la respuesta correcta sobre el modelo OSI de ISO:",
     "o": ["a) Las capas o niveles del modelo OSI son: Física, de red, de transporte, de sesión, de presentación y de aplicación.", "b) La versión actual del estándar OSI es la ISO/IEC 7498-1:1994.", "c) La capa de transporte se ocupa, entre otros, de aspectos como el enrutamiento...", "d) La capa de sesión a menudo se divide en dos subcapas: la capa de control de acceso a los medios (MAC) y la capa de control de enlace lógico (LLC)."],
     "a": 1
   },

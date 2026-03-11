@@ -114,7 +114,17 @@ const  supuesto2= [
       "a": 3
     },
     {
-      "q": "11. El software de control de equipos para el teletrabajo necesita conocer el nombre de los equipos. ¿Qué comando de Windows muestra esa información?",
+      "q": "An11. El software de control de equipos para el teletrabajo necesita conocer el nombre de los equipos. ¿Qué comando de Windows muestra esa información?",
+      "o": [
+        "a) net computer",
+        "b) net localgroup",
+        "c) net config",
+        "d) net accounts"
+      ],
+      "a": -1
+    },
+    {
+      "q": "11. Tambien se le consulta sobre la situacion actual de las politicas de cuentas y contraseñas de una maquina local. ¿Qué comando de Windows muestra esa información?",
       "o": [
         "a) net computer",
         "b) net localgroup",
