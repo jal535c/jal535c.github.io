@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memorizar</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    :root {
+      --bg-color: #d3d6da;
+      --card-color: #f0f2f5;
+      --board-bg: #e4e6eb;
+      --text-color: #1c1e21;
+      --border-color: #ced0d4;
+      --accent-color: #5d749a;
+      --cell-bg: #ffffff;
+      --cell-hidden: #d8dadf;
+      --grid-size: 3;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      user-select: none;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: 680px;
+      /*overflow: hidden;*/
+      padding: 10px;
+    }
+
+    header {
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    .header-top {
+      display: flex;
+      /*justify-content: space-between;*/
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 0;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    button.btn-menu {
+      background: var(--card-color);
+      color: var(--text-color);
+      border: 1px solid var(--border-color);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button.btn-menu.active {
+      background: var(--accent-color);
+      color: #ffffff;
+      border-color: var(--accent-color);
+    }
+
+    #status-message {
+      font-size: 1rem;
+      font-weight: bold;
+      height: 24px;
+      margin-top: 5px;
+      color: var(--text-color);
+    }
+
+    /* Tablero de Juego */
+    .game-container {
+      width: 100%;
+      max-width: 340px;
+      aspect-ratio: 1;
+      display: grid;
+      grid-template-columns: repeat(var(--grid-size), 1fr);
+      grid-template-rows: repeat(var(--grid-size), 1fr);
+      gap: 6px;
+      background: var(--board-bg);
+      padding: 8px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      /*margin: auto 0;*/
+    }
+
+    .cell {
+      background: var(--cell-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: bold;
+      position: relative;
+      cursor: pointer;
+      transition: background 0.1s, border-color 0.1s;
+    }
+
+    .cell.selected {
+      border: 2px solid var(--accent-color);
+      background: #e7f3ff;
+    }
+
+    .cell.hidden-board {
+      background: var(--cell-hidden);
+    }
+
+    /* Estados de Validación Inmediata */
+    .cell.correct {
+      background: #e2f5e2 !important;
+      border-color: #34c759 !important;
+      color: #248a3d !important;
+    }
+
+    .cell.incorrect {
+      background: #ffebeb !important;
+      border-color: #ff3b30 !important;
+      color: #ff3b30 !important;
+    }
+
+    /* Teclado Inferior Móvil */
+    .keyboard {
+      width: 100%;
+      max-width: 400px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+
+    .key {
+      background: var(--card-color);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 10px 0;
+      /* REDUCIDO PARA EVITAR SCROLL */
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .key:active {
+      background: var(--border-color);
+    }
+
+    .key.action {
+      background: #c05858;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .key.enter {
+      background: var(--accent-color);
+      color: white;
+      border-color: var(--accent-color);
+    }
+
+    /* MODAL ESTADISTICAS */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .modal-overlay.show {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--card-color);
+      padding: 20px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 350px;
+      position: relative;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      cursor: pointer;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--text-color);
+    }
+
+    .stats-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: var(--accent-color);
+      text-align: center;
+    }
+
+    .stats-table-container {
+      max-height: 350px;
+      overflow-y: auto;
+      font-size: 0.85rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 6px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    th {
+      color: var(--accent-color);
+      position: sticky;
+      top: 0;
+      background: var(--card-color);
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="header-top">
+
+      <h1>Memorizar</h1>
+
+      <!--
+      <button class="btn-menu" style="padding: 4px 10px;" onclick="toggleStats()">🗓️</button>
+      <button class="btn-menu" style="padding: 4px 10px;" onclick="toggleStats()">📊</button>
+      -->
+    </div>
+    <div class="controls">
+      <button class="btn-menu active" onclick="changeDifficulty('Fácil', 3, 9, 45)">Fácil (3x3)</button>
+      <button class="btn-menu" onclick="changeDifficulty('Normal', 4, 16, 75)">Normal (4x4)</button>
+      <button class="btn-menu" onclick="changeDifficulty('Difícil', 5, 25, 120)">Difícil (5x5)</button>
+    </div>
+    <div id="status-message">Toca el tablero para empezar</div>
+  </header>
+
+  <div class="game-container" id="board">
+    <!-- Celdas dinámicas por JS -->
+  </div>
+
+  <div class="keyboard">
+    <div class="key" onclick="pressNum(1)">1</div>
+    <div class="key" onclick="pressNum(2)">2</div>
+    <div class="key" onclick="pressNum(3)">3</div>
+    <div class="key action" onclick="pressDelete()">Borrar</div>
+
+    <div class="key" onclick="pressNum(4)">4</div>
+    <div class="key" onclick="pressNum(5)">5</div>
+    <div class="key" onclick="pressNum(6)">6</div>
+    <div class="key action enter" onclick="pressEnter()">Enter</div>
+
+    <div class="key" onclick="pressNum(7)">7</div>
+    <div class="key" onclick="pressNum(8)">8</div>
+    <div class="key" onclick="pressNum(9)">9</div>
+    <div class="key" onclick="pressNum(0)">0</div>
+  </div>
+
+  <div id="statsModal" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-close" onclick="toggleStats()">&times;</div>
+      <div class="stats-title">Estadísticas</div>
+      <div class="stats-table-container" id="stats-content">
+        <!-- Rellenado dinámicamente -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let gridSize = 3;
+    let totalNumbers = 9;
+    let currentLevelLabel = 'Fácil';
+    let memorizeTimeLimit = 45;
+
+    let boardState = [];
+    let gameState = 'idle'; // 'idle', 'memorizing', 'solving', 'ended'
+    let selectedCellIndex = null;
+    let keyboardInput = "";
+
+    let timer = null;
+    let timeElapsedInSolving = 0;
+
+    let SOLVE_TIME = 45;    // 2 minutos máximo para rellenar
+
+    const boardEl = document.getElementById('board');
+    const statusEl = document.getElementById('status-message');
+
+    function initBoard() {
+      clearInterval(timer);
+      gameState = 'idle';
+      selectedCellIndex = null;
+      keyboardInput = "";
+      timeElapsedInSolving = 0;
+      statusEl.style.color = "var(--text-color)";
+      statusEl.innerText = `Toca el tablero para empezar`;
+
+      // Ajustar variable CSS del tamaño de la cuadrícula
+      document.documentElement.style.setProperty('--grid-size', gridSize);
+
+      const totalCells = gridSize * gridSize;
+      boardState = Array(totalCells).fill(null).map(() => ({
+        correctValue: null,
+        userValue: null,
+        status: 'empty' // 'empty', 'correct', 'incorrect'
+      }));
+
+      // Generar números e introducirlos aleatoriamente
+      let numbers = Array.from({ length: totalNumbers }, (_, i) => i + 1);
+      numbers.forEach(num => {
+        let rIndex;
+        do {
+          rIndex = Math.floor(Math.random() * totalCells);
+        } while (boardState[rIndex].correctValue !== null);
+        boardState[rIndex].correctValue = num;
+      });
+
+      renderBoard();
+      renderStatsTable();
+    }
+
+    function renderBoard() {
+      boardEl.innerHTML = '';
+      boardState.forEach((cell, index) => {
+        const cellEl = document.createElement('div');
+        cellEl.classList.add('cell');
+
+        if (selectedCellIndex === index) {
+          cellEl.classList.add('selected');
+        }
+
+        // Clases de validación permanente
+        if (cell.status === 'correct') cellEl.classList.add('correct');
+        if (cell.status === 'incorrect') cellEl.classList.add('incorrect');
+
+        if (gameState === 'memorizing') {
+          if (cell.correctValue !== null) cellEl.innerText = cell.correctValue;
+        } else if (gameState === 'idle') {
+          // No mostrar nada hasta que empiece
+        } else {
+          // Durante y después del juego
+          if (gameState === 'solving') cellEl.classList.add('hidden-board');
+
+          if (selectedCellIndex === index && keyboardInput !== "") {
+            cellEl.innerText = keyboardInput;
+          } else if (cell.userValue !== null) {
+            cellEl.innerText = cell.userValue;
+          } else if (gameState === 'ended' && cell.correctValue !== null) {
+            // Al terminar, revelamos vacías que tenían valor asignado
+            cellEl.innerText = cell.correctValue;
+          }
+        }
+
+        cellEl.onclick = () => handleCellClick(index);
+        boardEl.appendChild(cellEl);
+      });
+    }
+
+    function handleCellClick(index) {
+      if (gameState === 'idle') {
+        startMemorizing();
+        return;
+      }
+      if (gameState === 'solving') {
+        // No permitir editar una celda que ya fue validada (correcta o incorrecta)
+        if (boardState[index].status !== 'empty') return;
+
+        selectedCellIndex = index;
+        keyboardInput = "";
+        renderBoard();
+      }
+    }
+
+    function startMemorizing() {
+      gameState = 'memorizing';
+      let timeLeft = memorizeTimeLimit;
+      statusEl.innerText = `Memoriza tabla: ${formatTime(timeLeft)}`;
+
+      timer = setInterval(() => {
+        timeLeft--;
+        if (timeLeft <= 0) startSolving();
+        else statusEl.innerText = `Memoriza tabla: ${formatTime(timeLeft)}`;
+      }, 1000);
+      renderBoard();
+    }
+
+    function startSolving() {
+      clearInterval(timer);
+      gameState = 'solving';
+      selectedCellIndex = null;
+      keyboardInput = "";
+
+      let timeLeft = SOLVE_TIME;
+      statusEl.innerText = `Rellena tabla: ${formatTime(timeLeft)}`;
+
+      timer = setInterval(() => {
+        timeLeft--;
+        timeElapsedInSolving++;
+        if (timeLeft <= 0) endGame();
+        else statusEl.innerText = `Rellena tabla: ${formatTime(timeLeft)}`;
+      }, 1000);
+      renderBoard();
+    }
+
+    function pressNum(num) {
+      if (gameState !== 'solving' || selectedCellIndex === null) return;
+      if (keyboardInput.length < 2) {
+        keyboardInput += num;
+        renderBoard();
+      }
+    }
+
+    function pressDelete() {
+      if (gameState !== 'solving' || selectedCellIndex === null) return;
+      keyboardInput = "";
+      renderBoard();
+    }
+
+    function pressEnter() {
+      if (gameState !== 'solving' || selectedCellIndex === null || keyboardInput === "") return;
+
+      const cell = boardState[selectedCellIndex];
+      const valueEntered = parseInt(keyboardInput, 10);
+      cell.userValue = valueEntered;
+
+      // MEJORA 2: Validación inmediata al pulsar ENTER
+      if (cell.correctValue !== null && valueEntered === cell.correctValue) {
+        cell.status = 'correct';
+      } else {
+        cell.status = 'incorrect';
+        cell.userValue = cell.correctValue; // Mostrar el número correcto en rojo
+      }
+
+      selectedCellIndex = null;
+      keyboardInput = "";
+      renderBoard();
+
+      checkGameEnd();
+    }
+
+    function checkGameEnd() {
+      // El juego termina si se han respondido tantas casillas como números había en juego
+      const totalAnswered = boardState.filter(c => c.status !== 'empty').length;
+      if (totalAnswered === totalNumbers) {
+        endGame();
+      }
+    }
+
+    function endGame() {
+      clearInterval(timer);
+      gameState = 'ended';
+      selectedCellIndex = null;
+
+      let hits = boardState.filter(c => c.status === 'correct').length;
+
+      //statusEl.style.color = hits === totalNumbers ? "#34c759" : "#ff3b30";
+      statusEl.innerText = `Resultado: ${hits}/${totalNumbers} aciertos`;
+      renderBoard();
+
+      // MEJORA 3: Guardar estadísticas en LocalStorage
+      saveStats(hits);
+    }
+
+    function changeDifficulty(label, size, count, memTime) {
+      if ((gameState === 'memorizing' || gameState === 'solving') && !confirm("¿Reiniciar partida?")) return;
+      currentLevelLabel = label;
+      gridSize = size;
+      totalNumbers = count;
+      memorizeTimeLimit = memTime;
+
+      SOLVE_TIME = memTime;
+
+      document.querySelectorAll('.btn-menu').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.innerText.includes(label)) btn.classList.add('active');
+      });
+
+      initBoard();
+    }
+
+    function formatTime(seconds) {
+      let m = Math.floor(seconds / 60);
+      let s = seconds % 60;
+      return `${m}:${s < 10 ? '0' : ''}${s}`;
+    }
+
+    // --- SISTEMA DE ESTADÍSTICAS (LOCAL STORAGE) ---
+    function saveStats(hits) {
+      let stats = JSON.parse(localStorage.getItem('brainTrainingStats')) || [];
+
+      const newRecord = {
+        fecha: new Date().toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit' }),
+        nivel: currentLevelLabel,
+        aciertos: `${hits}/${totalNumbers}`,
+        tiempo: `${timeElapsedInSolving}s`
+      };
+
+      stats.unshift(newRecord); // Añadir al principio
+      // Limitar a los últimos 20 registros para no saturar
+      if (stats.length > 20) stats.pop();
+
+      localStorage.setItem('brainTrainingStats', JSON.stringify(stats));
+      renderStatsTable();
+    }
+
+    function renderStatsTable() {
+      const statsContent = document.getElementById('stats-content');
+      let stats = JSON.parse(localStorage.getItem('brainTrainingStats')) || [];
+
+      if (stats.length === 0) {
+        statsContent.innerHTML = "<p style='text-align:center; padding:10px;'>Aún no hay partidas registradas.</p>";
+        return;
+      }
+
+      let tableHTML = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Nivel</th>
+                            <th>Aciertos</th>
+                            <th>Tiempo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+      stats.forEach(row => {
+        tableHTML += `
+                    <tr>
+                        <td>${row.fecha}</td>
+                        <td>${row.nivel}</td>
+                        <td>${row.aciertos}</td>
+                        <td>${row.tiempo}</td>
+                    </tr>
+                `;
+      });
+
+      tableHTML += `</tbody></table>`;
+      statsContent.innerHTML = tableHTML;
+    }
+
+    function toggleStats() {
+      const modal = document.getElementById('statsModal');
+      if (modal.classList.contains('show')) {
+        modal.classList.remove('show');
+      } else {
+        renderStatsTable();
+        modal.classList.add('show');
+      }
+    }
+
+    function closeModal(event) {
+      if (event.target.id === 'statsModal') {
+        toggleStats();
+      }
+    }
+
+    // Arrancar
+    initBoard();
+  </script>
+</body>
+
+</html>
