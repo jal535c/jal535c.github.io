@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Pentris - Pentomino Puzzle</title>
+  <!-- Google Fonts for Retro/Modern Arcade feel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- Web app manifest / mobile optimization -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header Area -->
+    <header class="game-header">
+      <div class="title-container">
+        <h1 class="game-title">PENTRIS</h1>
+        <span class="subtitle">PENTOMINO PUZZLE</span>
+      </div>
+      <div class="header-controls">
+        <button id="btn-sound" class="icon-btn" aria-label="Toggle Sound">
+          <svg id="sound-icon-on" viewBox="0 0 24 24" width="24" height="24">
+            <path fill="currentColor" d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18,19.86 21,16.28 21,12C21,7.72 18,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z" />
+          </svg>
+          <svg id="sound-icon-off" class="hidden" viewBox="0 0 24 24" width="24" height="24">
+            <path fill="currentColor" d="M12,4L7,9H3V15H7L12,20V4M16.5,12C16.5,10.23 15.5,8.71 14,7.97V11L16.43,13.43C16.47,12.96 16.5,12.49 16.5,12M19,12C19,12.94 18.8,13.82 18.46,14.64L19.97,16.15C20.62,14.91 21,13.5 21,12C21,7.72 18,4.14 14,3.23V5.29C16.89,6.15 19,8.83 19,12M4.27,3L3,4.27L7.73,9H3V15H7L12,20V13.27L16.25,17.53C15.58,18.04 14.83,18.44 14,18.71V20.77C15.38,20.44 16.63,19.78 17.7,18.97L20.73,22L22,20.73L4.27,3Z" />
+          </svg>
+        </button>
+        <button id="btn-info" class="icon-btn" aria-label="Show Instructions">
+          <svg viewBox="0 0 24 24" width="24" height="24">
+            <path fill="currentColor" d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Game Area -->
+    <main class="game-layout">
+      <!-- Sidebar Left: Hold -->
+      <aside class="sidebar hold-sidebar">
+        <div class="panel panel-hold">
+          <span class="panel-label">HOLD</span>
+          <div class="preview-container">
+            <canvas id="canvas-hold" width="100" height="100"></canvas>
+          </div>
+          <button id="btn-hold-trigger" class="hold-btn-text">RESERVAR</button>
+        </div>
+      </aside>
+
+      <!-- Center: Board -->
+      <div class="board-container">
+        <div class="canvas-wrapper">
+          <canvas id="canvas-board" width="300" height="600"></canvas>
+          <div id="board-message" class="hidden">PAUSA</div>
+        </div>
+      </div>
+
+      <!-- Sidebar Right: Next & Stats -->
+      <aside class="sidebar stats-sidebar">
+        <div class="panel panel-next">
+          <span class="panel-label">SIGUIENTE</span>
+          <div class="preview-container">
+            <canvas id="canvas-next" width="100" height="100"></canvas>
+          </div>
+        </div>
+
+        <div class="panel panel-stats">
+          <div class="stat-item">
+            <span class="stat-label">SCORE</span>
+            <span id="stat-score" class="stat-value">000000</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">NIVEL</span>
+            <span id="stat-level" class="stat-value">1</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">LÍNEAS</span>
+            <span id="stat-lines" class="stat-value">0</span>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Mobile-optimized Virtual Controller -->
+    <section class="controller-container">
+      <div class="controller-grid">
+        <!-- Row 1: Rotation & Utility -->
+        <button class="ctrl-btn btn-rot-ccw" data-action="rot-ccw" aria-label="Rotate Counter-Clockwise">
+          <span class="btn-icon">↺</span>
+          <span class="btn-subtext">Girar Anti</span>
+        </button>
+        
+        <button class="ctrl-btn btn-flip" data-action="flip" aria-label="Flip Piece">
+          <span class="btn-icon">⇄</span>
+          <span class="btn-subtext">Reflejar</span>
+        </button>
+        
+        <button class="ctrl-btn btn-rot-cw" data-action="rot-cw" aria-label="Rotate Clockwise">
+          <span class="btn-icon">↻</span>
+          <span class="btn-subtext">Girar</span>
+        </button>
+
+        <!-- Row 2: Navigation & Action -->
+        <button class="ctrl-btn btn-left" data-action="left" aria-label="Move Left">
+          <span class="btn-icon">←</span>
+          <span class="btn-subtext">Izquierda</span>
+        </button>
+        
+        <button class="ctrl-btn btn-place" data-action="place" aria-label="Place Piece">
+          <span class="btn-icon">COLOCAR 📥</span>
+        </button>
+        
+        <button class="ctrl-btn btn-right" data-action="right" aria-label="Move Right">
+          <span class="btn-icon">→</span>
+          <span class="btn-subtext">Derecha</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Modals & Overlays -->
+    <!-- Game Over Screen -->
+    <div id="screen-gameover" class="overlay hidden">
+      <div class="overlay-content">
+        <h2 class="overlay-title">GAME OVER</h2>
+        <div class="final-stats">
+          <p>Puntuación Final: <span id="final-score">0</span></p>
+          <p>Líneas Limpiadas: <span id="final-lines">0</span></p>
+          <p>Nivel Alcanzado: <span id="final-level">1</span></p>
+          <p class="highscore-record">Récord: <span id="val-highscore">0</span></p>
+        </div>
+        <button id="btn-restart" class="action-btn">VOLVER A JUGAR</button>
+      </div>
+    </div>
+
+    <!-- Start / Pause Screen -->
+    <div id="screen-start" class="overlay">
+      <div class="overlay-content">
+        <h2 class="overlay-title logo-glow">PENTRIS</h2>
+        <p class="tagline">Puzzle de Pentominós táctil sin gravedad automática. Tómate tu tiempo, planifica tus movimientos y encaja las piezas.</p>
+        <div class="controls-guide">
+          <h3>Controles de Teclado</h3>
+          <ul>
+            <li><kbd>←</kbd> <kbd>→</kbd> : Mover lateralmente</li>
+            <li><kbd>A</kbd> o <kbd>Z</kbd> : Girar Antihorario / Horario</li>
+            <li><kbd>Espacio</kbd> o <kbd>F</kbd> : Reflejar (Flip)</li>
+            <li><kbd>Enter</kbd> o <kbd>↓</kbd> : Colocar pieza</li>
+            <li><kbd>C</kbd> o <kbd>Shift</kbd> : Reservar (Hold)</li>
+          </ul>
+        </div>
+        <button id="btn-start" class="action-btn">EMPEZAR JUEGO</button>
+      </div>
+    </div>
+
+    <!-- Info Modal -->
+    <div id="modal-info" class="overlay hidden">
+      <div class="overlay-content">
+        <h2 class="overlay-title">Sobre Pentris</h2>
+        <div class="info-body">
+          <p><strong>Pentris</strong> es una variante de Tetris que utiliza <strong>Pentominós</strong> en lugar de tetrominós tradicionales. Un pentominó es una figura geométrica compuesta por <strong>5 cuadrados</strong> unidos por sus lados.</p>
+          <p>Existen 12 figuras diferentes. Al ser más grandes y complejas que las piezas tradicionales de Tetris, el juego requiere mayor estrategia.</p>
+          <p><strong>Sin gravedad automática:</strong> Para hacerlo ideal para móviles y pantallas táctiles, la pieza no cae por sí sola. Puedes moverla, rotarla o reflejarla con total tranquilidad. Cuando estés seguro de su posición (indicada por la sombra en el fondo), pulsa <strong>COLOCAR</strong> para fijarla.</p>
+          <p><strong>Limpieza de líneas:</strong> Cuando completas una línea horizontal, esta se ilumina con una animación y se limpia automáticamente, desplazando las piezas superiores hacia abajo.</p>
+        </div>
+        <button id="btn-close-info" class="action-btn">CERRAR</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
