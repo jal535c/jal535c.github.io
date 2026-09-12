@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Fase 2 - Reglas de Movimiento</title>
+    <style>
+        :root {
+            --bg-color: #5b6b83; 
+            --board-bg: #0f172a;  
+            --line-color: #334155; 
+            --text-color: #f1f5f9; 
+            
+            --c-magenta: #9D4EDD; 
+            --c-rojo: #E63946;    
+            --c-verde: #2A9D8F;   
+            --c-azul: #4361EE;    
+            --c-naranja: #F4A261; 
+            
+            --ficha-j1: #f8fafc; 
+            --ficha-j2: #0f172a; 
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            min-height: 100dvh; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; 
+            gap: 30px; 
+            padding: 30px 20px; 
+            touch-action: none; 
+            overflow: hidden;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .ui-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 500px;
+            background-color: rgba(15, 23, 42, 0.5);
+            padding: 10px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(241, 245, 249, 0.1);
+        }
+
+        .indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .indicator-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #cbd5e1;
+            margin-bottom: 4px;
+        }
+
+        .indicator-value {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .turn-dot {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin-right: 8px;
+            vertical-align: middle;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .turn-dot.j1 { background-color: var(--ficha-j1); }
+        .turn-dot.j2 { background-color: var(--ficha-j2); }
+
+        .board-container {
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 1 / 1;
+        }
+
+        .board {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            gap: 4px;
+            width: 100%;
+            height: 100%;
+            background-color: var(--line-color);
+            border: 4px solid var(--line-color);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .cell {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: filter 0.2s, background-color 0.3s;
+            overflow: hidden;
+        }
+
+        .cell.drag-over {
+            filter: brightness(1.5); 
+        }
+
+        .cell.empty {
+            background-color: var(--bg-color) !important; /* Casilla consumida */
+        }
+
+        .marks {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.5;
+            z-index: 1;
+            transition: opacity 0.3s;
+        }
+
+        .cell.empty .marks {
+            opacity: 0; /* Ocultar marcas en casillas vacías */
+        }
+
+        .piece-wrapper {
+            width: 65%;
+            height: 65%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+            cursor: grab;
+        }
+
+        .piece {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            transition: transform 0.1s ease, opacity 0.2s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(0,0,0,0.3);
+            pointer-events: none;
+        }
+
+        .piece-wrapper:active .piece {
+            transform: scale(0.95);
+        }
+
+        .piece.dragging {
+            opacity: 0.2;
+        }
+
+        .piece-wrapper.locked {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .piece.j1 { background-color: var(--ficha-j1); border-color: #cbd5e1; }
+        .piece.j2 { background-color: var(--ficha-j2); border-color: #334155; }
+
+        .controls { 
+            margin-top: 0; 
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--text-color);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        button:hover {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            transform: translateY(-2px);
+        }
+
+        .drag-ghost {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.8;
+            transform: scale(1.1);
+            transition: none;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Pentaktys</h1>
+    
+    <div class="ui-container">
+        <div class="indicator">
+            <span class="indicator-label">Turno</span>
+            <span class="indicator-value" id="turnIndicator">
+                <span class="turn-dot j1"></span>Blancas
+            </span>
+        </div>
+        <div class="indicator">
+            <span class="indicator-label">Movimientos Restantes</span>
+            <span class="indicator-value" id="roundIndicator">15</span>
+        </div>
+    </div>
+
+    <div class="board-container">
+        <div class="board" id="board"></div>
+    </div>
+
+    <div class="controls">
+        <button onclick="initGame()">Reiniciar Partida</button>
+    </div>
+
+    <script>
+        const boardElement = document.getElementById('board');
+        const turnIndicator = document.getElementById('turnIndicator');
+        const roundIndicator = document.getElementById('roundIndicator');
+        
+        const colors = [
+            'var(--c-magenta)', 'var(--c-magenta)', 'var(--c-magenta)', 'var(--c-magenta)', 'var(--c-magenta)', 'var(--c-magenta)', 'var(--c-magenta)', 'var(--c-magenta)',
+            'var(--c-rojo)', 'var(--c-rojo)', 'var(--c-rojo)', 'var(--c-rojo)', 'var(--c-rojo)', 'var(--c-rojo)', 'var(--c-rojo)', 'var(--c-rojo)',
+            'var(--c-verde)', 'var(--c-verde)', 'var(--c-verde)', 'var(--c-verde)', 'var(--c-verde)', 'var(--c-verde)', 'var(--c-verde)', 'var(--c-verde)',
+            'var(--c-azul)', 'var(--c-azul)', 'var(--c-azul)', 'var(--c-azul)', 'var(--c-azul)', 'var(--c-azul)', 'var(--c-azul)', 'var(--c-azul)',
+            'var(--c-naranja)', 'var(--c-naranja)', 'var(--c-naranja)', 'var(--c-naranja)', 'var(--c-naranja)', 'var(--c-naranja)', 'var(--c-naranja)', 'var(--c-naranja)'
+        ];
+        
+        let draggedPieceWrapper = null;
+        let ghostElement = null;
+        let originCell = null;
+        let originBgColor = null;
+        
+        let currentTurn = 1;
+        let movesLeft = 15;
+
+        function getMarksSVG(color) {
+            let lines = '';
+            let svg = `<svg class="marks" viewBox="0 0 100 100" preserveAspectRatio="none">`;
+            
+            if (color === 'var(--c-magenta)') {
+                lines = `<line x1="10" y1="50" x2="90" y2="50" stroke="rgba(255,255,255,0.8)" stroke-width="4"/>`;
+            } else if (color === 'var(--c-rojo)') {
+                lines = `<line x1="10" y1="35" x2="90" y2="35" stroke="rgba(255,255,255,0.8)" stroke-width="4"/><line x1="10" y1="65" x2="90" y2="65" stroke="rgba(255,255,255,0.8)" stroke-width="4"/>`;
+            } else if (color === 'var(--c-azul)') {
+                lines = `<line x1="20" y1="80" x2="80" y2="20" stroke="rgba(255,255,255,0.8)" stroke-width="4"/>`;
+            } else if (color === 'var(--c-verde)') {
+                lines = `<line x1="20" y1="80" x2="80" y2="20" stroke="rgba(255,255,255,0.8)" stroke-width="4"/><line x1="20" y1="20" x2="80" y2="80" stroke="rgba(255,255,255,0.8)" stroke-width="4"/>`;
+            }
+            svg += lines + `</svg>`;
+            return svg;
+        }
+
+        // Función auxiliar para barajar arreglos
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function initGame() {
+            boardElement.innerHTML = '';
+            
+            // Punto A: Jugador inicial aleatorio
+            currentTurn = Math.random() < 0.5 ? 1 : 2; 
+            
+            movesLeft = 15;
+            updateUI();
+
+            // Punto B: Disposición de colores corregida
+            const uniqueColors = [
+                'var(--c-magenta)', 'var(--c-rojo)', 'var(--c-verde)', 'var(--c-azul)', 'var(--c-naranja)'
+            ];
+
+            // 1. Barajamos los 5 colores únicos para la primera fila
+            let firstRowColors = shuffleArray([...uniqueColors]);
+            
+            // 2. La quinta fila es la inversa de la primera
+            let fifthRowColors = [...firstRowColors].reverse();
+
+            // 3. Sacamos los colores de la primera y quinta fila de la bolsa general (quedan 30)
+            let availableColors = [...colors];
+            
+            // Quitamos una vez por la primera fila
+            firstRowColors.forEach(color => {
+                let indexToRemove = availableColors.indexOf(color);
+                if (indexToRemove !== -1) {
+                    availableColors.splice(indexToRemove, 1);
+                }
+            });
+
+            // Quitamos otra vez por la quinta fila
+            fifthRowColors.forEach(color => {
+                let indexToRemove = availableColors.indexOf(color);
+                if (indexToRemove !== -1) {
+                    availableColors.splice(indexToRemove, 1);
+                }
+            });
+
+            // 4. Barajamos los 30 colores restantes
+            shuffleArray(availableColors);
+
+            // 5. Construimos la matriz 5x5 del tablero
+            let boardColors = [];
+            boardColors.push(firstRowColors); // Fila 1
+
+            // Filas 2, 3 y 4 (15 casillas en total desde la bolsa de 30)
+            for (let r = 0; r < 3; r++) {
+                let rowColors = [];
+                for (let c = 0; c < 5; c++) {
+                    rowColors.push(availableColors.pop());
+                }
+                boardColors.push(rowColors);
+            }
+
+            boardColors.push(fifthRowColors); // Fila 5
+
+            // Pintar las casillas en el DOM
+            for (let r = 0; r < 5; r++) {
+                for (let c = 0; c < 5; c++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'cell';
+                    cell.dataset.index = r * 5 + c;
+                    
+                    let assignedColor = boardColors[r][c];
+                    cell.style.backgroundColor = assignedColor;
+                    cell.dataset.originalColor = assignedColor; 
+                    cell.innerHTML = getMarksSVG(assignedColor);
+
+                    boardElement.appendChild(cell);
+                }
+            }
+
+            // Colocar fichas J1 (Arriba)
+            for (let i = 0; i < 5; i++) createPiece(boardElement.children[i], 1);
+            // Colocar fichas J2 (Abajo)
+            for (let i = 20; i < 25; i++) createPiece(boardElement.children[i], 2);
+            
+            updateLocks();
+        }
+
+        function createPiece(parentCell, player) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'piece-wrapper';
+            wrapper.dataset.player = player;
+            
+            const piece = document.createElement('div');
+            piece.className = `piece j${player}`;
+            
+            wrapper.appendChild(piece);
+            
+            wrapper.addEventListener('pointerdown', handlePointerDown);
+            wrapper.addEventListener('dragstart', (e) => e.preventDefault());
+
+            parentCell.appendChild(wrapper);
+        }
+
+        function updateUI() {
+            if (currentTurn === 1) turnIndicator.innerHTML = '<span class="turn-dot j1"></span>Blancas';
+            else turnIndicator.innerHTML = '<span class="turn-dot j2"></span>Negras';
+            
+            roundIndicator.innerText = Math.max(0, movesLeft);
+        }
+
+        function updateLocks() {
+            document.querySelectorAll('.piece-wrapper').forEach(p => {
+                if (parseInt(p.dataset.player) === currentTurn) p.classList.remove('locked');
+                else p.classList.add('locked');
+            });
+        }
+
+        function changeTurn() {
+            if (movesLeft > 0) {
+                movesLeft--;
+            }
+            currentTurn = currentTurn === 1 ? 2 : 1;
+            updateUI();
+            updateLocks();
+        }
+
+        function handlePointerDown(e) {
+            const wrapper = e.currentTarget;
+            if (wrapper.classList.contains('locked')) return;
+
+            e.preventDefault();
+            draggedPieceWrapper = wrapper;
+            originCell = wrapper.parentNode;
+            
+            if (movesLeft === 0) {
+                originBgColor = originCell.style.backgroundColor;
+                originCell.classList.add('empty'); 
+                originCell.style.backgroundColor = ''; 
+            }
+
+            const pieceElement = wrapper.querySelector('.piece');
+            pieceElement.classList.add('dragging');
+
+            ghostElement = pieceElement.cloneNode(true);
+            ghostElement.classList.remove('dragging');
+            ghostElement.classList.add('drag-ghost');
+            
+            const rect = pieceElement.getBoundingClientRect();
+            ghostElement.style.width = rect.width + 'px';
+            ghostElement.style.height = rect.height + 'px';
+            
+            document.body.appendChild(ghostElement);
+            moveGhost(e.clientX, e.clientY);
+
+            document.addEventListener('pointermove', handlePointerMove);
+            document.addEventListener('pointerup', handlePointerUp);
+            document.addEventListener('pointercancel', handlePointerUp);
+        }
+
+        function moveGhost(x, y) {
+            if (ghostElement) {
+                const rect = ghostElement.getBoundingClientRect();
+                ghostElement.style.left = (x - rect.width / 2) + 'px';
+                ghostElement.style.top = (y - rect.height / 2) + 'px';
+            }
+        }
+
+        function handlePointerMove(e) {
+            if (!draggedPieceWrapper) return;
+            e.preventDefault();
+            moveGhost(e.clientX, e.clientY);
+
+            document.querySelectorAll('.cell').forEach(c => c.classList.remove('drag-over'));
+            ghostElement.style.display = 'none';
+            const elementBelow = document.elementFromPoint(e.clientX, e.clientY);
+            ghostElement.style.display = '';
+
+            if (elementBelow) {
+                const cellBelow = elementBelow.closest('.cell');
+                if (cellBelow && !cellBelow.classList.contains('empty')) {
+                    cellBelow.classList.add('drag-over');
+                }
+            }
+        }
+
+        function handlePointerUp(e) {
+            if (!draggedPieceWrapper) return;
+
+            ghostElement.style.display = 'none';
+            const elementBelow = document.elementFromPoint(e.clientX, e.clientY);
+            let moveSuccessful = false;
+
+            if (elementBelow) {
+                const targetCell = elementBelow.closest('.cell');
+                
+                if (targetCell && !targetCell.classList.contains('empty') && targetCell !== originCell) {
+                    const targetPieceWrapper = targetCell.querySelector('.piece-wrapper');
+                    
+                    if (!targetPieceWrapper) {
+                        targetCell.appendChild(draggedPieceWrapper);
+                        moveSuccessful = true;
+                    } else if (parseInt(targetPieceWrapper.dataset.player) !== currentTurn) {
+                        targetCell.removeChild(targetPieceWrapper); 
+                        targetCell.appendChild(draggedPieceWrapper); 
+                        moveSuccessful = true;
+                    }
+                }
+            }
+
+            draggedPieceWrapper.querySelector('.piece').classList.remove('dragging');
+            if (ghostElement) {
+                document.body.removeChild(ghostElement);
+                ghostElement = null;
+            }
+            document.querySelectorAll('.cell').forEach(c => c.classList.remove('drag-over'));
+
+            if (moveSuccessful) {
+                changeTurn();
+            } else {
+                if (originBgColor) {
+                    originCell.classList.remove('empty');
+                    originCell.style.backgroundColor = originBgColor;
+                }
+            }
+
+            draggedPieceWrapper = null;
+            originCell = null;
+            originBgColor = null;
+            
+            document.removeEventListener('pointermove', handlePointerMove);
+            document.removeEventListener('pointerup', handlePointerUp);
+            document.removeEventListener('pointercancel', handlePointerUp);
+        }
+
+        initGame();
+
+    </script>
+</body>
+</html>
